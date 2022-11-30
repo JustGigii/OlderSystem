@@ -1,0 +1,38 @@
+.menu
+{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-radius:0 0 20px 20px;
+    background:#235789;
+
+    svg,img{
+        position: relative;
+        top: 50%;
+        padding: 5px;
+        transform: translateY(-50%);
+        height: 28px;
+        fill: white;
+       
+    
+    }
+    .bag{    
+        margin-right: 10px;     
+    }
+    .house{  
+        margin-right: 8px;     
+    }
+    .logo
+    {    
+        position: absolute;
+        height: 35px;
+        right:50%;
+        transform: translate(50%, -50%);
+    }
+    .shopping
+    {
+        position: absolute;
+        left: 8px;
+    }
+}
+

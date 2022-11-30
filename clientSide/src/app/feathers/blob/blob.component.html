@@ -1,0 +1,21 @@
+<div class="item" *ngFor="let item of tamplate.items; let i = index" >
+    <div [@changeSize]="item.currentState" (click)="doResize(item)">
+        <div class="tail" ></div>
+        <div class="context">
+        <uL>
+            <li> <h3>{{item.title}}</h3> </li>
+                <li><h3>מספר הזמנה: {{item.olderId}}</h3></li>
+        </uL>
+        <div  class="hide" [hidden]="item.currentState == 'close'" >
+        <uL>
+            <li><p>הוזמן בתאריך: {{item.date}}</p></li>
+            <li> <p>סוג הזמנה: {{item.type}}</p> </li>
+        </uL>
+        <img src ="../../../assets/img/{{item.status}}.svg" class="status">
+        <h4> {{item.statusMassage}}</h4>
+    </div>
+    </div>
+        <img src="../../../assets/icon/more.svg"  [@flip]="item.currentState" class="icon">
+    </div>
+
+</div>

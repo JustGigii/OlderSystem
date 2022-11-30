@@ -1,0 +1,37 @@
+  
+.item{
+    margin:20px 0;
+    width: 100%;
+    padding: 18px 28px 18px 10px;
+    background-color:#c8dbdf;
+    border-radius: 20px;
+    transform-style: preserve-3d;
+
+    .tail{
+        position: absolute;
+        right: 0;
+        top: 0;
+        background-color: #82b5c0 ;
+        display:inline-block;
+        height: 100%;
+        width: 18px;
+        border-radius: 0 20px 20px 0;
+    }
+    .status{
+        position: relative;
+        width: 87%;
+        right: 50%;
+        transform: translateX(50%);
+        margin: 28px 0 5px;
+    }
+    .icon{
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        width: 25px;
+    }
+    ul{
+        padding: 0;
+        margin-bottom: 8px;
+    }
+}
