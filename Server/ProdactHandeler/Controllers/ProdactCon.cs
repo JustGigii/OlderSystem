@@ -14,10 +14,12 @@ namespace Controllers
     {
         private readonly Iprodact _prodact;
         private readonly IMapper _mapper;
-        public ProdactCon(Iprodact prodact, IMapper mapper)
+        private readonly IConfiguration _config;
+        public ProdactCon(Iprodact prodact, IMapper mapper, IConfiguration config)
         {
             _prodact = prodact;
             _mapper = mapper;
+            _config = config;
         }
 
         [HttpGet]
@@ -55,7 +57,8 @@ namespace Controllers
             {
                 var prodact = _mapper.Map<Prodact>(prodactDto);
                 prodact.IsActive = true;
-                int newprodactId = await _prodact.CreateNewProdact(prodact);
+                //int newprodactId = await _prodact.CreateNewProdact(prodact);
+                int newprodactId = 1;
                 if (newprodactId == -1)
                 {
                     return BadRequest(new

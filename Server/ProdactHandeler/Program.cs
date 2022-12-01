@@ -16,10 +16,10 @@ builder.Services.AddScoped<Iprodact,RepProdact>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddDbContext<Context>(options =>
 {
-    options.UseMySql(builder.Configuration.GetConnectionString("DefaultConnection"), ServerVersion.Parse("5.7.37-log"));
+    options.UseMySql(builder.Configuration.GetConnectionString("MySqlConnection"), ServerVersion.Parse("5.7.37-log"));
 });
 var app = builder.Build();
-
+    app.UseStaticFiles();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
