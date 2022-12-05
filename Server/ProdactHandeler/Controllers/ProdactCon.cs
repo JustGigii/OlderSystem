@@ -14,12 +14,10 @@ namespace Controllers
     {
         private readonly Iprodact _prodact;
         private readonly IMapper _mapper;
-        private readonly IConfiguration _config;
-        public ProdactCon(Iprodact prodact, IMapper mapper, IConfiguration config)
+        public ProdactCon(Iprodact prodact, IMapper mapper)
         {
             _prodact = prodact;
             _mapper = mapper;
-            _config = config;
         }
 
         [HttpGet]
@@ -51,14 +49,14 @@ namespace Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AddProdact(WriteProdactDto prodactDto)
+        public async Task<IActionResult> AddProdact([FromForm]WriteProdactDto prodactDto)
         {
             try
             {
                 var prodact = _mapper.Map<Prodact>(prodactDto);
                 prodact.IsActive = true;
-                //int newprodactId = await _prodact.CreateNewProdact(prodact);
-                int newprodactId = 1;
+                prodact.prodactImage = await _prodact.UploadToAzure(prodactDto.prodactImage);
+                int newprodactId = await _prodact.CreateNewProdact(prodact);
                 if (newprodactId == -1)
                 {
                     return BadRequest(new
@@ -95,21 +93,43 @@ namespace Controllers
             catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
         }
         [HttpPut]
-        public async Task<IActionResult> UpdateProdact(ReadPordactDto prodactDto)
+        public async Task<IActionResult> UpdateProdact(UpdateProdactDto prodactDto)
         {
             try
             {
 
-                var prodact = _mapper.Map<Prodact>(prodactDto);
-                if (await _prodact.UpdateProdact(prodact))
+                var update = await _prodact.UpdateProdact(_mapper.Map<Prodact>(prodactDto));
+                return Ok(_mapper.Map<ReadPordactDto>(update));
+                 
+            }
+            catch (ArgumentNullException)
+            {
+                return BadRequest(new
                 {
-                return Ok(_mapper.Map<ReadPordactDto>(prodact));
-                }
-                    return BadRequest(new
-                    {
-                        status = "faild",
-                        data = "the item already in the system"
-                    });
+                    status = "faild",
+                    data = "the item already in the system"
+                });
+            }
+            catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
+
+        }
+        [HttpPut("prodactid")]
+        public async Task<IActionResult> UpdateProdact(int prodactid, [FromForm] List<IFormFile> newImage)
+        {
+            try
+            {
+
+                var update = await _prodact.UpdateImage(prodactid, newImage[0]);
+                return Ok(_mapper.Map<ReadPordactDto>(update));
+
+            }
+            catch (ArgumentNullException)
+            {
+                return BadRequest(new
+                {
+                    status = "faild",
+                    data = "the item already in the system"
+                });
             }
             catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
 

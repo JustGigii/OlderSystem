@@ -19,6 +19,7 @@ builder.Services.AddDbContext<Context>(options =>
     options.UseMySql(builder.Configuration.GetConnectionString("MySqlConnection"), ServerVersion.Parse("5.7.37-log"));
 });
 var app = builder.Build();
+
     app.UseStaticFiles();
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

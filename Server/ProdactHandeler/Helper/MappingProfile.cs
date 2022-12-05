@@ -15,6 +15,9 @@ namespace Helper
             CreateMap<Prodact, ReadPordactDto>();
             CreateMap<ReadPordactDto, Prodact>();
 
+            CreateMap<Prodact, UpdateProdactDto>();
+            CreateMap<UpdateProdactDto, Prodact>();
+
             CreateMap<ReadPordactDto, WriteProdactDto>();
             CreateMap<WriteProdactDto, ReadPordactDto>();
         }
