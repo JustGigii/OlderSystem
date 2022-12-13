@@ -25,11 +25,6 @@ namespace Repository
             return newPordact.prodactId;
         }
 
-        public Task DeleteProdact(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<ICollection<Prodact>> GetAllProdact()
         {
             return await _context.prodacts.Where(e => e.IsActive).ToListAsync();
@@ -43,6 +38,7 @@ namespace Repository
         public async Task<Prodact> UpdateProdact(Prodact UpdatePordact)
         {
             var prodact = await GetPordact(UpdatePordact.prodactId);
+            prodact.pordactName = UpdatePordact.pordactName;
             prodact.typeSize = UpdatePordact.typeSize;
            return await Save()? prodact:throw new Exception();
         }

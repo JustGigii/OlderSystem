@@ -4,6 +4,7 @@
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 Server/ProdactHandeler/appsettings.json
+Server/OlderHandeler/appsettings.json
 # compiled output
 /clientSide/dist
 /clientSide/tmp
