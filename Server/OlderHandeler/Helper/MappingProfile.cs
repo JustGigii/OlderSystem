@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
-
+using Dto;
+using Models;
 
 namespace Helper
 {
@@ -8,7 +9,8 @@ namespace Helper
 
         public MappingProfile() 
         {
-           
+            CreateMap<WirteOldersDto, Orders>();
+
         }
     }
 }

@@ -23,14 +23,14 @@ ADD CONSTRAINT "OlderId"
   ON UPDATE NO ACTION;
 --------------------------------------------
 
-CREATE TABLE "oldersystem"."orders" (
+CREATE TABLE "oldersystem"."olderpordact" (
   "OlderiD" INT IDENTITY(1,1) PRIMARY KEY,
   "Title" VARCHAR(45) NULL,
   "Type" VARCHAR(45) NULL,
   "Date" DATE NULL,
   "PordactId" INT NULL,
   "Status" INT NULL,
-  "Isdarft" TINYINT NULL,
+  "Isdarft" BIT NULL,
   );
 
 
