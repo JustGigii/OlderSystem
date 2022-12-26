@@ -26,7 +26,8 @@ namespace Repository
         {
             if (prodact == null )
                 throw new NullReferenceException();
-                return await Save();
+            await _context.olderpordact.AddAsync(prodact);
+            return await Save();
         }
 
         public async Task<ICollection<Orders>> GetAllOlders()

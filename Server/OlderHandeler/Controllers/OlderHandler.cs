@@ -57,6 +57,7 @@ namespace OlderHandeler.Controllers
                         pordactobj.Olders = newOlders;
                         pordactobj.OlderId = prodactid;
                         pordactobj.Sizes = item.Key;
+                        pordactobj.quantity= item.Value;
                         if (!await _context.CreateOlderpordact(pordactobj)) throw new Exception("CreateOlderpordact faild");
                     }
 
@@ -69,3 +70,20 @@ namespace OlderHandeler.Controllers
         }
     }
 }
+//{
+//    "title": "הגיגית של גיגי",
+//  "type": "רגיל",
+//  "date": "2022-12-26T13:10:52.745Z",
+//  "status": 1,
+//  "isdarft": false,
+//  "prodact": [
+//    {
+//        "pordactId": 1,
+//      "sizes": {
+//            "ג": 5,
+//        "ב": 2,
+//        "ק": 1
+//      }
+//    }
+//  ]
+//}
