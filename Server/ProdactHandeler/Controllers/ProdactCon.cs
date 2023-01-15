@@ -78,7 +78,7 @@ namespace Controllers
             {
                 var prodact =await _prodact.GetPordact(prodactid);
                 if ( await _prodact.DeleteProdact(prodact) ) {
-                    return BadRequest(new
+                    return Ok(new
                     {
                         status = "succes",
                         data = "the item delete from the system"
