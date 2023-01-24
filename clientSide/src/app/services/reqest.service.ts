@@ -1,6 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { iolderpage, iolderItem, iolderItemFull } from 'src/app/page tample/homepage';
+const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 
 @Injectable({
@@ -10,7 +16,12 @@ export class ReqestService {
   apiUrl = "https://prodacthandeler.azurewebsites.net"
   constructor(private http: HttpClient) { }
 
-  getTasks(): Observable<Task[]> {
-    return this.http.get<Task[]>(this.apiUrl);
+  getOlders(): Observable<iolderItem[]> {
+    return  this.http.get<iolderItem[]>(this.apiUrl+"/Olders");
   }
+
+  getOlder(id:number): Observable<iolderItemFull>{
+    return this.http.get<iolderItemFull>(this.apiUrl+'/Olders/'+id);
+  }
+
 }

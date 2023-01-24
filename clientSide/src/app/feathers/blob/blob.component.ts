@@ -1,7 +1,10 @@
 import { trigger, state, style, animate, transition, query, group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { windowWhen } from 'rxjs';
-import { homepage, iolderItem } from 'src/app/page tample/homepage';
+import { iolderpage, homepage, iolderItemFull, ihomePage } from 'src/app/page tample/homepage';
+import {ReqestService} from 'src/app/services/reqest.service'
+import { DatePipe } from '@angular/common'
+import { Element } from '@angular/compiler';
 @Component({
   selector: 'app-blob',
   templateUrl: './blob.component.html',
@@ -45,19 +48,34 @@ import { homepage, iolderItem } from 'src/app/page tample/homepage';
 
 
 export class BlobComponent implements OnInit {
-  tamplate = homepage
+  tamplate: ihomePage = homepage;
   showdetails = true
   message:string =  "";
-  constructor() { }
+  constructor(private reqestservice:ReqestService,public datepipe: DatePipe) { }
 
   ngOnInit(): void {
+    this.reqestservice.getOlders().subscribe((service)=> (service.forEach((element)=>{
+      var details: iolderpage = {
+        data : element,
+        fulldata: {} as iolderItemFull,
+        currentState: 'close',
+        statusMassage: "",
+        date: ""
+      }
+      this.tamplate.items.push(details)
 
+    })))
+    console.log(this.tamplate)
+   
   }
-  doResize(item: iolderItem ): void {
+ 
+  async doResize(item: iolderpage ) {
     item.currentState = item.currentState == 'close' ? 'open':'close';
     if(item.currentState == 'open' )
       {
-        switch (item.status)
+        this.reqestservice.getOlder(item.data.olderiD).subscribe((service)=> {item.fulldata = service
+        item.date  = this.datepipe.transform(item.fulldata?.date, 'dd-MM-yyyy') as string;
+        switch (item.fulldata?.status)
         {
           case 1:
             item.statusMassage= "הזמנתך נשלחה וממתינה לאישור"
@@ -72,6 +90,8 @@ export class BlobComponent implements OnInit {
             item.statusMassage= "הזמנתך נאספה!"
             break;
         }
+      })
       }
+      
   }
 }

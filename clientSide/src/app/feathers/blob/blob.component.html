@@ -3,15 +3,15 @@
         <div class="tail" ></div>
         <div class="context">
         <uL>
-            <li> <h3>{{item.title}}</h3> </li>
-                <li><h3>מספר הזמנה: {{item.olderId}}</h3></li>
+            <li> <h3>{{item.data.title}}</h3> </li>
+                <li><h3>מספר הזמנה: {{item.data.olderiD}}</h3></li>
         </uL>
         <div  class="hide" [hidden]="item.currentState == 'close'" >
         <uL>
             <li><p>הוזמן בתאריך: {{item.date}}</p></li>
-            <li> <p>סוג הזמנה: {{item.type}}</p> </li>
+            <li> <p>סוג הזמנה: {{item.fulldata.type}}</p> </li>
         </uL>
-        <img src ="../../../assets/img/{{item.status}}.svg" class="status">
+        <img src ="../../../assets/img/{{item.fulldata.status}}.svg" class="status">
         <h4> {{item.statusMassage}}</h4>
     </div>
     </div>
