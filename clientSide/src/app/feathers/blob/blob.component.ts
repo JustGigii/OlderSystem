@@ -74,7 +74,7 @@ export class BlobComponent implements OnInit {
     if(item.currentState == 'open' )
       {
         this.reqestservice.getOlder(item.data.olderiD).subscribe((service)=> {item.fulldata = service
-        item.date  = this.datepipe.transform(item.fulldata?.date, 'dd-MM-yyyy') as string;
+        item.date = this.datepipe.transform(item.fulldata?.date, 'dd-MM-yyyy') as string;
         switch (item.fulldata?.status)
         {
           case 1:

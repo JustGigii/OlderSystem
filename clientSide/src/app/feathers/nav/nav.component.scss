@@ -1,38 +1,33 @@
 .menu
 {
-    position: relative;
+    position: sticky;
     width: 100%;
-    height: 50px;
-    border-radius:20px 20px 0 0 ;
+    height: 6%;
+    //border-radius:20px 20px 0 0 ;
     background:#82b5c0;
+  //  padding: 10px;
+;
+    // position: -webkit-sticky; /* Safari */
+    // position: sticky;
 
     svg,img{
         position: relative;
-        top: 50%;
-        padding: 5px;
-        transform: translateY(-50%);
-        height: 28px;
+        height: 30px;
+
         fill: white;
-       
-    
+
     }
-    .bag{    
-        margin-right: 10px;     
+    ul{
+        list-style-type: none;
+        padding: 3% 0 0 0;
+        
+        
+
     }
-    .house{  
-        margin-right: 8px;     
-    }
-    .logo
-    {    
-        position: absolute;
-        height: 35px;
-        right:50%;
-        transform: translate(50%, -50%);
-    }
-    .shopping
-    {
-        position: absolute;
-        left: 8px;
-    }
+    li {
+        width: 25%;
+        display: inline-block;
+        text-align: center;
+      }
 }
 
