@@ -4,8 +4,8 @@
  *{
     box-sizing: border-box;
     margin: 0;
+  //  background: rgba(0, 100, 0, 0.3) !important;
  } 
-
 html,body { 
     direction: rtl;
     height: 100%;
@@ -14,7 +14,7 @@ html,body {
 }   
 body {
     
-    margin: 0; 
+   // margin: 0; 
     background:#f3f2f0;
 }
 h1 {
