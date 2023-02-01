@@ -1,13 +1,13 @@
-<div>
-  <h2>מוצרים</h2>
-  <input type="text" [(ngModel)]="search">
-  <p *ngIf="search.includes('search')">i am shown</p>
+<div class="catalog-page">
+  <h2 class="catalog-title">מוצרים</h2>
+  <input class="catalog-search-bar" type="text" [(ngModel)]="search">
   <div class="products-container">
     <ng-container *ngFor="let product of products">
-      <div class="product" *ngIf="product.name.includes(search)">
-        <img src={{product.src}} alt="product image">
-        <h3 class="product-title">{{product.name}}</h3>
+      <div [id]="product.pordactName" class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick($event)">
+        <img src={{product.prodactImage}} alt="product image">
+        <h3 class="product-title">{{product.pordactName}}</h3>
       </div>
     </ng-container>
   </div>
+
 </div>

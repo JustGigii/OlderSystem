@@ -10,6 +10,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BlobComponent } from './feathers/blob/blob.component';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 import { FormsModule } from '@angular/forms';
+import { PopUpProductComponent } from './feathers/pop-up-product/pop-up-product.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { FormsModule } from '@angular/forms';
     NavComponent,
     HomePageComponent,
     BlobComponent,
-    CatalogPageComponent
+    CatalogPageComponent,
+    PopUpProductComponent
 
   ],
   imports: [
