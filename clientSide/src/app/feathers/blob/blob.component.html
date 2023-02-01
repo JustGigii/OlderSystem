@@ -1,5 +1,5 @@
 <div class="item" *ngFor="let item of tamplate.items; let i = index" >
-    <div [@changeSize]="item.currentState" (click)="doResize(item)">
+    <div [@changeSize]="item.currentState">
         <div class="tail" ></div>
         <div class="context">
         <uL>
@@ -15,7 +15,7 @@
         <h4> {{item.statusMassage}}</h4>
     </div>
     </div>
-        <img src="../../../assets/icon/more.svg"  [@flip]="item.currentState" class="icon">
+        <img src="../../../assets/icon/more.svg"  (click)="doResize(item)"  [@flip]="item.currentState" class="icon">
     </div>
 
 </div>
