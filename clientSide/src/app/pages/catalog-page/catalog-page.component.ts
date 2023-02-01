@@ -1,3 +1,5 @@
+import { prodact } from './../../page tample/prodactTemplete';
+import { ReqestService } from 'src/app/services/reqest.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -8,60 +10,16 @@ import { Component, OnInit } from '@angular/core';
 export class CatalogPageComponent implements OnInit {
 
   //all products available in storage
-  products: Array<any> = [
-    {
-      name: "חולצת בנים א",
-      src: "dsv"
-    },
-    {
-      name: "חולצת בנות ב",
-      src: "gdsg"
-    },
-    {
-      name: "כומתה",
-      src: "gdsg"
-    },
-    {
-      name: "גיגי",
-      src: "gdsg"
-    },
-    {
-      name: "גיגית",
-      src: "gdsg"
-    },
-    {
-      name: "גיגון",
-      src: "gdsg"
-    },
-    {
-      name: "גיגסון",
-      src: "gdsg"
-    },
-    {
-      name: "עוד משהו",
-      src: "gdsg"
-    },
-    {
-      name: "פריט לבוש",
-      src: "gdsg"
-    },
-    {
-      name: "דשבשדבדש",
-      src: "gdsg"
-    },
-    {
-      name: "עשדיש",
-      src: "gdsg"
-    },
-    {
-      name: "עדשים",
-      src: "gdsg"
-    }
-  ];
+  products: prodact[]  = [];
   search: string = "";
 
-  constructor() { }
+  constructor(private reqestService: ReqestService) { }
 
   ngOnInit(): void {
+    this.reqestService.getProdacts().subscribe(element=>this.products = element )
+  }
+
+  onClick(event: any){
+    console.log(event.target.id);
   }
 }
