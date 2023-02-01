@@ -8,13 +8,17 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './feathers/nav/nav.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BlobComponent } from './feathers/blob/blob.component';
+import { ProductComponent } from './feathers/product/product.component';
+import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavComponent,
     HomePageComponent,
-    BlobComponent
+    BlobComponent,
+    ProductComponent,
+    CatalogPageComponent
 
   ],
   imports: [

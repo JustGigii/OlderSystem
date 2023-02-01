@@ -1,0 +1,12 @@
+.products-container
+ {
+  display: flex;
+  width: 81vw;
+  height: 70vh;
+  background-color: aqua;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: space-around;
+  align-items: center;
+ }
