@@ -16,6 +16,11 @@
         fill: white;
 
     }
+    .icons-selected{
+        position: relative;
+        height: 35px;
+        fill: white;
+    }
     ul{
         list-style-type: none;
         padding: 0;
@@ -31,21 +36,22 @@
         padding: 4% 0;
         
       }
-    .cls-1
+    .show
     {
+        display: inline-block;
         position: relative;
         fill: #82b5c0;
-        bottom: -17px;
+        bottom: -18px;
         width : 100%;
+        animation: 3s linear 1s slidein;
     }
-    .ramp
+    .unshow
     {
-       
-        // 
-        // background-color: #82b5c0 ;
-        //height: 36px;
-        // ;
-        // border-radius: 59% 59% 0 0%;
+        display: inline-block;
+        position: relative;
+        fill: #82b5c0;
+        bottom: -35px;
+        width : 100%;
     }
 
 }

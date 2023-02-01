@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  item: number = 1
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  selected(id: number):void{
+    this.item =id
+  }
 }
