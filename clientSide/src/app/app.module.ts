@@ -8,7 +8,9 @@ import { AppComponent } from './app.component';
 import { NavComponent } from './feathers/nav/nav.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BlobComponent } from './feathers/blob/blob.component';
-import { ManagementComponent } from './pages/management/management.component';
+import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -16,14 +18,15 @@ import { ManagementComponent } from './pages/management/management.component';
     NavComponent,
     HomePageComponent,
     BlobComponent,
-    ManagementComponent
+    CatalogPageComponent
 
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]
