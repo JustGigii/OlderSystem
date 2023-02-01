@@ -25,7 +25,7 @@
         list-style-type: none;
         padding: 0;
         margin: 0;
-        overflow: auto;
+        // overflow: hidden;
        
     }
     li {
@@ -43,16 +43,29 @@
         fill: #82b5c0;
         bottom: -18px;
         width : 100%;
-        animation: 3s linear 1s slidein;
+        animation-name: showup;
+        animation-duration: 0.4s;
     }
+
     .unshow
     {
+    
         display: inline-block;
         position: relative;
         fill: #82b5c0;
         bottom: -35px;
         width : 100%;
+        animation-name: showdown;
+        animation-duration: 0.4s;
     }
 
 }
 
+@keyframes showup {
+    from {bottom: -35px;}
+    to {bottom: -18px;}
+}
+@keyframes showdown {
+    from {bottom: -18px;}
+    to {bottom: -35px;}
+}
