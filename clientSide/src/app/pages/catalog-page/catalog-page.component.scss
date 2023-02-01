@@ -1,0 +1,32 @@
+.products-container{
+  display: flex;
+  width: 90vw;
+  height: 81vh;
+  position: relative;
+  margin: auto;
+  justify-content: space-around;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: auto;
+}
+
+.product {
+  display: flex;
+  background-color: rgb(9, 243, 107);
+  align-items: center;
+  flex-direction: column;
+  padding: 16px;
+  position: relative;
+  min-height: 50px;
+  width: 41%;
+  height: 20.5%;
+  margin: 4%;
+  overflow: auto;
+  word-break: break-word;
+}
+
+.product-title {
+  position: absolute;
+  bottom: 10%;
+}
