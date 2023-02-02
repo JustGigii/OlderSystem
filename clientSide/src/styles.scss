@@ -1,48 +1,58 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Heebo:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
- *{
-    box-sizing: border-box;
-    margin: 0;
+* {
+  box-sizing: border-box;
+  margin: 0;
   //  background: rgba(0, 100, 0, 0.3) !important;
- } 
-html,body { 
-    direction: rtl;
-    height: 100%;
-    font-family: "heebo"; 
-    font-size: 1px;
-}   
+}
+
+html,
 body {
-    
-   // margin: 0; 
-    background:#f3f2f0;
+  direction: rtl;
+  height: 100%;
+  font-family: "heebo";
+  font-size: 1px;
 }
+
+body {
+
+  // margin: 0; 
+  background: #f3f2f0;
+}
+
 h1 {
-    font-size: 40rem;
-    font-weight: 700;
-    color: #092f34;;
-    display: inline-block;
-    
+  font-size: 40rem;
+  font-weight: 700;
+  color: #092f34;
+  ;
+  display: inline-block;
+
 }
+
 h2 {
-    font-size: 24rem;
-    color:#376694;
-    font-weight:900;
+  font-size: 24rem;
+  color: #376694;
+  font-weight: 900;
+  text-align: center;
 }
+
 h3 {
-    display:inline-block;
-    font-size: 24rem;
-    color: #092f34;
-    font-weight: 800;
+  display: inline-block;
+  font-size: 24rem;
+  color: #092f34;
+  font-weight: 800;
 }
+
 h4 {
-    font-size: 16rem;
-    color:#092f34;
-    font-weight:900;
-    text-align: center;
+  font-size: 18rem;
+  color: #163B60;
+  font-weight: 900;
+  //   text-align: center;
 }
+
 p {
-    font-size: 16rem;
-    color:#092f34;
-    font-weight:500;
+  font-size: 16rem;
+  color: #092f34;
+  font-weight: 500;
 }

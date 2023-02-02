@@ -5,7 +5,7 @@
   z-index: 1000;
 
   .mainmenu {
-    background: #82b5c0;
+    background: rgb(88 126 163);
 
   }
 
@@ -42,7 +42,7 @@
   .show {
     display: inline-block;
     position: relative;
-    fill: #82b5c0;
+    fill: rgb(88 126 163);
     bottom: -18px;
     width: 100%;
     animation-name: showup;
@@ -53,7 +53,7 @@
 
     display: inline-block;
     position: relative;
-    fill: #82b5c0;
+    fill: rgb(88 126 163);
     bottom: -35px;
     width: 100%;
     animation-name: showdown;

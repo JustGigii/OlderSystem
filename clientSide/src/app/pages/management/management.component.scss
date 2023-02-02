@@ -2,5 +2,56 @@
   position: absolute;
   min-height: 92%;
   width: 100vw;
-  background-color: #376694;
+  background-color: #90ABC3;
+}
+
+.container {
+  padding: 15px;
+
+  .profile-icon {
+    display: block;
+    margin: 5px auto;
+    width: 80px;
+  }
+
+  h2 {
+    color: #163B60;
+    margin-bottom: 20px;
+  }
+}
+
+input {
+  -webkit-appearance: none;
+  position: relative;
+  width: 100%;
+  font-weight: 600;
+  font-size: 16rem;
+  margin-bottom: 15px;
+  color: #14375b;
+  color: #163B60;
+  padding: 11px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  background: rgb(88 126 163);
+  border: none;
+  // filter: drop-shadow(#00000045 3px 3px 10px);
+
+  &:focus {
+    outline: none;
+  }
+}
+
+button {
+  font-weight: 600;
+  font-size: 17rem;
+  min-height: 40px;
+  min-width: 80px;
+  margin-top: 15px;
+  padding: 6px 24px;
+  color: cornsilk;
+  background-color: #163B60;
+  filter: drop-shadow(#00000045 3px 3px 10px);
+  border-radius: 10px;
+  border: none;
+  display: block;
 }

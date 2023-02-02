@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { editProfile, iProfile } from 'src/app/page tample/profile';
 
 @Component({
   selector: 'app-management',
@@ -7,7 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManagementComponent implements OnInit {
 
-  constructor() { }
+  editProfileTemplate: iProfile;
+
+  constructor() {
+    this.editProfileTemplate = editProfile;
+  }
 
   ngOnInit(): void {
   }
