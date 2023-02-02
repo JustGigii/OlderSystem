@@ -3,11 +3,11 @@
   <input class="catalog-search-bar" type="text" [(ngModel)]="search">
   <div class="products-container">
     <ng-container *ngFor="let product of products">
-      <div [id]="product.pordactName" class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick($event)">
-        <img src={{product.prodactImage}} alt="product image">
+      <div [id]="product.prodactId" class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick($event)">
+        <img class="product-image" src={{product.prodactImage}} alt="product image">
         <h3 class="product-title">{{product.pordactName}}</h3>
       </div>
     </ng-container>
   </div>
-
+  <popup-product *ngIf="isClicked" [currProduct]="currProduct"></popup-product>
 </div>

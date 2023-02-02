@@ -10,8 +10,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BlobComponent } from './feathers/blob/blob.component';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 import { FormsModule } from '@angular/forms';
-import { PopUpProductComponent } from './feathers/pop-up-product/pop-up-product.component';
-
+import { PopupProductComponent } from './feathers/popup-product/popup-product.component';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import { PopUpProductComponent } from './feathers/pop-up-product/pop-up-product.
     HomePageComponent,
     BlobComponent,
     CatalogPageComponent,
-    PopUpProductComponent
-
+    PopupProductComponent
   ],
   imports: [
     BrowserModule,

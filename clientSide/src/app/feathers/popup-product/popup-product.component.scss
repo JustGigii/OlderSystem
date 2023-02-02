@@ -1,0 +1,18 @@
+.outer-dialog {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(150 122 224 / 61%);
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+}
+
+.dialog {
+  height: 57vh;
+  width: 78vw;
+  background-color: aqua;
+  margin: auto;
+  top: 18vh;
+  position: relative;
+  border-radius: 41px;
+}

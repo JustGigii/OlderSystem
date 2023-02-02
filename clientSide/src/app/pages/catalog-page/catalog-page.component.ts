@@ -1,6 +1,6 @@
 import { prodact } from './../../page tample/prodactTemplete';
 import { ReqestService } from 'src/app/services/reqest.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
   selector: 'catalog-page',
@@ -12,6 +12,11 @@ export class CatalogPageComponent implements OnInit {
   //all products available in storage
   products: prodact[]  = [];
   search: string = "";
+  isClicked: boolean = false;
+  currProduct: number = 1;
+
+  animal: string = "";
+  name: string = "d";
 
   constructor(private reqestService: ReqestService) { }
 
@@ -20,6 +25,8 @@ export class CatalogPageComponent implements OnInit {
   }
 
   onClick(event: any){
-    console.log(event.target.id);
+    console.log(event.currentTarget.id);
+    this.currProduct = event.currentTarget.id;
+    this.isClicked = true;
   }
 }
