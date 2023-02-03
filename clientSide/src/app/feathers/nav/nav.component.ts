@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-nav',
@@ -7,13 +8,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  item: number = 1
-  constructor() { }
+  item: number = 0
+  cssclass = ["out", "out", "out", "out"]
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    var item = localStorage.getItem("item")
+    if (item !== null) {
+      this.item = parseInt(item)
+      this.cssclass[this.item] = "show"
+      console.log(this.cssclass)
+    }
   }
 
-  selected(id: number):void{
-    this.item =id
+  selected(id: number): void {
+    this.cssclass[this.item] = "unshow"
+    this.cssclass[id] = "show"
+    this.item = id
+    localStorage.setItem("item", id.toString());
+    console.log(this.cssclass)
   }
 }
