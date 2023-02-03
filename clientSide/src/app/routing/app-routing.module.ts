@@ -5,10 +5,10 @@ import { ManagementComponent } from '../pages/management/management.component';
 import { CatalogPageComponent } from '../pages/catalog-page/catalog-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  { path: '', redirectTo: '/homePage', pathMatch: 'full' },
   { path: 'homePage', component: HomePageComponent },
   { path: 'management', component: ManagementComponent },
-  { path: 'productsCatalog', component: CatalogPageComponent }
+  { path: 'productsCatalog', component: CatalogPageComponent } 
 ];
 
 @NgModule({

@@ -1,11 +1,9 @@
 import { trigger, state, style, animate, transition, query, group } from '@angular/animations';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,OnDestroy } from '@angular/core';
 import { windowWhen } from 'rxjs';
 import { iolderpage, homepage, iolderItemFull, ihomePage } from 'src/app/page tample/homepage';
 import { ReqestService } from 'src/app/services/reqest.service'
 import { DatePipe } from '@angular/common'
-import { Element } from '@angular/compiler';
-import { HomePageComponent } from 'src/app/pages/home-page/home-page.component';
 @Component({
   selector: 'app-blob',
   templateUrl: './blob.component.html',
@@ -48,7 +46,7 @@ import { HomePageComponent } from 'src/app/pages/home-page/home-page.component';
 })
 
 
-export class BlobComponent implements OnInit {
+export class BlobComponent implements OnInit,OnDestroy {
   tamplate: ihomePage = homepage;
   showdetails = true
   message: string = "";
@@ -70,7 +68,12 @@ export class BlobComponent implements OnInit {
     console.log(this.tamplate)
 
   }
-
+  ngOnDestroy() {
+    console.log('home - ngOnDestroy')
+    for (const sub of this.reqestservice.getOlders) {
+      sub.unsubscribe();
+    }
+  }
   async doResize(item: iolderpage) {
     item.currentState = item.currentState == 'close' ? 'open' : 'close';
     if (item.currentState == 'open') {

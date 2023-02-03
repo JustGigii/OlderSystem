@@ -41,6 +41,15 @@ CREATE TABLE "olderpordact" (
   "quantity" int NULL,
 );
 
+
+CREATE TABLE "prodacts" (
+  "prodactId" INT IDENTITY(1,1) PRIMARY KEY,
+  "pordactName" NVARCHAR(Max) NULL,
+  "prodactImage" NVARCHAR(Max) NULL,
+  "typeSize" int NULL,
+  "IsActive" BIT NULL,
+);
+
 ALTER TABLE "orders" 
 ADD CONSTRAINT "OlderId"
   FOREIGN KEY ("OlderiD")

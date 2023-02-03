@@ -10,6 +10,7 @@ import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BlobComponent } from './feathers/blob/blob.component';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 import { FormsModule } from '@angular/forms';
+import { ProdactdetailsComponent } from './feathers/prodactdetails/prodactdetails.component';
 import { PopupProductComponent } from './feathers/popup-product/popup-product.component';
 
 @NgModule({
@@ -18,8 +19,10 @@ import { PopupProductComponent } from './feathers/popup-product/popup-product.co
     NavComponent,
     HomePageComponent,
     BlobComponent,
+    PopupProductComponent,
     CatalogPageComponent,
-    PopupProductComponent
+    ProdactdetailsComponent
+
   ],
   imports: [
     BrowserModule,
