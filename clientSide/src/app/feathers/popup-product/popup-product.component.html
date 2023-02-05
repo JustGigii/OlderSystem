@@ -1,5 +1,15 @@
-<div class="outer-dialog"5>
-  <div class="dialog">
-    <img src="" alt="clicked-product-image">
+<div class="outer-dialog">
+  <div class="dialog" *ngIf="currProduct != undefined">
+    <img class="close-btn" src="../../../assets/img/closeBtn.png" alt="close-button" (click)="closeDialog()">
+    <h1>{{currProduct.pordactName}}</h1>
+    <img class="product-image" [src]="currProduct.prodactImage" alt="clicked-product-image">
+    <div class="wanted-orders-container">
+      <div class="wantd-orders">
+        <span class="wanted-orders-text">nsze:</span>
+        <input type="number" min="1">
+        <span class="wanted-orders-text">ashjfcadshfas:</span>
+        <input type="number" min="1">
+      </div>
+    </div>
   </div>
 </div>
