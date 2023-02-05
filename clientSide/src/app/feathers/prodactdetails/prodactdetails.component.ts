@@ -8,6 +8,7 @@ import { ReqestService } from 'src/app/services/reqest.service'
 })
 export class ProdactdetailsComponent implements OnInit {
   id?: number
+  prodactdetails?: iolderItemFull
   constructor(private reqestservice: ReqestService) { }
 
   ngOnInit(): void {
@@ -16,7 +17,7 @@ export class ProdactdetailsComponent implements OnInit {
   {
     if(this.id == undefined)
       this.id =20  
-    this.reqestservice.getOlder(this.id).subscribe((service) =>console.log(service))
+    this.reqestservice.getOlder(this.id).subscribe((service) => {this.prodactdetails = service, console.log(this.prodactdetails)})
   }
 
 }
