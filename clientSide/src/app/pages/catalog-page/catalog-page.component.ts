@@ -13,20 +13,24 @@ export class CatalogPageComponent implements OnInit {
   products: prodact[]  = [];
   search: string = "";
   isClicked: boolean = false;
-  currProduct: number = 1;
+  currProduct?: prodact;
 
   animal: string = "";
   name: string = "d";
 
-  constructor(private reqestService: ReqestService) { }
-
-  ngOnInit(): void {
-    this.reqestService.getProdacts().subscribe(element=>this.products = element )
+  constructor(private reqestService: ReqestService) {
   }
 
-  onClick(event: any){
-    console.log(event.currentTarget.id);
-    this.currProduct = event.currentTarget.id;
+  ngOnInit(): void {
+    this.reqestService.getProdacts().subscribe(element=>this.products = element );
+  }
+
+  onClick(product: prodact){
+    this.currProduct = product;
     this.isClicked = true;
+  }
+
+  closeDialog(){
+    this.isClicked = false;
   }
 }

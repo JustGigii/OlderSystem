@@ -8,11 +8,39 @@
 }
 
 .dialog {
-  height: 57vh;
-  width: 78vw;
+  height: 76vh;
+  width: 91.6vw;
   background-color: aqua;
   margin: auto;
-  top: 18vh;
+  top: 10.8vh;
   position: relative;
   border-radius: 41px;
+}
+
+.close-btn {
+  width: 23%;
+  height: 13%;
+  position: absolute;
+}
+
+.product-image {
+  height: 40%;
+  width: 100%;
+}
+
+.wanted-orders-container {
+  background-color: aliceblue;
+  width: 100%;
+  height: 35%;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wantd-orders {
+
+}
+
+.wanted-orders-text {
+
 }
