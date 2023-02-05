@@ -9,3 +9,18 @@ export interface UpDateProdact{
     pordactName: string,
     typeSize: number
 }
+export interface NewOrderpordact
+{
+    pordactId: number,
+    size: Record<string,number>;
+}
+
+export interface NewOrder
+    {
+        title: string,
+        type: string,
+        date: Date,
+        status: number,
+        isdarft: true,
+        prodact: NewOrderpordact[]
+    }

@@ -19,7 +19,7 @@ export interface iolderItemFull {
     date: Date,
     status:	number,
     isdarft: boolean
-    prodact: iproduct[];
+    prodact?: iproduct[];
 }
 
 export interface iolderpage{
@@ -34,8 +34,10 @@ interface iproduct{
     pordactId: number
     pordactName: string;
     prodactImage: string;
-    size: Record<string,number>;
+    size: Record<string,string>;
 }
+
+
 // export interface iolderItemFull{
 //     title: string;
 //     olderId: string;

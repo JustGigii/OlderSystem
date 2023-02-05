@@ -3,3 +3,15 @@ input
     width: 42%;
     height: 13%;
 }
+.product-details
+{
+    height: 30vh;
+    position: relative;
+    overflow: scroll;
+    margin: 5%;
+}
+.product-image {
+   position: absolute;
+     height: 67%;
+      width: 39%;
+  }

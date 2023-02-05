@@ -7,11 +7,12 @@ import { ReqestService } from 'src/app/services/reqest.service'
   styleUrls: ['./prodactdetails.component.scss']
 })
 export class ProdactdetailsComponent implements OnInit {
-  id?: number
+  id?: number = 20
   prodactdetails?: iolderItemFull
   constructor(private reqestservice: ReqestService) { }
 
   ngOnInit(): void {
+    this.reqestservice.getOlder(20).subscribe((service) => {this.prodactdetails = service, console.log(this.prodactdetails)})
   }
   showOldersDetails():void
   {
