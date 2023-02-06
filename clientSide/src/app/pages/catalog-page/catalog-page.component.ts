@@ -11,18 +11,18 @@ export class CatalogPageComponent implements OnInit {
 
   //all products available in storage
   products: prodact[]  = [];
+  sizes: [][] = [[]];
   search: string = "";
   isClicked: boolean = false;
   currProduct?: prodact;
-
-  animal: string = "";
-  name: string = "d";
+  cart: Array<any> = [];
 
   constructor(private reqestService: ReqestService) {
   }
 
   ngOnInit(): void {
     this.reqestService.getProdacts().subscribe(element=>this.products = element );
+    //this.reqestService.getSizes().subscribe(element=>this.sizes = element );
   }
 
   onClick(product: prodact){
@@ -32,5 +32,13 @@ export class CatalogPageComponent implements OnInit {
 
   closeDialog(){
     this.isClicked = false;
+  }
+
+
+  //how to accepts to here parameters
+  addToCart(addedProduct: any){
+    console.log("cart: ");
+    this.cart.unshift(addedProduct);
+    console.table(this.cart);
   }
 }

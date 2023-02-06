@@ -1,6 +1,7 @@
 <div class="catalog-page">
   <h2 class="catalog-title">מוצרים</h2>
   <input class="catalog-search-bar" type="text" [(ngModel)]="search">
+  <p>{{search}}</p>
   <div class="products-container">
     <ng-container *ngFor="let product of products">
       <div class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick(product)">
@@ -9,5 +10,5 @@
       </div>
     </ng-container>
   </div>
-  <popup-product *ngIf="isClicked" (onClose)="closeDialog()" [currProduct]="currProduct"></popup-product>
+  <popup-product *ngIf="isClicked" (onClose)="closeDialog()" (onAddToCart)="addToCart($event)" [currProduct]="currProduct"></popup-product>
 </div>

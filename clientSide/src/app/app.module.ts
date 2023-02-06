@@ -12,6 +12,7 @@ import { CatalogPageComponent } from './pages/catalog-page/catalog-page.componen
 import { FormsModule } from '@angular/forms';
 import { ProdactdetailsComponent } from './feathers/prodactdetails/prodactdetails.component';
 import { PopupProductComponent } from './feathers/popup-product/popup-product.component';
+import { CartPageComponent } from './pages/cart-page/cart-page.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { PopupProductComponent } from './feathers/popup-product/popup-product.co
     BlobComponent,
     PopupProductComponent,
     CatalogPageComponent,
-    ProdactdetailsComponent
+    ProdactdetailsComponent,
+    CartPageComponent
 
   ],
   imports: [
