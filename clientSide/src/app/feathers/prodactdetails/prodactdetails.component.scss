@@ -5,13 +5,48 @@ input
 }
 .product-details
 {
-    height: 30vh;
-    position: relative;
+    background-color: rgba(0, 0, 0, 0.2);
+    height: 22vh;
     overflow: scroll;
-    margin: 5%;
+    margin-top: 5%;
+    padding: 4%;
+    border-radius: 20px 20px 20px 20px;
+    display: flex;
+    
 }
 .product-image {
-   position: absolute;
-     height: 67%;
-      width: 39%;
+    display: i;
+    height: 100%;
+    width: 30%;
   }
+.mainContent
+{
+    overflow: auto;
+    width: 70%;
+    height: 100%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    //text-align: center;
+    margin-right: 10%;
+    
+  
+}
+h4
+{
+    font-size: 23rem; 
+    font-weight: 600;
+}
+
+th{
+
+    font-size: 23rem; 
+    text-align: right; 
+}
+td{
+
+    font-size: 21rem;
+    text-align: right;
+   
+}

@@ -15,7 +15,7 @@ import { DatePipe } from '@angular/common'
 
       })),
       state('open', style({
-        height: '235px'
+        height: '275px'
       })),
       transition('open => close', [
 

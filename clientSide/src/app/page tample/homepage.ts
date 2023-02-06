@@ -34,7 +34,7 @@ interface iproduct{
     pordactId: number
     pordactName: string;
     prodactImage: string;
-    size: Record<string,string>;
+    sizes: Map<string,number>;
 }
 
 

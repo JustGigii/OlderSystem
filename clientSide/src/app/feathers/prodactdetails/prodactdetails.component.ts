@@ -7,7 +7,7 @@ import { ReqestService } from 'src/app/services/reqest.service'
   styleUrls: ['./prodactdetails.component.scss']
 })
 export class ProdactdetailsComponent implements OnInit {
-  id?: number = 20
+  id?: number 
   prodactdetails?: iolderItemFull
   constructor(private reqestservice: ReqestService) { }
 
@@ -20,5 +20,4 @@ export class ProdactdetailsComponent implements OnInit {
       this.id =20  
     this.reqestservice.getOlder(this.id).subscribe((service) => {this.prodactdetails = service, console.log(this.prodactdetails)})
   }
-
 }
