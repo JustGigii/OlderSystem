@@ -1,0 +1,31 @@
+.cart-page {
+  height: 100vh;
+  width: 100vw;
+  background-color: #90abc3;
+}
+
+.cart-title {
+  text-align: center;
+  font-size: 45rem;
+  color: #3a454a;
+}
+
+.cart-container {
+  background-color: #235789;
+  height: 69vh;
+  width: 85vw;
+  margin: auto;
+  margin-top: 6vh;
+  border-radius: 46px;
+}
+
+.options-container {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  margin: auto;
+  border-radius: 46px;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}

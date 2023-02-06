@@ -1,0 +1,2 @@
+- be able to choose a size only one time
+- have to set quantity at least 1
