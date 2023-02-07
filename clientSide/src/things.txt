@@ -1,0 +1,176 @@
+popup-ts
+
+import { prodact } from './../../page tample/prodactTemplete';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { ThisReceiver } from '@angular/compiler';
+import { CartArrayService } from './../../services/cart-array.service';
+
+
+@Component({
+  selector: 'popup-product',
+  templateUrl: './popup-product.component.html',
+  styleUrls: ['./popup-product.component.scss']
+})
+export class PopupProductComponent implements OnInit {
+  @Input() currProduct?: prodact;
+  @Output() onClose: EventEmitter<any> = new EventEmitter();
+  @Output() onAddToCart: EventEmitter<any> = new EventEmitter();
+  wantedSizes: Array<{size: number, quantity: number}> = new Array<{size: number, quantity: number}>;
+  sizes: Record<number, string[]> = {
+    1 : ["ג","ב","א"],
+    2 : [],
+    3 : ["מידשכלךש","מידת מכנסייםםםםםםם","מידת מכנסיים"],
+    4 : ["XS","S","M","L","XL"],
+    5 : ["ללא מידה"]
+  };
+
+  constructor(private cartArrayService: CartArrayService) {
+    for (let i = 36; i <= 50; i++) {
+      this.sizes["2"].push(String(i));
+    }
+  }
+
+  ngOnInit(): void {
+  }
+
+  closeDialog(){
+    this.onClose.emit();
+  }
+
+  addSize(){
+    this.wantedSizes.push({size: 0, quantity: 1});
+    if(this.currProduct != undefined)
+      this.cartArrayService.saveCatalogProductsSizes(this.currProduct?.prodactId);
+  }
+
+  addToCart(){
+    this.sortWantedSizes();
+    var addedProduct = {
+      "pordactName" : this.currProduct?.pordactName,
+      "prodactId" : this.currProduct?.prodactId,
+      "prodactImage" : this.currProduct?.prodactImage,
+      "typeSize" : this.currProduct?.typeSize,
+      "wantedSizes" : this.wantedSizes
+    }
+    this.onAddToCart.emit(addedProduct);
+  }
+
+  sortWantedSizes(){
+  }
+}
+
+
+
+
+
+
+
+popup html
+
+<div class="outer-dialog">
+  <div class="dialog" *ngIf="currProduct != undefined">
+    <img class="close-btn" src="../../../assets/img/closeBtn.png" alt="close-button" (click)="closeDialog()">
+    <h1>{{currProduct.pordactName}}</h1>
+    <img class="product-image" [src]="currProduct.prodactImage" alt="clicked-product-image">
+    <div class="wanted-orders-container">
+      <div class="wantd-orders" *ngFor="let size of wantedSizes">
+        <p class="wanted-orders-text">מידה:</p>
+        <select class="wanted-orders-input" id="sizes" name="sizes" size="1" [(ngModel)]="size.size">
+          <option class="wanted-orders-option" *ngFor="let size of sizes[currProduct.typeSize]" [value]="">{{size}}</option>
+        </select>
+        <p class="wanted-orders-text">כמות:</p>
+        <input class="wanted-orders-input" type="number" min="1" [value]="size.quantity" [(ngModel)]="size.quantity"
+        oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : null">
+      </div>
+    </div>
+    <img src="../../../assets/img/addBtn.png" alt="add size" (click)="addSize()">
+    <img class="cart-btn" src="../../../assets/img/cartBtn.png" alt="cart size" (click)="addToCart()">
+  </div>
+</div>
+
+
+
+
+
+
+
+popup scss
+
+.outer-dialog {
+  height: 100vh;
+  width: 100vw;
+  background-color: rgb(150 122 224 / 61%);
+  z-index: 2;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+}
+
+.dialog {
+  height: 76vh;
+  width: 91.6vw;
+  background-color: aqua;
+  margin: auto;
+  top: 10.8vh;
+  position: relative;
+  border-radius: 41px;
+}
+
+.close-btn {
+  width: 23%;
+  height: 13%;
+  position: absolute;
+  left: 0px;
+}
+
+.cart-btn {
+  position: absolute;
+  left: 3vw;
+  bottom: 4vh;
+}
+
+.product-image {
+  height: 40%;
+  width: 100%;
+}
+
+.wanted-orders-container {
+  background-color: aliceblue;
+  width: 100%;
+  height: 35%;
+  margin-top: 5vh;
+  position: relative;
+  margin: auto;
+  justify-content: space-around;
+  align-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+  overflow: auto;
+}
+
+.wantd-orders {
+  background-color: bisque;
+  width: 88%;
+  height: 29%;
+  margin: auto;
+  margin-top: 2vh;
+  position: relative;
+  border-radius: 10px;
+}
+
+.wanted-orders-text {
+  height: 50%;
+  width: 25%;
+  display: inline-block;
+  color: black;
+}
+
+.wanted-orders-input {
+  height: 50%;
+  width: 25%;
+}
+
+.wanted-orders-option {
+
+}
+

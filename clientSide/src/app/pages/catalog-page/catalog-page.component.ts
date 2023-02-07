@@ -1,5 +1,6 @@
 import { prodact } from './../../page tample/prodactTemplete';
 import { ReqestService } from 'src/app/services/reqest.service';
+import { CartArrayService } from './../../services/cart-array.service';
 import { Component, OnInit, Inject } from '@angular/core';
 
 @Component({
@@ -13,32 +14,26 @@ export class CatalogPageComponent implements OnInit {
   products: prodact[]  = [];
   sizes: [][] = [[]];
   search: string = "";
-  isClicked: boolean = false;
   currProduct?: prodact;
   cart: Array<any> = [];
 
-  constructor(private reqestService: ReqestService) {
+  constructor(private reqestService: ReqestService, private cartArrayService: CartArrayService) {
   }
 
   ngOnInit(): void {
     this.reqestService.getProdacts().subscribe(element=>this.products = element );
-    //this.reqestService.getSizes().subscribe(element=>this.sizes = element );
   }
 
   onClick(product: prodact){
     this.currProduct = product;
-    this.isClicked = true;
   }
 
   closeDialog(){
-    this.isClicked = false;
+    this.currProduct = undefined;
   }
 
-
-  //how to accepts to here parameters
   addToCart(addedProduct: any){
-    console.log("cart: ");
     this.cart.unshift(addedProduct);
-    console.table(this.cart);
+    this.cartArrayService.addToCart(addedProduct);
   }
 }

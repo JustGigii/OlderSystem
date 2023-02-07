@@ -1,3 +1,4 @@
+import { CartArrayService } from './../../services/cart-array.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-page.component.scss']
 })
 export class CartPageComponent implements OnInit {
+  cartItems: Array<any> = [];
 
-  constructor() { }
+  constructor(private cartArrayService: CartArrayService) { }
 
   ngOnInit(): void {
+    this.cartArrayService.cartItems.subscribe(c => {this.cartItems = c;});
   }
-
 }

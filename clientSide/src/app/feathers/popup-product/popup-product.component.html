@@ -12,7 +12,6 @@
         <p class="wanted-orders-text">כמות:</p>
         <input class="wanted-orders-input" type="number" min="1" [value]="size.quantity" [(ngModel)]="size.quantity"
         oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : null">
-        <!-- <input class="wanted-orders-input" type="number" min="1" [value]="size.size" [(ngModel)]="size.size"> -->
       </div>
     </div>
     <img src="../../../assets/img/addBtn.png" alt="add size" (click)="addSize()">
