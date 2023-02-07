@@ -11,7 +11,7 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class ProdactdetailsComponent implements OnInit {
   id?: number 
   prodactdetails?: iproduct[]
-  constructor(@Inject(MAT_DIALOG_DATA) public data:iproduct[],private reqestservice: ReqestService) 
+  constructor(@Inject(MAT_DIALOG_DATA) public data:iproduct[], private reqestservice: ReqestService) 
   {
     this.filterMap(data)
   }

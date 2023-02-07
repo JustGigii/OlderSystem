@@ -53,7 +53,7 @@ export class BlobComponent implements OnInit {
   showdetails = true
   message: string = "";
   constructor(private reqestservice: ReqestService, public datepipe: DatePipe,private dialogref: MatDialog) { }
-  //
+  //private dialogref: MatDialog
   ngOnInit(): void {
     homepage.items = []
     this.reqestservice.getOlders().subscribe((service) => (service.forEach((element) => {
@@ -72,7 +72,7 @@ export class BlobComponent implements OnInit {
   }
   openDilog(item: iolderpage)
   {
-     this.dialogref.open(ProdactdetailsComponent,{data : item.fulldata.prodact})
+    this.dialogref.open(ProdactdetailsComponent,{data : item.fulldata.prodact})
   }
 
   async doResize(item: iolderpage) {
