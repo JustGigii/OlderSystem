@@ -3,6 +3,7 @@
   <input type="submit" value="submit" (click)="showOldersDetails()" />
 </div>
 <div *ngIf="this.prodactdetails">
+<<<<<<< Updated upstream
   <div *ngFor="let prodact of this.prodactdetails.prodact">
     <div class="product-details">
       <img class="product-image" [src]="prodact.prodactImage">
@@ -20,3 +21,28 @@
     </div>
   </div>
 </div>
+=======
+    <div *ngFor="let prodact of this.prodactdetails">
+       <div class="product-details">
+          <img class="product-image" src="{{prodact.prodactImage}}">
+          <div class="mainContent">
+          <h4>{{prodact.pordactName}}</h4>
+          <div class="tableConect">
+              <ul>
+                <li>מידה</li>
+                <li>כמות</li>
+              </ul>
+              <table>
+                  <tr>
+                      <th *ngFor="let onesize of prodact.sizes| keyvalue">{{onesize.key}}</th>
+                  </tr>
+                  <tr>
+                      <td *ngFor="let onesize of prodact.sizes| keyvalue">{{onesize.value}}</td>
+                  </tr>
+              </table>
+            </div>
+        </div>
+      </div>
+  </div>
+</div>
+>>>>>>> Stashed changes

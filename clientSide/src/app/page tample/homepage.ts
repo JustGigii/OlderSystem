@@ -30,7 +30,7 @@ export interface iolderpage{
     date :string
 
 }
-interface iproduct{
+export interface iproduct{
     pordactId: number
     pordactName: string;
     prodactImage: string;

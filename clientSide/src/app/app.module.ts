@@ -13,7 +13,11 @@ import { FormsModule } from '@angular/forms';
 import { ProdactdetailsComponent } from './feathers/prodactdetails/prodactdetails.component';
 import { PopupProductComponent } from './feathers/popup-product/popup-product.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
+<<<<<<< Updated upstream
 import { CartItemComponent } from './feathers/cart-item/cart-item.component';
+=======
+import { MatDialogModule  } from '@angular/material/dialog';
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -33,7 +37,8 @@ import { CartItemComponent } from './feathers/cart-item/cart-item.component';
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [DatePipe],
   bootstrap: [AppComponent]

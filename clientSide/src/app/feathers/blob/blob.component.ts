@@ -4,6 +4,8 @@ import { windowWhen } from 'rxjs';
 import { iolderpage, homepage, iolderItemFull, ihomePage } from 'src/app/page tample/homepage';
 import { ReqestService } from 'src/app/services/reqest.service'
 import { DatePipe } from '@angular/common'
+import { MatDialog } from '@angular/material/dialog';
+import { ProdactdetailsComponent } from '../prodactdetails/prodactdetails.component';
 @Component({
   selector: 'app-blob',
   templateUrl: './blob.component.html',
@@ -50,8 +52,8 @@ export class BlobComponent implements OnInit {
   tamplate: ihomePage = homepage;
   showdetails = true
   message: string = "";
-  constructor(private reqestservice: ReqestService, public datepipe: DatePipe) { }
-
+  constructor(private reqestservice: ReqestService, public datepipe: DatePipe,private dialogref: MatDialog) { }
+  //
   ngOnInit(): void {
     homepage.items = []
     this.reqestservice.getOlders().subscribe((service) => (service.forEach((element) => {
@@ -68,6 +70,11 @@ export class BlobComponent implements OnInit {
     console.log(this.tamplate)
 
   }
+  openDilog(item: iolderpage)
+  {
+     this.dialogref.open(ProdactdetailsComponent,{data : item.fulldata.prodact})
+  }
+
   async doResize(item: iolderpage) {
     item.currentState = item.currentState == 'close' ? 'open' : 'close';
     if (item.currentState == 'open') {
