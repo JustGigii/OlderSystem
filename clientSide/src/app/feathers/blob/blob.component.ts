@@ -52,7 +52,7 @@ export class BlobComponent implements OnInit {
   tamplate: ihomePage = homepage;
   showdetails = true
   message: string = "";
-  constructor(private reqestservice: ReqestService, public datepipe: DatePipe,private dialogref: MatDialog) { }
+  constructor(private reqestservice: ReqestService, public datepipe: DatePipe) { }
   //private dialogref: MatDialog
   ngOnInit(): void {
     homepage.items = []
