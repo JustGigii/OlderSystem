@@ -72,7 +72,12 @@ export class BlobComponent implements OnInit {
   }
   openDilog(item: iolderpage)
   {
-    this.dialogref.open(ProdactdetailsComponent,{data : item.fulldata.prodact})
+    let dialogRef =this.dialogref.open(ProdactdetailsComponent,{
+      data : item.fulldata.prodact,
+      height: '400px',
+      width: '600px',
+      
+    })
   }
 
   async doResize(item: iolderpage) {

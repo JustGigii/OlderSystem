@@ -36,6 +36,7 @@ import {MatDialogModule} from'@angular/material/dialog'
     FormsModule,
     MatDialogModule
   ],
+  entryComponents:[ProdactdetailsComponent],
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
