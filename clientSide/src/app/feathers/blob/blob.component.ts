@@ -70,16 +70,7 @@ export class BlobComponent implements OnInit {
     console.log(this.tamplate)
 
   }
-  openDilog(item: iolderpage)
-  {
-    let dialogRef =this.dialogref.open(ProdactdetailsComponent,{
-      data : item.fulldata.prodact,
-      height: '400px',
-      width: '600px',
-      
-    })
-  }
-
+  
   async doResize(item: iolderpage) {
     item.currentState = item.currentState == 'close' ? 'open' : 'close';
     if (item.currentState == 'open') {
