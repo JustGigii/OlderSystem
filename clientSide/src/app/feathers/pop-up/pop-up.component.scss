@@ -6,14 +6,31 @@
   position: fixed;
   top: 0px;
   right: 0px;
+  animation: myAnim 3s linear 1s 1 normal forwards;
 }
 
 .dialog {
   height: 76vh;
   width: 91.6vw;
   background-color: #dfe3eb;
+  overflow: auto;
   margin: auto;
   top: 10.8vh;
   position: relative;
   border-radius: 41px;
+  padding-top: 1%;
+  padding-right: 4%;
+  padding-left: 4%;
+}
+@keyframes fadein {
+	0%,
+	50%,
+	100% {
+		opacity: 1;
+	}
+
+	25%,
+	75% {
+		opacity: 0;
+	}
 }

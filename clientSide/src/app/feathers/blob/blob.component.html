@@ -13,10 +13,12 @@
         </uL>
         <img src ="../../../assets/img/{{item.fulldata.status}}.svg" class="status">
         <h4> {{item.statusMassage}}</h4>
-        <p>לצפייה בהזמנה לחץ כאן...</p>
+        <p (click)="ToPopup(item.fulldata.prodact)" class="link">לצפייה בהזמנה לחץ כאן...</p>
     </div>
     </div>
         <img src="../../../assets/icon/more.svg"  (click)="doResize(item)"  [@flip]="item.currentState" class="icon">
     </div>
-
 </div>
+<pop-up (closeEvent)="this.prodactShow = undefined" *ngIf="this.prodactShow !=undefined">
+    <app-prodactdetails *ngIf="this.prodactShow !=undefined" [prodactdetails]="this.prodactShow"></app-prodactdetails>
+</pop-up>

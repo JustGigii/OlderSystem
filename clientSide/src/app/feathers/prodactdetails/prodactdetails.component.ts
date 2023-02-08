@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, Input } from '@angular/core';
+import { Component, Inject, OnInit, Input, Output } from '@angular/core';
 import { map, single } from 'rxjs';
 import { iolderItemFull, iproduct } from 'src/app/page tample/homepage';
 import { ReqestService } from 'src/app/services/reqest.service';
@@ -20,12 +20,12 @@ export class ProdactdetailsComponent implements OnInit {
     if(this.prodactdetails)
     this.filterMap(this.prodactdetails)
   }
-  showOldersDetails():void
-  {
-    // if(this.id == undefined)
-    //   this.id =20
-    // this.reqestservice.getOlder(this.id).subscribe((service) => {this.filterMap(service), console.log(this.prodactdetails)})
-  }
+  // showOldersDetails():void
+  // {
+  //   // if(this.id == undefined)
+  //   //   this.id =20
+  //   // this.reqestservice.getOlder(this.id).subscribe((service) => {this.filterMap(service), console.log(this.prodactdetails)})
+  // }
 
   filterMap(service:iproduct[]):void
   {
