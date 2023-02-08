@@ -45,10 +45,29 @@ export class PopupProductComponent implements OnInit {
     }
 
     this.cartItemArray = this.cartArrayService.getCartItem(this.productId);
-    this.alreadyChosenSizes = [];
-    this.sizes[this.productTypeSize].forEach(cell => {
-      this.availableSizes.push(cell);
-    });
+
+    // var storedArray = sessionStorage.getItem("ourarraykey");
+    // ourArray = JSON.parse(storedArray);
+    // sessionStorage.setItem("alreadyChosenSizes",JSON.stringify(this.alreadyChosenSizes));
+    if (sessionStorage.getItem("alreadyChosenSizes") == null) {
+      this.alreadyChosenSizes = [];
+      this.sizes[this.productTypeSize].forEach(cell => {
+        this.availableSizes.push(cell);
+      });
+    } else {
+      var storedArray = sessionStorage.getItem("alreadyChosenSizes");
+      this.alreadyChosenSizes = JSON.parse(storedArray || '{}');
+
+      var storedArray = sessionStorage.getItem("availableSizes");
+      this.availableSizes = JSON.parse(storedArray || '{}');
+    }
+  }
+
+  doThis() {
+    console.log("this.availableSizes");
+    console.table(this.availableSizes);
+    console.log("this.alreadyChosenSizes");
+    console.table(this.alreadyChosenSizes);
   }
 
   addSize(){
@@ -57,6 +76,7 @@ export class PopupProductComponent implements OnInit {
       var sizeToAdd = this.availableSizes.pop();
       this.cartItemArray.push({size: sizeToAdd, quantity: 1});
       this.alreadyChosenSizes.push(sizeToAdd);
+      this.updateCurrentChosenSizes();
     }
     else
       alert();
@@ -71,6 +91,7 @@ export class PopupProductComponent implements OnInit {
     this.alreadyChosenSizes.splice(index, 1);
 
     this.availableSizes.push(sizeToRemove.size);
+    this.updateCurrentChosenSizes();
   }
 
   addToCart(){
@@ -90,7 +111,12 @@ export class PopupProductComponent implements OnInit {
       alert("choose something to add to the cart");
   }
 
-  sortCartItemArray(){
+  sortCartItemArray() {
+  }
+
+  updateCurrentChosenSizes() {
+    sessionStorage.setItem("alreadyChosenSizes",JSON.stringify(this.alreadyChosenSizes));
+    sessionStorage.setItem("availableSizes",JSON.stringify(this.availableSizes));
   }
 
   onInput(newSize: string) {
@@ -103,6 +129,8 @@ export class PopupProductComponent implements OnInit {
     this.alreadyChosenSizes.push(newSize);
     index = this.availableSizes.indexOf(newSize);
     this.availableSizes.splice(index, 1);
+
+    this.updateCurrentChosenSizes();
   }
 
   onFocus(value: any){
