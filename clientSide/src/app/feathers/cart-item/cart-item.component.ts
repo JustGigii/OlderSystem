@@ -18,4 +18,7 @@ export class CartItemComponent implements OnInit {
     console.table(this.cartItem.pordactName);
   }
 
+  checkbug(item: any){
+    console.table(item);
+  }
 }

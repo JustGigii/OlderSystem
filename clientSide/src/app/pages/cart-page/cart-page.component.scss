@@ -12,6 +12,7 @@
 
 .cart-container {
   background-color: #235789;
+  position: relative;
   height: 69vh;
   width: 85vw;
   margin: auto;
@@ -34,4 +35,26 @@
   height: 56%;
   width: 100%;
   overflow: auto;
+}
+
+.wanted-orders-text {
+  margin: auto;
+  width: 50%;
+  text-align: center;
+  font-size: 24rem;
+}
+
+.wanted-orders-input {
+  width: 57%;
+  margin: auto;
+  height: 21%;
+  border-radius: 13px;
+  font-size: 18rem;
+  font-weight: 500;
+}
+
+#complete-order-btn {
+  width: 20%;
+  margin: auto;
+  display: block;
 }

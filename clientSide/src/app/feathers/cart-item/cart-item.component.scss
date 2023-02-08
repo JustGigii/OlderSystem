@@ -1,10 +1,13 @@
 .cart-item{
-  background-color: aqua;
+  background-color: #f2f8ff;
   height: 45%;
   width: 87%;
   margin: auto;
   border-radius: 23px;
   margin-top: 4%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .cart-item-image {
@@ -16,10 +19,29 @@
 }
 
 .cart-item-title {
-  background-color: antiquewhite ;
+  height: 27%;
+  width: 100%;
+  text-align: center;
 }
 
 .cart-item-details {
   display: flex;
+  height: 79%;
+  width: 44%;
+  border-radius: 22px;
+  flex-direction: column;
+}
+
+.sizes-container {
+  background-color: #acdfdf;
+  width: 100%;
+  height: 68%;
+  border-radius: 13px;
+}
+
+.sizes-span {
+  width: 17%;
+  height: 35%;
+  display: block;
   background-color: black;
 }

@@ -14,4 +14,8 @@ export class CartPageComponent implements OnInit {
   ngOnInit(): void {
     this.cartArrayService.cartItems.subscribe(c => {this.cartItems = c;});
   }
+
+  completeOrder(){
+
+  }
 }

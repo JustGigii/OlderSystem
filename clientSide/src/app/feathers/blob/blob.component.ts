@@ -70,7 +70,7 @@ export class BlobComponent implements OnInit {
     console.log(this.tamplate)
 
   }
-  
+
   async doResize(item: iolderpage) {
     item.currentState = item.currentState == 'close' ? 'open' : 'close';
     if (item.currentState == 'open') {

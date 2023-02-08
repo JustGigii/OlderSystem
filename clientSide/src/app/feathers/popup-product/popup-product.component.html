@@ -1,17 +1,18 @@
 <div class="outer-dialog">
-  <div class="dialog" *ngIf="currProduct != undefined">
+  <div class="dialog" *ngIf="product != undefined">
     <img class="close-btn" src="../../../assets/img/closeBtn.png" alt="close-button" (click)="closeDialog()">
-    <h1>{{currProduct.pordactName}}</h1>
-    <img class="product-image" [src]="currProduct.prodactImage" alt="clicked-product-image">
+    <h1 class="product-title">{{product.pordactName}}</h1>
+    <img class="product-image" [src]="product.prodactImage" alt="clicked-product-image">
     <div class="wanted-orders-container">
-      <div class="wantd-orders" *ngFor="let size of wantedSizes">
+      <div class="wantd-orders" *ngFor="let size of cartItemArray">
         <p class="wanted-orders-text">מידה:</p>
-        <select class="wanted-orders-input" id="sizes" name="sizes" size="1" [(ngModel)]="size.size">
-          <option class="wanted-orders-option" *ngFor="let size of sizes[currProduct.typeSize]" [value]="">{{size}}</option>
+        <select class="wanted-orders-input" #sizess name="sizes" size="1" [(ngModel)]="size.size" (focus)="onFocus(sizess.value)" (input)="onInput(sizess.value)">
+          <option [disabled]="this.alreadyChosenSizes.includes(size)" [class]="this.alreadyChosenSizes.includes(size) ? 'disabled-option' : ''" class="wanted-orders-option" *ngFor="let size of sizes[product.typeSize]">{{size}}</option>
         </select>
         <p class="wanted-orders-text">כמות:</p>
         <input class="wanted-orders-input" type="number" min="1" [value]="size.quantity" [(ngModel)]="size.quantity"
         oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : null">
+        <img class="close-size-btn" src="../../../assets/img/closeBtn.png" alt="close size choosing" (click)="removeSize(size)">
       </div>
     </div>
     <img src="../../../assets/img/addBtn.png" alt="add size" (click)="addSize()">

@@ -1,6 +1,9 @@
-<div class="cart-item" *ngIf="cartItem != undefined" (click)="check()">
+<div class="cart-item" *ngIf="cartItem != undefined">
   <img class="cart-item-image" [src]="cartItem.prodactImage" alt="prodact image">
-  <div class="cart-item-details">
-    <h4 class="cart-item-title">dsfdsfsd</h4>
+  <div class="cart-item-details" (click)="checkbug(cartItem.wantedSizes)">
+    <h4 class="cart-item-title">{{cartItem.pordactName}}</h4>
+    <div class="sizes-container">
+      <span *ngFor="let item of cartItem.wantedSizes" class="sizes-span"></span>
+    </div>
   </div>
 </div>

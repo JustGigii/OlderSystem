@@ -5,18 +5,20 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class CartArrayService {
+  numOfProducts: number = 8;
+
   cartItemsArray: Array<any> = [];
   cartItems: BehaviorSubject<Array<any>>;
 
-  wantedSizesArray: Array<Array<{size: number, quantity: number}>> = [[]];
-  wantedSizes: BehaviorSubject<Array<Array<{size: number, quantity: number}>>>;
+  tempCartItemsArray: Array<Array<{size: string, quantity: number}>> = [[]];
+  tempCartItems: BehaviorSubject<Array<Array<{size: string, quantity: number}>>>;
 
   constructor() {
     this.cartItems = new BehaviorSubject(this.cartItemsArray);
-    this.wantedSizes = new BehaviorSubject(this.wantedSizesArray);
+    this.tempCartItems = new BehaviorSubject(this.tempCartItemsArray);
 
-    for (let i = 0; i < 8; i++) {
-      this.wantedSizesArray[i] = [];
+    for (let i = 0; i < this.numOfProducts; i++) {
+      this.tempCartItemsArray[i] = [];
     }
   }
 
@@ -24,13 +26,11 @@ export class CartArrayService {
     this.cartItemsArray.unshift(item);
   }
 
-  saveWantedSizes(s: Array<{size: number, quantity: number}>, index: number){
-    this.wantedSizesArray[index] = s;
-    // console.table(this.wantedSizesArray);
+  saveCartItem(s: Array<{size: string, quantity: number}>, index: number){
+    this.tempCartItemsArray[index] = s;
   }
 
-  getWantedSizes(index: number){
-    console.table(this.wantedSizesArray);
-    return this.wantedSizesArray[index];
+  getCartItem(index: number){
+    return this.tempCartItemsArray[index];
   }
 }

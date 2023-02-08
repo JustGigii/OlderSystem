@@ -14,9 +14,8 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     var item = localStorage.getItem("item")
     if (item !== null) {
-      this.item = parseInt(item)
-      this.cssclass[this.item] = "show"
-      console.log(this.cssclass)
+      this.item = parseInt(item);
+      this.cssclass[this.item] = "show";
     }
   }
 
@@ -25,6 +24,5 @@ export class NavComponent implements OnInit {
     this.cssclass[id] = "show"
     this.item = id
     localStorage.setItem("item", id.toString());
-    console.log(this.cssclass)
   }
 }

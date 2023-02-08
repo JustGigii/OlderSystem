@@ -2,19 +2,24 @@
   <h2 class="catalog-title">ההזמנה שלי</h2>
   <div class="cart-container">
     <div class="options-container">
+      <p class="wanted-orders-text">שלוחה</p>
       <select class="wanted-orders-input" id="sizes" name="sizes" size="1">
+        <option value="" disabled selected>שלוחה...</option>
         <option class="wanted-orders-option">דשכדשכ</option>
         <option class="wanted-orders-option">כדשכדש</option>
       </select>
-      <p>סוג הזמנה</p>
+      <p class="wanted-orders-text">סוג הזמנה</p>
       <select class="wanted-orders-input" id="sizes" name="sizes" size="1">
         <option class="wanted-orders-option">בלאי</option>
         <option class="wanted-orders-option">רגיל</option>
       </select>
+      <p class="wanted-orders-text">שם להזמנה:</p>
+      <input class="wanted-orders-input" type="text">
     </div>
     <div class="cart-items-container">
       <cart-item *ngFor="let item of cartItems" [cartItem]="item"></cart-item>
     </div>
+    <img id="complete-order-btn" src="../../../assets/img/cartBtn.png" alt="order" (click)="completeOrder()">
   </div>
 </div>
 

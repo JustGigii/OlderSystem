@@ -1,7 +1,7 @@
 .outer-dialog {
   height: 100vh;
   width: 100vw;
-  background-color: rgb(150 122 224 / 61%);
+  background-color: rgb(88 126 163 / 72%);
   z-index: 2;
   position: fixed;
   top: 0px;
@@ -11,7 +11,7 @@
 .dialog {
   height: 76vh;
   width: 91.6vw;
-  background-color: aqua;
+  background-color: #dfe3eb;
   margin: auto;
   top: 10.8vh;
   position: relative;
@@ -19,10 +19,11 @@
 }
 
 .close-btn {
-  width: 23%;
-  height: 13%;
+  width: 14%;
+  height: 7%;
   position: absolute;
-  left: 0px;
+  left: 1%;
+  top: 2.2%;
 }
 
 .cart-btn {
@@ -32,12 +33,23 @@
 }
 
 .product-image {
-  height: 40%;
-  width: 100%;
+  height: 38%;
+  width: 80%;
+  margin: auto;
+  display: block;
+  padding: 0%;
+  border-radius: 45px;
+  margin-bottom: 3%;
+}
+
+.product-title {
+  width: 67%;
+  height: 11%;
+  margin: auto;
+  margin-right: 16%;
 }
 
 .wanted-orders-container {
-  background-color: aliceblue;
   width: 100%;
   height: 35%;
   margin-top: 5vh;
@@ -48,30 +60,41 @@
   flex-wrap: wrap;
   flex-direction: row;
   overflow: auto;
+  display: flex;
 }
 
 .wantd-orders {
-  background-color: bisque;
+  background-color: #468b95;
   width: 88%;
   height: 29%;
   margin: auto;
   margin-top: 2vh;
   position: relative;
   border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .wanted-orders-text {
-  height: 50%;
-  width: 25%;
+height: 50%;
+  width: 17%;
   display: inline-block;
   color: black;
+  font-size: 19rem;
 }
 
 .wanted-orders-input {
   height: 50%;
-  width: 25%;
+  width: 22%;
+  font-size: 19rem;
 }
 
-.wanted-orders-option {
+.close-size-btn {
+  height: 55%;
+  align-self: flex-start;
+}
 
+.disabled-option {
+  background-color: rgb(133, 169, 169);
 }
