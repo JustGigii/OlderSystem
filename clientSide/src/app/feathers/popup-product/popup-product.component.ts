@@ -15,7 +15,7 @@ export class PopupProductComponent implements OnInit {
   productId: number = 0;
   productTypeSize: number = 0;
 
-  cartItemArray: Array<{size: string, quantity: number}> = [];
+  addedSizes: Array<{size: string, quantity: number}> = [];
   availableSizes: Array<any> = [];
   alreadyChosenSizes: Array<any> = [];
   previousSize: any;
@@ -44,21 +44,21 @@ export class PopupProductComponent implements OnInit {
       this.productTypeSize = this.product.typeSize;
     }
 
-    this.cartItemArray = this.cartArrayService.getCartItem(this.productId);
+    this.addedSizes = this.cartArrayService.getCartItem(this.productId);
 
     // var storedArray = sessionStorage.getItem("ourarraykey");
     // ourArray = JSON.parse(storedArray);
     // sessionStorage.setItem("alreadyChosenSizes",JSON.stringify(this.alreadyChosenSizes));
-    if (sessionStorage.getItem("alreadyChosenSizes") == null) {
+    if (sessionStorage.getItem("alreadyChosenSizes" + this.productId) == null) {
       this.alreadyChosenSizes = [];
       this.sizes[this.productTypeSize].forEach(cell => {
         this.availableSizes.push(cell);
       });
     } else {
-      var storedArray = sessionStorage.getItem("alreadyChosenSizes");
+      var storedArray = sessionStorage.getItem("alreadyChosenSizes" + this.productId);
       this.alreadyChosenSizes = JSON.parse(storedArray || '{}');
 
-      var storedArray = sessionStorage.getItem("availableSizes");
+      var storedArray = sessionStorage.getItem("availableSizes" + this.productId);
       this.availableSizes = JSON.parse(storedArray || '{}');
     }
   }
@@ -72,9 +72,9 @@ export class PopupProductComponent implements OnInit {
 
   addSize(){
     //Checking if there are already a number (= the amount of available sizes for the product) of elements open
-    if (this.cartItemArray.length != this.sizes[this.productTypeSize].length) {
+    if (this.addedSizes.length != this.sizes[this.productTypeSize].length) {
       var sizeToAdd = this.availableSizes.pop();
-      this.cartItemArray.push({size: sizeToAdd, quantity: 1});
+      this.addedSizes.push({size: sizeToAdd, quantity: 1});
       this.alreadyChosenSizes.push(sizeToAdd);
       this.updateCurrentChosenSizes();
     }
@@ -84,8 +84,8 @@ export class PopupProductComponent implements OnInit {
 
   removeSize(sizeToRemove: any){
     //Removing the size from the cart
-    var index = this.cartItemArray.indexOf(sizeToRemove);
-    this.cartItemArray.splice(index, 1);
+    var index = this.addedSizes.indexOf(sizeToRemove);
+    this.addedSizes.splice(index, 1);
 
     index = this.alreadyChosenSizes.indexOf(sizeToRemove.size);
     this.alreadyChosenSizes.splice(index, 1);
@@ -96,27 +96,27 @@ export class PopupProductComponent implements OnInit {
 
   addToCart(){
     //Checking if there is something in the product wanted sizes
-    if (this.cartItemArray.length > 0) {
-      this.sortCartItemArray();
+    if (this.addedSizes.length > 0) {
+      this.sortAddedSizes();
       var addedProduct = {
         "pordactName" : this.product?.pordactName,
         "prodactId" : this.product?.prodactId,
         "prodactImage" : this.product?.prodactImage,
         "typeSize" : this.product?.typeSize,
-        "cartItemArray" : this.cartItemArray
+        "addedSizes" : this.addedSizes
       }
-      this.cartArrayService.saveCartItem(this.cartItemArray, this.productId);
+      this.cartArrayService.saveCartItem(this.addedSizes, this.productId);
       this.onAddToCart.emit(addedProduct);
     } else
       alert("choose something to add to the cart");
   }
 
-  sortCartItemArray() {
+  sortAddedSizes() {
   }
 
   updateCurrentChosenSizes() {
-    sessionStorage.setItem("alreadyChosenSizes",JSON.stringify(this.alreadyChosenSizes));
-    sessionStorage.setItem("availableSizes",JSON.stringify(this.availableSizes));
+    sessionStorage.setItem("alreadyChosenSizes" + this.productId, JSON.stringify(this.alreadyChosenSizes));
+    sessionStorage.setItem("availableSizes" + this.productId, JSON.stringify(this.availableSizes));
   }
 
   onInput(newSize: string) {

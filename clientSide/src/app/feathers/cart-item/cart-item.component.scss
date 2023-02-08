@@ -37,11 +37,15 @@
   width: 100%;
   height: 68%;
   border-radius: 13px;
+  display: flex;
+  overflow-x: auto;
+  align-items: center;
 }
 
 .sizes-span {
   width: 17%;
   height: 35%;
   display: block;
-  background-color: black;
+  margin: 1%;
+  font-size: 20rem;
 }
