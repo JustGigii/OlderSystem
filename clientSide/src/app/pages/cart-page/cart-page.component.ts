@@ -12,10 +12,18 @@ export class CartPageComponent implements OnInit {
   constructor(private cartArrayService: CartArrayService) { }
 
   ngOnInit(): void {
-    this.cartArrayService.cartItems.subscribe(c => {this.cartItems = c;});
+    // this.cartArrayService.cartItems.subscribe(c => {this.cartItems = c;});
+    // console.table(this.cartItems);
+    if (sessionStorage.getItem("cartItemsArray") != null) {
+      var storedArray = sessionStorage.getItem("cartItemsArray");
+      this.cartItems = JSON.parse(storedArray || '{}');
+    }
   }
 
-  completeOrder(){
+//make cart work
 
+
+  completeOrder(){
+    console.table(this.cartItems);
   }
 }

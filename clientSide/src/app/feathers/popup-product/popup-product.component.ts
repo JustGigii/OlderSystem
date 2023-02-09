@@ -115,6 +115,7 @@ export class PopupProductComponent implements OnInit {
   }
 
   updateCurrentChosenSizes() {
+    this.cartArrayService.saveCartItem(this.addedSizes, this.productId);
     sessionStorage.setItem("alreadyChosenSizes" + this.productId, JSON.stringify(this.alreadyChosenSizes));
     sessionStorage.setItem("availableSizes" + this.productId, JSON.stringify(this.availableSizes));
   }
