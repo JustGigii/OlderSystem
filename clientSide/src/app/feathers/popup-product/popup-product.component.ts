@@ -1,6 +1,7 @@
+import { iproduct } from './../../page tample/homepage';
 import { prodact } from './../../page tample/prodactTemplete';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { CartArrayService } from './../../services/cart-array.service';
+import {NewOrderpordact} from './../../page tample/prodactTemplete';
 
 @Component({
   selector: 'popup-product',
@@ -15,7 +16,7 @@ export class PopupProductComponent implements OnInit {
   productId: number = 0;
   productTypeSize: number = 0;
 
-  addedSizes: Array<{size: string, quantity: number}> = [];
+  addedSizes: Map<string, string> =new Map<string,string>();
   availableSizes: Array<any> = [];
   alreadyChosenSizes: Array<any> = [];
   previousSize: any;
@@ -28,7 +29,7 @@ export class PopupProductComponent implements OnInit {
     5 : ["ללא מידה"]
   };
 
-  constructor(private cartArrayService: CartArrayService) {
+  constructor() {
     for (let i = 36; i <= 50; i++)
       this.sizes["2"].push(String(i));
   }
@@ -44,17 +45,15 @@ export class PopupProductComponent implements OnInit {
       this.productTypeSize = this.product.typeSize;
     }
 
-    this.addedSizes = this.cartArrayService.getCartItem(this.productId);
+    //Getting the added sizes from the past. if there werent any, the variable addedSizes is empty
+    if (sessionStorage.getItem(`addedSizes${String(this.productId)}`) != null) {
+      var storedArray = sessionStorage.getItem("addedSizes" + String(this.productId));
+      this.addedSizes = new Map(JSON.parse(storedArray || '{}'));
+    }
 
-    // var storedArray = sessionStorage.getItem("ourarraykey");
-    // ourArray = JSON.parse(storedArray);
-    // sessionStorage.setItem("alreadyChosenSizes",JSON.stringify(this.alreadyChosenSizes));
-    if (sessionStorage.getItem("alreadyChosenSizes" + this.productId) == null) {
-      this.alreadyChosenSizes = [];
-      this.sizes[this.productTypeSize].forEach(cell => {
-        this.availableSizes.push(cell);
-      });
-    } else {
+    if (sessionStorage.getItem(`alreadyChosenSizes${this.productId}`) == null)
+      this.sizes[this.productTypeSize].forEach(cell => { this.availableSizes.push(cell); });
+    else {
       var storedArray = sessionStorage.getItem("alreadyChosenSizes" + this.productId);
       this.alreadyChosenSizes = JSON.parse(storedArray || '{}');
 
@@ -64,30 +63,27 @@ export class PopupProductComponent implements OnInit {
   }
 
   doThis() {
-    console.log("this.availableSizes");
-    console.table(this.availableSizes);
-    console.log("this.alreadyChosenSizes");
-    console.table(this.alreadyChosenSizes);
+    console.log("this.addedSizes");
+    console.table(this.addedSizes);
   }
 
   addSize(){
     //Checking if there are already a number (= the amount of available sizes for the product) of elements open
-    if (this.addedSizes.length != this.sizes[this.productTypeSize].length) {
+    if (this.addedSizes.size != this.sizes[this.productTypeSize].length) {
       var sizeToAdd = this.availableSizes.pop();
-      this.addedSizes.push({size: sizeToAdd, quantity: 1});
+      this.addedSizes.set(sizeToAdd, "1");
       this.alreadyChosenSizes.push(sizeToAdd);
       this.updateCurrentChosenSizes();
     }
     else
-      alert();
+      alert("ffhsakhfsakfhsajfaskfas");
   }
 
   removeSize(sizeToRemove: any){
     //Removing the size from the cart
-    var index = this.addedSizes.indexOf(sizeToRemove);
-    this.addedSizes.splice(index, 1);
+    this.addedSizes.delete(sizeToRemove);
 
-    index = this.alreadyChosenSizes.indexOf(sizeToRemove.size);
+    var index = this.alreadyChosenSizes.indexOf(sizeToRemove.size);
     this.alreadyChosenSizes.splice(index, 1);
 
     this.availableSizes.push(sizeToRemove.size);
@@ -96,16 +92,13 @@ export class PopupProductComponent implements OnInit {
 
   addToCart(){
     //Checking if there is something in the product wanted sizes
-    if (this.addedSizes.length > 0) {
+    if (this.addedSizes.size > 0) {
       this.sortAddedSizes();
-      var addedProduct = {
-        "pordactName" : this.product?.pordactName,
-        "prodactId" : this.product?.prodactId,
-        "prodactImage" : this.product?.prodactImage,
-        "typeSize" : this.product?.typeSize,
-        "addedSizes" : this.addedSizes
-      }
-      this.cartArrayService.saveCartItem(this.addedSizes, this.productId);
+      var addedProduct: NewOrderpordact = {
+        pordactId: this.productId,
+        size: this.addedSizes
+      };
+      this.updateCurrentChosenSizes();
       this.onAddToCart.emit(addedProduct);
     } else
       alert("choose something to add to the cart");
@@ -115,7 +108,7 @@ export class PopupProductComponent implements OnInit {
   }
 
   updateCurrentChosenSizes() {
-    this.cartArrayService.saveCartItem(this.addedSizes, this.productId);
+    sessionStorage.setItem(`addedSizes${String(this.productId)}`, JSON.stringify(Array.from(this.addedSizes.entries())));
     sessionStorage.setItem("alreadyChosenSizes" + this.productId, JSON.stringify(this.alreadyChosenSizes));
     sessionStorage.setItem("availableSizes" + this.productId, JSON.stringify(this.availableSizes));
   }

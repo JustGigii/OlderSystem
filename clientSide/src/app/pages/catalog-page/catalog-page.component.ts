@@ -34,6 +34,7 @@ export class CatalogPageComponent implements OnInit {
 
   addToCart(addedProduct: any){
     this.cart.unshift(addedProduct);
+    
     this.cartArrayService.addToCart(addedProduct);
   }
 }
