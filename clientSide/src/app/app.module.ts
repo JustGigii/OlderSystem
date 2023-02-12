@@ -13,8 +13,11 @@ import { ProdactdetailsComponent } from './feathers/prodactdetails/prodactdetail
 import { PopupProductComponent } from './feathers/popup-product/popup-product.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
 import { CartItemComponent } from './feathers/cart-item/cart-item.component';
-import {FormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './feathers/pop-up/pop-up.component';
+import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+
+
 
 @NgModule({
   declarations: [
@@ -27,16 +30,18 @@ import { PopUpComponent } from './feathers/pop-up/pop-up.component';
     ProdactdetailsComponent,
     CartPageComponent,
     CartItemComponent,
-    PopUpComponent
+    PopUpComponent,
+    ProfilePageComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     FormsModule
   ],
-  entryComponents:[ProdactdetailsComponent],
+  entryComponents: [ProdactdetailsComponent],
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
