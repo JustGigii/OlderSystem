@@ -15,8 +15,10 @@ export class PopupProductComponent implements OnInit {
   @Input() product?: prodact;
   productId: number = 0;
   productTypeSize: number = 0;
+  prodactName: string = "";
+  prodactImage: string = "";
 
-  addedSizes: Map<string, string> =new Map<string,string>();
+  addedSizes: Map<string, string> = new Map<string,string>();
   availableSizes: Array<any> = [];
   alreadyChosenSizes: Array<any> = [];
   previousSize: any;
@@ -43,6 +45,8 @@ export class PopupProductComponent implements OnInit {
     if (this.product != undefined) {
       this.productId = this.product.prodactId;
       this.productTypeSize = this.product.typeSize;
+      this.prodactImage = this.product.prodactImage;
+      this.prodactName = this.product.pordactName;
     }
 
     //Getting the added sizes from the past. if there werent any, the variable addedSizes is empty
@@ -63,7 +67,7 @@ export class PopupProductComponent implements OnInit {
   }
 
   doThis() {
-    console.log("this.addedSizes");
+    console.log("this.addedSizes: ");
     console.table(this.addedSizes);
   }
 
@@ -76,27 +80,29 @@ export class PopupProductComponent implements OnInit {
       this.updateCurrentChosenSizes();
     }
     else
-      alert("ffhsakhfsakfhsajfaskfas");
+      alert("no more available sizes");
   }
 
-  removeSize(sizeToRemove: any){
-    //Removing the size from the cart
+  removeSize(sizeToRemove: string){
+    //Removing the size from the map of wanted sizes
     this.addedSizes.delete(sizeToRemove);
 
-    var index = this.alreadyChosenSizes.indexOf(sizeToRemove.size);
+    var index = this.alreadyChosenSizes.indexOf(sizeToRemove);
     this.alreadyChosenSizes.splice(index, 1);
 
-    this.availableSizes.push(sizeToRemove.size);
+    this.availableSizes.push(sizeToRemove);
     this.updateCurrentChosenSizes();
   }
 
   addToCart(){
-    //Checking if there is something in the product wanted sizes
+    //Checking if there is something in the product added sizes
     if (this.addedSizes.size > 0) {
       this.sortAddedSizes();
-      var addedProduct: NewOrderpordact = {
+      var addedProduct: iproduct = {
         pordactId: this.productId,
-        size: this.addedSizes
+        pordactName: this.prodactName,
+        prodactImage: this.prodactImage,
+        sizes: this.addedSizes
       };
       this.updateCurrentChosenSizes();
       this.onAddToCart.emit(addedProduct);
@@ -109,8 +115,8 @@ export class PopupProductComponent implements OnInit {
 
   updateCurrentChosenSizes() {
     sessionStorage.setItem(`addedSizes${String(this.productId)}`, JSON.stringify(Array.from(this.addedSizes.entries())));
-    sessionStorage.setItem("alreadyChosenSizes" + this.productId, JSON.stringify(this.alreadyChosenSizes));
-    sessionStorage.setItem("availableSizes" + this.productId, JSON.stringify(this.availableSizes));
+    sessionStorage.setItem(`alreadyChosenSizes${this.productId}`, JSON.stringify(this.alreadyChosenSizes));
+    sessionStorage.setItem(`availableSizes${this.productId}`, JSON.stringify(this.availableSizes));
   }
 
   onInput(newSize: string) {
@@ -124,6 +130,11 @@ export class PopupProductComponent implements OnInit {
     index = this.availableSizes.indexOf(newSize);
     this.availableSizes.splice(index, 1);
 
+    this.updateCurrentChosenSizes();
+  }
+
+  check(key: string, value: string){
+    this.addedSizes.set(key, value);
     this.updateCurrentChosenSizes();
   }
 

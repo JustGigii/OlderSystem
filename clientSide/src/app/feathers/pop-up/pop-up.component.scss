@@ -6,7 +6,7 @@
   position: fixed;
   top: 0px;
   right: 0px;
-  animation: myAnim 3s linear 1s 1 normal forwards;
+  animation: fadein 0.5s linear normal forwards;
 }
 
 .dialog {
@@ -21,16 +21,24 @@
   padding-top: 1%;
   padding-right: 4%;
   padding-left: 4%;
+  animation: Zoomin 0.5s linear normal forwards;
 }
-@keyframes fadein {
-	0%,
-	50%,
-	100% {
-		opacity: 1;
-	}
 
-	25%,
-	75% {
-		opacity: 0;
-	}
-}
+@keyframes fadein {
+  0% { 
+      opacity: 0; 
+     
+     }
+  100% { 
+        opacity: 1;
+        transform: scale(1, 1); 
+       }
+      }
+@keyframes Zoomin {
+  0%{
+    transform: scale(0, 0);      
+    }
+  100% {
+    transform: scale(1, 1); 
+  }
+      }

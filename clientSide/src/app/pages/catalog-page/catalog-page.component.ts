@@ -1,7 +1,7 @@
 import { prodact } from './../../page tample/prodactTemplete';
 import { ReqestService } from 'src/app/services/reqest.service';
-import { CartArrayService } from './../../services/cart-array.service';
 import { Component, OnInit, Inject } from '@angular/core';
+import { iproduct } from 'src/app/page tample/homepage';
 
 @Component({
   selector: 'catalog-page',
@@ -9,19 +9,23 @@ import { Component, OnInit, Inject } from '@angular/core';
   styleUrls: ['./catalog-page.component.scss']
 })
 export class CatalogPageComponent implements OnInit {
-
   //all products available in storage
   products: prodact[]  = [];
+  cart: iproduct[] = [];
   sizes: [][] = [[]];
   search: string = "";
   currProduct?: prodact;
-  cart: Array<any> = [];
 
-  constructor(private reqestService: ReqestService, private cartArrayService: CartArrayService) {
+  constructor(private reqestService: ReqestService) {
   }
 
   ngOnInit(): void {
     this.reqestService.getProdacts().subscribe(element=>this.products = element );
+
+    if (sessionStorage.getItem("cartItemsArray") != null) {
+      var storedArray = sessionStorage.getItem("cartItemsArray");
+      this.cart = JSON.parse(storedArray || '{}');
+    }
   }
 
   onClick(product: prodact){
@@ -33,8 +37,17 @@ export class CatalogPageComponent implements OnInit {
   }
 
   addToCart(addedProduct: any){
-    this.cart.unshift(addedProduct);
-    
-    this.cartArrayService.addToCart(addedProduct);
+    // this.cartArrayService.addToCart(addedProduct);
+
+
+
+    if (this.cart.find(c => c.pordactId === addedProduct.pordactId)) {
+      var foundIndex = this.cart.findIndex(x => x.pordactId == addedProduct.pordactId);
+      this.cart[foundIndex] = addedProduct;
+    } else {
+      this.cart.unshift(addedProduct);
+    }
+    sessionStorage.setItem("cartItemsArray", JSON.stringify(this.cart));
+    sessionStorage.setItem(`cartItemsArray${addedProduct.pordactId}`, JSON.stringify(Array.from(addedProduct.sizes.entries())));
   }
 }

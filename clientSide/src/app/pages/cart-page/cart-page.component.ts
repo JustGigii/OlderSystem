@@ -1,5 +1,5 @@
-import { CartArrayService } from './../../services/cart-array.service';
 import { Component, OnInit } from '@angular/core';
+import { iproduct } from './../../page tample/homepage';
 
 @Component({
   selector: 'app-cart-page',
@@ -7,23 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cart-page.component.scss']
 })
 export class CartPageComponent implements OnInit {
-  cartItems: Array<any> = [];
+  cart: iproduct[] = [];
 
-  constructor(private cartArrayService: CartArrayService) { }
+  constructor() { }
 
   ngOnInit(): void {
-    // this.cartArrayService.cartItems.subscribe(c => {this.cartItems = c;});
-    // console.table(this.cartItems);
     if (sessionStorage.getItem("cartItemsArray") != null) {
       var storedArray = sessionStorage.getItem("cartItemsArray");
-      this.cartItems = JSON.parse(storedArray || '{}');
+      this.cart = JSON.parse(storedArray || '{}');
     }
   }
 
-//make cart work
-
-
   completeOrder(){
-    console.table(this.cartItems);
+    console.table(this.cart);
   }
 }

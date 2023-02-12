@@ -17,7 +17,7 @@
       <input class="wanted-orders-input" type="text">
     </div>
     <div class="cart-items-container">
-      <cart-item *ngFor="let item of cartItems" [cartItem]="item"></cart-item>
+      <cart-item *ngFor="let item of cart" [cartItem]="item"></cart-item>
     </div>
     <img id="complete-order-btn" src="../../../assets/img/cartBtn.png" alt="order" (click)="completeOrder()">
   </div>

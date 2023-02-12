@@ -1,4 +1,4 @@
-.cart-item{
+.item{
   background-color: #f2f8ff;
   height: 45%;
   width: 87%;
@@ -10,7 +10,7 @@
   align-items: center;
 }
 
-.cart-item-image {
+.item-image {
   background-color: aliceblue;
   height: 84%;
   width: 50%;
@@ -18,13 +18,13 @@
   border-radius: 20px;
 }
 
-.cart-item-title {
+.item-title {
   height: 27%;
   width: 100%;
   text-align: center;
 }
 
-.cart-item-details {
+.item-details-container {
   display: flex;
   height: 79%;
   width: 44%;

@@ -1,20 +1,21 @@
-<div class="outer-dialog">
-  <div class="dialog" *ngIf="product != undefined">
-    <button (click)="doThis()">fsasafhasghjakfas</button>
+<div class="dialog-background">
+  <div class="dialog" *ngIf="product">
     <img class="close-btn" src="../../../assets/img/closeBtn.png" alt="close-button" (click)="closeDialog()">
     <h1 class="product-title">{{product.pordactName}}</h1>
     <img class="product-image" [src]="product.prodactImage" alt="clicked-product-image">
-    <div class="wanted-orders-container">
-      <div class="wantd-orders" *ngFor="let size of addedSizes | keyvalue">
-        <p>{{size.key}}:{{size.value}}</p>
-        <p class="wanted-orders-text">מידה:</p>
-        <select class="wanted-orders-input" #sizess name="sizes" size="1" [(ngModel)]="size.key" (focus)="onFocus(sizess.value)" (input)="onInput(sizess.value)">
+    <div class="added-sizes-container">
+      <div class="added-sizes" *ngFor="let size of addedSizes | keyvalue">
+        
+        <p class="added-sizes-text">מידה:</p>
+        <select class="added-sizes-input" #sizess name="sizes" size="1" (focus)="onFocus(sizess.value)" [(ngModel)]="size.key" (input)="onInput(sizess.value)">
           <option [disabled]="this.alreadyChosenSizes.includes(size)" [class]="this.alreadyChosenSizes.includes(size) ? 'disabled-option' : ''" class="wanted-orders-option" *ngFor="let size of sizes[product.typeSize]">{{size}}</option>
         </select>
-        <p class="wanted-orders-text">כמות:</p>
-        <input class="wanted-orders-input" type="number" min="1" [(ngModel)]="size.value"
+        
+        <p class="added-sizes-text">כמות:</p>
+        <input class="added-sizes-input" type="number" min="1" [(ngModel)]="size.value" [value]="size.value" (input)="check(size.key, size.value)"
         oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : null">
-        <img class="close-size-btn" src="../../../assets/img/closeBtn.png" alt="close size choosing" (click)="removeSize(size)">
+        
+        <img class="close-size-btn" src="../../../assets/img/closeBtn.png" alt="close size choosing" (click)="removeSize(size.key)">
       </div>
     </div>
     <img src="../../../assets/img/addBtn.png" alt="add size" (click)="addSize()">

@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { iproduct } from 'src/app/page tample/homepage';
 
 @Component({
   selector: 'cart-item',
@@ -6,19 +7,13 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./cart-item.component.scss']
 })
 export class CartItemComponent implements OnInit {
-  @Input() cartItem: any;
+  @Input() cartItem?: iproduct;
+  sizes?: Map<string, string>;
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-
-  check(){
-    console.log("check");
-    console.table(this.cartItem.pordactName);
-  }
-
-  checkbug(item: any){
-    console.table(item);
+    if (this.cartItem)
+      this.sizes = new Map(JSON.parse(sessionStorage.getItem(`cartItemsArray${this.cartItem.pordactId}`) || '{}'));
   }
 }
