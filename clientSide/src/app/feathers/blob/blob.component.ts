@@ -1,7 +1,7 @@
 import { trigger, state, style, animate, transition, query, group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
 import { windowWhen } from 'rxjs';
-import { iolderpage, homepage, iolderItemFull, ihomePage } from 'src/app/page tample/homepage';
+import { iolderpage, homepage, iolderItemFull, ihomePage, iproduct } from 'src/app/page tample/homepage';
 import { ReqestService } from 'src/app/services/reqest.service'
 import { DatePipe } from '@angular/common'
 import { MatDialog } from '@angular/material/dialog';
@@ -50,6 +50,7 @@ import { ProdactdetailsComponent } from '../prodactdetails/prodactdetails.compon
 
 export class BlobComponent implements OnInit {
   tamplate: ihomePage = homepage;
+  prodactShow?: iproduct[]
   showdetails = true
   message: string = "";
   constructor(private reqestservice: ReqestService, public datepipe: DatePipe) { }
@@ -63,6 +64,7 @@ export class BlobComponent implements OnInit {
         currentState: 'close',
         statusMassage: "",
         date: ""
+        
       }
       this.tamplate.items.push(details)
 
@@ -93,6 +95,13 @@ export class BlobComponent implements OnInit {
         }
       })
     }
+  }
 
+  ToPopup(prodacts?: iproduct[])
+  {
+    if(prodacts != undefined)
+    {
+      this.prodactShow = prodacts
+    }
   }
 }

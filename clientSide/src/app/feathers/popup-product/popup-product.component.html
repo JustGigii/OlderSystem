@@ -5,7 +5,7 @@
     <h1 class="product-title">{{product.pordactName}}</h1>
     <img class="product-image" [src]="product.prodactImage" alt="clicked-product-image">
     <div class="wanted-orders-container">
-      <div class="wantd-orders" *ngFor="let size of cartItemArray">
+      <div class="wantd-orders" *ngFor="let size of addedSizes">
         <p class="wanted-orders-text">מידה:</p>
         <select class="wanted-orders-input" #sizess name="sizes" size="1" [(ngModel)]="size.size" (focus)="onFocus(sizess.value)" (input)="onInput(sizess.value)">
           <option [disabled]="this.alreadyChosenSizes.includes(size)" [class]="this.alreadyChosenSizes.includes(size) ? 'disabled-option' : ''" class="wanted-orders-option" *ngFor="let size of sizes[product.typeSize]">{{size}}</option>
