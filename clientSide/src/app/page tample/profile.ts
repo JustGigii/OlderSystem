@@ -1,36 +1,69 @@
-export const editProfile: iProfile =
+import { FormGroup } from "@angular/forms";
+
+export const ProfilePattern: iProfilePattern =
 {
-    ngSubmit: "editForm",
-    buttonText: "עריכה",
-    func: () => void {},
-    items: [
-        {
-            title: "שם פרטי",
-            HTMLelement: "input",
-            validName: "name",
+    profile: [],
+    profileTitle: ['שם מלא', 'תעודת זהות', 'אימייל', 'מספר טלפון'],
+    pages:
+        [{
+            index: 0,
+            title: 'הפרופיל שלי',
+            buttonText: 'עריכה'
         },
         {
-            title: "תעודת זהות",
-            HTMLelement: "input",
-            validName: "id",
-        },
-        {
-            title: "אימייל",
-            HTMLelement: "input",
-            validName: "email",
-        }
-    ]
+            title: 'עריכת פרטים אישיים',
+            index: 1,
+            buttonText: "אישור",
+            formGroup: null,
+            element: [
+                {
+                    title: "שם פרטי",
+                    HTMLelement: "input",
+                    validName: "name",
+                },
+                {
+                    title: "תעודת זהות",
+                    HTMLelement: "input",
+                    validName: "id",
+                },
+                {
+                    title: "אימייל",
+                    HTMLelement: "input",
+                    validName: "email",
+                },
+                {
+                    title: "מספר טלפון",
+                    HTMLelement: "input",
+                    validName: "phoneNumber",
+                }
+            ]
+        }]
 };
 
-export interface iProfile {
-    ngSubmit: string;
+export interface iPages {
+    title: string;
+    index: number;
     buttonText: string;
-    func: () => void;
-    items: i[];
+    element?: iElement[];
+    // profile?: iProfile | null;
+    formGroup?: FormGroup | null;
 }
 
-export interface i {
+export interface iProfilePattern {
+    profile: iProfile[];
+    profileTitle: any[];
+    pages: iPages[];
+}
+
+export interface iElement {
     title: string,
-    HTMLelement: string,
-    validName: string,
+    text?: string
+    HTMLelement?: string,
+    validName?: string,
+}
+export interface iProfile {
+    fullName: string,
+    ID: string
+    Email: string,
+    phoneNumber: string,
 }

@@ -1,0 +1,29 @@
+<div class="background">
+    <div class="container">
+        <img src="../../../assets/icon/profile1.png" class="profile-icon">
+        <h2>{{pagePattern.title}}</h2>
+
+        <ng-container *ngIf="pagePattern.formGroup">
+            <form [formGroup]="pagePattern.formGroup" (ngSubmit)="submit()">
+                <ng-container *ngFor="let element of pagePattern.element">
+
+                    <!-- <h4>{{pagePattern.index}}</h4> -->
+                    <h4>{{element.title}}</h4>
+                    <input *ngIf="element.HTMLelement === 'input'">
+                </ng-container>
+                <button type="submit">{{pagePattern.buttonText}}</button>        
+            </form>
+        </ng-container>
+        
+        <ng-container *ngIf="!pagePattern.formGroup">
+            <ng-container *ngFor="let element of ProfilePagePattern.profileTitle">
+                
+                <h4>{{element}}</h4>
+                <input *ngIf="element.HTMLelement === 'input'">
+            </ng-container>
+            <button type="submit" (click)="submit()">{{pagePattern.buttonText}}</button>        
+        </ng-container>
+
+    </div>
+</div>
+
