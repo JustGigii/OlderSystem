@@ -18,18 +18,16 @@ export class ProductDetailsComponent {
 
   ngOnInit(): void {
     // this.reqestservice.getOlder(20).subscribe((service) => {this.filterMap(service)})
+    if(this.prodactdetails)
+      this.filterMap(this.prodactdetails)
 
-//gigi what?
-    // if(this.prodactdetails)
-    // this.filterMap(this.prodactdetails)
-
-    console.table(this.prodactdetails);
-    if (this.prodactdetails){
-      this.prodactdetails.forEach(product => {
-        console.table(product);
-        // product.sizes = new Map(JSON.parse(sessionStorage.getItem(`cartItemsArray${product.pordactId}`) || '{}'));
-      });
-    }
+    // console.table(this.prodactdetails);
+    // if (this.prodactdetails){
+    //   this.prodactdetails.forEach(product => {
+    //     console.table(product);
+    //     // product.sizes = new Map(JSON.parse(sessionStorage.getItem(`cartItemsArray${product.pordactId}`) || '{}'));
+    //   });
+    // }
   }
   // showOldersDetails():void
   // {
@@ -38,26 +36,25 @@ export class ProductDetailsComponent {
   //   // this.reqestservice.getOlder(this.id).subscribe((service) => {this.filterMap(service), console.log(this.prodactdetails)})
   // }
 
-  // filterMap(service:iproduct[]):void
-  // {
-  //   //console.log(service)
-  //   if(service == undefined)
-  //   {
-  //     this.prodactdetails= service
-  //     return
-  //   }
-  //   service.forEach(prodact => {
-  //       let mapsize = new Map(Object.entries(prodact.sizes))
-  //       let value = mapsize.get("0")
-  //       if(value != undefined)
-  //       {
-  //         mapsize.delete('0');
-  //         mapsize.set("",value);
-  //       }
+  filterMap(service:iproduct[]):void
+  {
+    console.log(service)
+    if(service == undefined)
+    {
+      this.prodactdetails= service
+      return
+    }
+    service.forEach(prodact => {
+        let mapsize = new Map(Object.entries(prodact.sizes))
+        let value = mapsize.get("0")
+        if(value != undefined)
+        {
+          mapsize.delete('0');
+          mapsize.set("",value);
+        }
 
-  //       prodact.sizes = maps
-  //       ize
-  //   });
-  //     this.prodactdetails = service
-  // }
+        prodact.sizes = mapsize
+    });
+      this.prodactdetails = service
+  }
 }

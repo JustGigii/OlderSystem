@@ -12,7 +12,6 @@ export class CartPageComponent implements OnInit {
   orderType: string = "";
   orderStatus: number = 1;
   orderCart: NewOrderpordact[] = [];
-
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
 
@@ -23,8 +22,9 @@ export class CartPageComponent implements OnInit {
       var storedArray = sessionStorage.getItem("cartItemsArray");
       this.cart = JSON.parse(storedArray || '{}');
       this.cart.forEach(cell => {
-        cell.sizes = new Map(JSON.parse(sessionStorage.getItem(`cartItemsArray${cell.pordactId}`) || '{}'))
+        cell.sizes = JSON.parse(sessionStorage.getItem(`cartItemsArray${cell.pordactId}`) || '{}')
       });
+      //console.log(this.cart)
     }
   }
 
