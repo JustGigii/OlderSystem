@@ -2,12 +2,13 @@ import { Component, Inject, OnInit, Input, Output } from '@angular/core';
 import { map, single } from 'rxjs';
 import { iolderItemFull, iproduct } from 'src/app/page tample/homepage';
 import { ReqestService } from 'src/app/services/reqest.service';
+
 @Component({
-  selector: 'app-prodactdetails',
-  templateUrl: './prodactdetails.component.html',
-  styleUrls: ['./prodactdetails.component.scss']
+  selector: 'product-details',
+  templateUrl: './product-details.component.html',
+  styleUrls: ['./product-details.component.scss']
 })
-export class ProdactdetailsComponent implements OnInit {
+export class ProductDetailsComponent {
   id?: number
   @Input() prodactdetails?: iproduct[]
   constructor( private reqestservice: ReqestService)

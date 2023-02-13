@@ -1,0 +1,89 @@
+input {
+  width: 42%;
+  height: 13%;
+}
+
+.products {
+  height: 94%;
+  width: 96%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  overflow: auto;
+  flex-wrap: nowrap;
+}
+
+.product {
+  background-color: rgb(249 249 249);
+  height: 17vh;
+  margin-top: 5%;
+  padding: 4%;
+  border-radius: 20px 20px 20px 20px;
+  display: flex;
+}
+
+.product-image {
+  height: 100%;
+  width: 48%;
+  border-radius: 12px;
+}
+
+.mainContent  {
+  width: 70%;
+  height: 100%;
+  padding: 1%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow-y: hidden;
+  overflow-x: auto;
+  margin-right: 10%;
+}
+
+.tableConect {
+  display: flex;
+  overflow: scroll;
+  ul {
+    list-style-type: none;
+    padding-left: 10%;
+    padding-right: 0%;
+  }
+}
+
+h4 {
+  font-size: 23rem;
+  font-weight: 600;
+  margin-bottom: 9%;
+}
+
+li {
+  font-size: 23rem;
+  text-align: right;
+}
+
+th {
+  font-size: 23rem;
+  font-weight: 450;
+  text-align: right;
+}
+
+td {
+  font-size: 20rem;
+  text-align: right;
+}
+
+.sizes-display {
+  background-color: aqua;
+  height: 21%;
+  font-size: 20rem;
+}
+
+.sizes-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 59%;
+}

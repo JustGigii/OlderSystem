@@ -95,6 +95,12 @@ height: 50%;
   align-self: flex-start;
 }
 
+.add-btn {
+  position: absolute;
+  right: 3vw;
+  bottom: 4vh;
+}
+
 .disabled-option {
   background-color: rgb(133, 169, 169);
 }

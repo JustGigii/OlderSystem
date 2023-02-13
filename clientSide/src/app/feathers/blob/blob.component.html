@@ -20,5 +20,5 @@
     </div>
 </div>
 <pop-up (closeEvent)="this.prodactShow = undefined" *ngIf="this.prodactShow !=undefined">
-    <app-prodactdetails *ngIf="this.prodactShow !=undefined" [prodactdetails]="this.prodactShow"></app-prodactdetails>
+    <product-details *ngIf="this.prodactShow !=undefined" [prodactdetails]="this.prodactShow"></product-details>
 </pop-up>

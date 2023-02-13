@@ -25,50 +25,44 @@ export class PopupProductComponent implements OnInit {
 
   sizes: Record<number, string[]> = {
     1 : ["ג","ב","א"],
-    2 : [],
+    2 : ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'],
     3 : ["מידשכלךש","מידת מכנסייםםםםםםם","מידת מכנסיים"],
     4 : ["XS","S","M","L","XL"],
     5 : ["ללא מידה"]
   };
 
-  constructor() {
-    for (let i = 36; i <= 50; i++)
-      this.sizes["2"].push(String(i));
-  }
-
-  closeDialog(){
-    this.onClose.emit();
-  }
+  constructor() {}
 
   ngOnInit(): void {
     //Getting Id and TypeSize variables
-    if (this.product != undefined) {
+    if (this.product) {
       this.productId = this.product.prodactId;
       this.productTypeSize = this.product.typeSize;
       this.prodactImage = this.product.prodactImage;
       this.prodactName = this.product.pordactName;
     }
 
-    //Getting the added sizes from the past. if there werent any, the variable addedSizes is empty
+    //Getting the info (addedSizes, alreadyChosenSizes, availableSizes) from session storage.
+    // If there isn't any info (null), initializing variables for first use.
     if (sessionStorage.getItem(`addedSizes${String(this.productId)}`) != null) {
-      var storedArray = sessionStorage.getItem("addedSizes" + String(this.productId));
-      this.addedSizes = new Map(JSON.parse(storedArray || '{}'));
-    }
+      var storedAddedSizes = sessionStorage.getItem(`addedSizes${String(this.productId)}`);
+      this.addedSizes = new Map(JSON.parse(storedAddedSizes || '{}'));
 
-    if (sessionStorage.getItem(`alreadyChosenSizes${this.productId}`) == null)
-      this.sizes[this.productTypeSize].forEach(cell => { this.availableSizes.push(cell); });
-    else {
-      var storedArray = sessionStorage.getItem("alreadyChosenSizes" + this.productId);
-      this.alreadyChosenSizes = JSON.parse(storedArray || '{}');
+      var storedAlreadyChosenSizes = sessionStorage.getItem(`alreadyChosenSizes${this.productId}`);
+      this.alreadyChosenSizes = JSON.parse(storedAlreadyChosenSizes || '{}');
 
-      var storedArray = sessionStorage.getItem("availableSizes" + this.productId);
-      this.availableSizes = JSON.parse(storedArray || '{}');
+      var storedAvailableSizes = sessionStorage.getItem(`availableSizes${this.productId}`);
+      this.availableSizes = JSON.parse(storedAvailableSizes || '{}');
+    } else {
+      this.sizes[this.productTypeSize].forEach(cell => {
+        this.availableSizes.push(cell);
+      });
     }
   }
 
-  doThis() {
-    console.log("this.addedSizes: ");
-    console.table(this.addedSizes);
+  closeDialog(event: any){
+    if (event.target.className.includes("closeDialog"))
+      this.onClose.emit();
   }
 
   addSize(){
@@ -80,7 +74,7 @@ export class PopupProductComponent implements OnInit {
       this.updateCurrentChosenSizes();
     }
     else
-      alert("no more available sizes");
+      alert("No more available sizes");
   }
 
   removeSize(sizeToRemove: string){
@@ -119,7 +113,7 @@ export class PopupProductComponent implements OnInit {
     sessionStorage.setItem(`availableSizes${this.productId}`, JSON.stringify(this.availableSizes));
   }
 
-  onInput(newSize: string) {
+  onKeyInput(newSize: string) {
     //previousSize: Removing from alreadyChosenSizes, Adding to availableSizes
     var index = this.alreadyChosenSizes.indexOf(this.previousSize);
     this.alreadyChosenSizes.splice(index, 1);
@@ -130,10 +124,14 @@ export class PopupProductComponent implements OnInit {
     index = this.availableSizes.indexOf(newSize);
     this.availableSizes.splice(index, 1);
 
+    //Updating the addedSizes map according to the changes
+    this.addedSizes.set(newSize, this.addedSizes.get(this.previousSize) || "");
+    this.addedSizes.delete(this.previousSize);
+
     this.updateCurrentChosenSizes();
   }
 
-  check(key: string, value: string){
+  onValueInput(key: string, value: string){
     this.addedSizes.set(key, value);
     this.updateCurrentChosenSizes();
   }

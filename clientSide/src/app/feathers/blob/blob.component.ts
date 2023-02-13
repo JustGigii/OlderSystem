@@ -5,7 +5,8 @@ import { iolderpage, homepage, iolderItemFull, ihomePage, iproduct } from 'src/a
 import { ReqestService } from 'src/app/services/reqest.service'
 import { DatePipe } from '@angular/common'
 import { MatDialog } from '@angular/material/dialog';
-import { ProdactdetailsComponent } from '../prodactdetails/prodactdetails.component';
+import { ProductDetailsComponent } from '../product-details/product-details.component';
+
 @Component({
   selector: 'app-blob',
   templateUrl: './blob.component.html',
@@ -64,7 +65,7 @@ export class BlobComponent implements OnInit {
         currentState: 'close',
         statusMassage: "",
         date: ""
-        
+
       }
       this.tamplate.items.push(details)
 
