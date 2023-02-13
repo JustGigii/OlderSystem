@@ -1,24 +1,30 @@
 <div class="cart-page">
-  <h2 class="catalog-title">ההזמנה שלי</h2>
+  <h2 class="cart-title">ההזמנה שלי</h2>
   <div class="cart-container">
 
     <div class="order-details-container">
-      <p class="details-text">שלוחה</p>
-      <select class="details-input" id="sizes" name="sizes" size="1">
-        <option value="" disabled selected>שלוחה...</option>
-        <option class="wanted-orders-option">דשכדשכ</option>
-        <option class="wanted-orders-option">כדשכדש</option>
-      </select>
-      <p class="details-text">סוג הזמנה</p>
-      <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderType">
-        <option value="" disabled selected>סוג השמנה...</option>
-        <option class="wanted-orders-option">בלאי</option>
-        <option class="wanted-orders-option">רגיל</option>
-      </select>
+      <div class="order-details">
+        <p class="details-text">שלוחה</p>
+        <select class="details-input" id="sizes" name="sizes" size="1">
+          <option value="" disabled selected>שלוחה...</option>
+          <option class="wanted-orders-option">דשכדשכ</option>
+          <option class="wanted-orders-option">כדשכדש</option>
+        </select>
+      </div>
+      <div class="order-details">
+        <p class="details-text">סוג הזמנה</p>
+        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderType">
+          <option value="" disabled selected>סוג השמנה...</option>
+          <option class="wanted-orders-option">בלאי</option>
+          <option class="wanted-orders-option">רגיל</option>
+        </select>
+      </div>
     </div>
 
-    <span class="details-text">שם להזמנה:</span>
-    <input class="title-input" type="text" [(ngModel)]="orderTitle">
+    <div class="order-title">
+      <p class="title-text">שם להזמנה:</p>
+      <input class="title-input" type="text" [(ngModel)]="orderTitle" placeholder="שם הזמנה...">
+    </div>
 
     <div class="products-container">
       <product-details [prodactdetails]="cart"></product-details>

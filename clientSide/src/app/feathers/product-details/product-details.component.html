@@ -1,9 +1,13 @@
-<div *ngIf="this.prodactdetails" class="products">
+<div *ngIf="this.prodactdetails">
   <div class="product" *ngFor="let prodact of prodactdetails">
     <img class="product-image" [src]="prodact.prodactImage">
     <div class="mainContent">
       <p class="product-title">{{prodact.pordactName}}</p>
       <div class="sizes-container">
+        <div class="sizes-display">
+          <span class="sizes-span">מידה:</span>
+          <span class="sizes-span">כמות:</span>
+        </div>
         <div class="sizes-display" *ngFor="let size of prodact.sizes | keyvalue">
           <span class="sizes-span">{{size.key}}</span>
           <span class="sizes-span">{{size.value}}</span>
