@@ -46,6 +46,7 @@ export class CartPageComponent implements OnInit {
     }
 
     this.isOrderCompleted = true;
+    console.table(newOrder);
     //sending to backend
   }
 }

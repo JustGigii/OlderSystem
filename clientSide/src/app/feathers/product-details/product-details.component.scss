@@ -20,25 +20,32 @@ input {
   margin-top: 5%;
   padding: 4%;
   border-radius: 20px 20px 20px 20px;
-  display: flex;
+  position: relative;
 }
 
 .product-image {
-  height: 100%;
-  width: 48%;
+  height: 96%;
+  width: 46%;
   border-radius: 12px;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 4%;
 }
 
 .mainContent  {
-  width: 70%;
+  width: 50%;
   height: 100%;
   padding: 1%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   overflow-y: hidden;
   overflow-x: auto;
   margin-right: 10%;
+  justify-content: flex-start;
+  top: 0px;
+  position: absolute;
+  left: 6%;
 }
 
 .tableConect {
@@ -74,9 +81,13 @@ td {
 }
 
 .sizes-display {
-  background-color: aqua;
-  height: 21%;
+  height: 46%;
   font-size: 20rem;
+  margin: 6%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
 }
 
 .sizes-container {
@@ -85,5 +96,13 @@ td {
   flex-wrap: nowrap;
   justify-content: flex-start;
   align-items: flex-start;
-  height: 59%;
+  height: 65%;
+}
+
+.product-title {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 20rem;
+  width: fit-content;
 }
