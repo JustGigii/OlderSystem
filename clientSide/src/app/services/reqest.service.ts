@@ -3,12 +3,13 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { iolderpage, iolderItem, iolderItemFull } from 'src/app/page tample/homepage';
 import { prodact } from '../page tample/prodactTemplete';
+import { NewOrder } from '../page tample/prodactTemplete';
+
 const httpOptions = {
   headers: new HttpHeaders({
     'Content-Type': 'application/json',
   }),
 };
-
 
 @Injectable({
   providedIn: 'root'
@@ -32,5 +33,9 @@ export class ReqestService {
   getprdact(id:number): Observable<prodact>{
     return this.http.get<prodact>(this.apiUrl+'/Prodact/'+id);
   }
+
+  // sendNewOrder(newOrder: NewOrder) {
+  //   return this.http.post<NewOrder>(this);
+  // }
 
 }
