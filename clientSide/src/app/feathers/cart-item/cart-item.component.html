@@ -1,9 +1,0 @@
-<div class="item" *ngIf="cartItem">
-  <img class="item-image" [src]="cartItem.prodactImage" alt="prodact image">
-  <div class="item-details-container">
-    <h4 class="item-title">{{cartItem.pordactName}}</h4>
-    <div class="sizes-container">
-      <p *ngFor="let size of sizes | keyvalue">{{size.key}}:{{size.value}}</p>
-    </div>
-  </div>
-</div>

@@ -39,7 +39,8 @@ export class CatalogPageComponent implements OnInit {
   addToCart(addedProduct: any){
     if (this.cart.find(c => c.pordactId === addedProduct.pordactId)) {
       var foundIndex = this.cart.findIndex(x => x.pordactId == addedProduct.pordactId);
-      this.cart[foundIndex] = addedProduct;
+      this.cart.splice(foundIndex, 1);
+      this.cart.unshift(addedProduct);
     } else {
       this.cart.unshift(addedProduct);
     }

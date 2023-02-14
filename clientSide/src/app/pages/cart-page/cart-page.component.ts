@@ -22,31 +22,44 @@ export class CartPageComponent implements OnInit {
       var storedArray = sessionStorage.getItem("cartItemsArray");
       this.cart = JSON.parse(storedArray || '{}');
       this.cart.forEach(cell => {
-        cell.sizes = JSON.parse(sessionStorage.getItem(`cartItemsArray${cell.pordactId}`) || '{}')
+        cell.sizes = new Map(JSON.parse(sessionStorage.getItem(`cartItemsArray${cell.pordactId}`) || '{}'));
       });
-      //console.log(this.cart)
     }
   }
 
   completeOrder(){
-    for (let i = 0; i < this.cart.length; i++) {
-      this.orderCart[i] = {
-        pordactId: this.cart[i].pordactId,
-        size: this.cart[i].sizes
-      };
-    }
+    if (this.orderTitle != "" && this.orderType != "" && this.cart.length != 0) {
+      for (let i = 0; i < this.cart.length; i++) {
+        this.orderCart[i] = {
+          pordactId: this.cart[i].pordactId,
+          size: this.cart[i].sizes
+        };
+      }
 
-    var newOrder: NewOrder = {
-      title: this.orderTitle,
-      type: this.orderType,
-      date: new Date(),
-      status: this.orderStatus,
-      isdarft: true,
-      prodact: this.orderCart
-    }
+      var newOrder: NewOrder = {
+        title: this.orderTitle,
+        type: this.orderType,
+        date: new Date(),
+        status: this.orderStatus,
+        isdarft: true,
+        prodact: this.orderCart
+      }
 
-    this.isOrderCompleted = true;
-    console.table(newOrder);
-    //sending to backend
+      this.isOrderCompleted = true;
+      console.table(newOrder);
+      //sending to backend
+      this.initializeVariables();
+    } else {
+      alert("cannot complete order");
+    }
+  }
+
+  initializeVariables() {
+    console.log("initializeVariables");
+    sessionStorage.clear();
+    this.cart.length = 0;
+    this.orderTitle = "";
+    this.orderType = "";
+    this.cart.length = 0;
   }
 }

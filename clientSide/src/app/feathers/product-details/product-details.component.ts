@@ -18,8 +18,8 @@ export class ProductDetailsComponent {
 
   ngOnInit(): void {
     // this.reqestservice.getOlder(20).subscribe((service) => {this.filterMap(service)})
-    if(this.prodactdetails)
-      this.filterMap(this.prodactdetails)
+    // if(this.prodactdetails)
+      // this.filterMap(this.prodactdetails)
 
     // console.table(this.prodactdetails);
     // if (this.prodactdetails){
@@ -38,22 +38,20 @@ export class ProductDetailsComponent {
 
   filterMap(service:iproduct[]):void
   {
-    console.log(service)
-    if(service == undefined)
-    {
-      this.prodactdetails= service
-      return
-    }
+    // console.log(service)
+    // if(service == undefined) {
+    //   this.prodactdetails= service
+    //   return
+    // }
     service.forEach(prodact => {
-        let mapsize = new Map(Object.entries(prodact.sizes))
-        let value = mapsize.get("0")
-        if(value != undefined)
-        {
-          mapsize.delete('0');
-          mapsize.set("",value);
-        }
+      let mapsize = new Map(Object.entries(prodact.sizes));
+      let value = mapsize.get("0");
+      if(value != undefined) {
+        mapsize.delete('0');
+        mapsize.set("אין מידה",value);
+      }
 
-        prodact.sizes = mapsize
+      prodact.sizes = mapsize;
     });
       this.prodactdetails = service
   }

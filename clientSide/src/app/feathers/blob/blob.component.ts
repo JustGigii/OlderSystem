@@ -70,8 +70,6 @@ export class BlobComponent implements OnInit {
       this.tamplate.items.push(details)
 
     })))
-    console.log(this.tamplate)
-
   }
 
   async doResize(item: iolderpage) {
