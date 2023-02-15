@@ -7,13 +7,17 @@
       <div class="added-sizes" *ngFor="let size of addedSizes | keyvalue">
 
         <p class="added-sizes-text">מידה:</p>
-        <select class="added-sizes-input" #sizess name="sizes" size="1" (focus)="onFocus(sizess.value)" [(ngModel)]="size.key" (input)="onKeyInput(sizess.value)">
-          <option [disabled]="this.alreadyChosenSizes.includes(size)" [class]="this.alreadyChosenSizes.includes(size) ? 'disabled-option' : ''" class="wanted-orders-option" *ngFor="let size of sizes[product.typeSize]">{{size}}</option>
-        </select>
+        <div class="select-wrapper">
+          <select onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' class="added-sizes-input" #sizess name="sizes" size="1" (focus)="onFocus(sizess.value)" [(ngModel)]="size.key" (input)="onKeyInput(sizess.value)">
+            <option [disabled]="this.alreadyChosenSizes.includes(size)" [class]="this.alreadyChosenSizes.includes(size) ? 'disabled-option' : ''" class="added-sizes-option" *ngFor="let size of sizes[product.typeSize]">{{size}}</option>
+          </select>
+        </div>
 
         <p class="added-sizes-text">כמות:</p>
-        <input class="added-sizes-input" type="number" min="1" [(ngModel)]="size.value" [value]="size.value" (input)="onValueInput(size.key, size.value)"
-        oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : null">
+        <div class="select-wrapper">
+          <input class="added-sizes-input" type="number" min="1" [(ngModel)]="size.value" [value]="size.value" (input)="onValueInput(size.key, size.value)"
+          oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : null">
+        </div>
 
         <img class="close-size-btn" src="../../../assets/img/closeBtn.png" alt="close size choosing" (click)="removeSize(size.key)">
       </div>

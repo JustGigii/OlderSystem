@@ -1,5 +1,5 @@
 .menu {
-  position: absolute;
+  position: fixed;
   width: 100%;
   bottom: 0;
   z-index: 1000;
@@ -58,7 +58,7 @@
     width: 100%;
     animation-name: showdown;
     animation-duration: 0.4s;
-    
+
   }
 
   .out {

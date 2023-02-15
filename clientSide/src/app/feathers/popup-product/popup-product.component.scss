@@ -40,6 +40,7 @@
   padding: 0%;
   border-radius: 45px;
   margin-bottom: 3%;
+  max-height: 220px;
 }
 
 .product-title {
@@ -47,6 +48,9 @@
   height: 11%;
   margin: auto;
   margin-right: 16%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 
 .added-sizes-container {
@@ -85,9 +89,19 @@ height: 50%;
 }
 
 .added-sizes-input {
-  height: 50%;
-  width: 22%;
+  height: fit-content;
+  width: 100%;
   font-size: 19rem;
+  min-height: 100%;
+  position: relative;
+}
+
+.added-sizes-option {
+  background-color: aliceblue;
+  position: relative;
+  z-index: 5;
+  min-height: 32px;
+  height: 4vh;
 }
 
 .close-size-btn {
@@ -97,10 +111,16 @@ height: 50%;
 
 .add-btn {
   position: absolute;
-  right: 3vw;
-  bottom: 4vh;
+  right: 2%;
+  bottom: 1%;
 }
 
 .disabled-option {
   background-color: rgb(133, 169, 169);
+}
+
+.select-wrapper {
+  background-color: aqua;
+  height: 50%;
+  width: 22%;
 }
