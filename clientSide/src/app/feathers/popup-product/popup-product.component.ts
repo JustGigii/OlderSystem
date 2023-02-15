@@ -135,8 +135,4 @@ export class PopupProductComponent implements OnInit {
     this.addedSizes.set(key, value);
     this.updateCurrentChosenSizes();
   }
-
-  onFocus(value: any){
-    this.previousSize = value;
-  }
 }

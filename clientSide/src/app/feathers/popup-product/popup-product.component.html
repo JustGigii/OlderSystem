@@ -4,19 +4,21 @@
     <h1 class="product-title">{{product.pordactName}}</h1>
     <img class="product-image" [src]="product.prodactImage" alt="clicked-product-image">
     <div class="added-sizes-container">
+
       <div class="added-sizes" *ngFor="let size of addedSizes | keyvalue">
+        <p class="error-message" *ngIf="size.value == '0'">יש לבחור כמות גדולה מ-0</p>
 
         <p class="added-sizes-text">מידה:</p>
         <div class="select-wrapper">
-          <select onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' class="added-sizes-input" #sizess name="sizes" size="1" (focus)="onFocus(sizess.value)" [(ngModel)]="size.key" (input)="onKeyInput(sizess.value)">
+          <select onfocus='this.size=5;' onblur='this.size=1;' onchange='this.size=1; this.blur();' class="added-sizes-input" #sizess name="sizes" size="1" (focus)="this.previousSize = sizess.value;" [(ngModel)]="size.key" (input)="onKeyInput(sizess.value)">
             <option [disabled]="this.alreadyChosenSizes.includes(size)" [class]="this.alreadyChosenSizes.includes(size) ? 'disabled-option' : ''" class="added-sizes-option" *ngFor="let size of sizes[product.typeSize]">{{size}}</option>
           </select>
         </div>
 
         <p class="added-sizes-text">כמות:</p>
         <div class="select-wrapper">
-          <input class="added-sizes-input" type="number" min="1" [(ngModel)]="size.value" [value]="size.value" (input)="onValueInput(size.key, size.value)"
-          oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : null">
+          <input class="added-sizes-input" type="number" min="1" [(ngModel)]="size.value" [value]="size.value" (blur)="onValueInput(size.key, size.value)"
+          oninput="this.value = !!this.value && Math.abs(this.value) > 0 ? Math.abs(this.value) : 0" [class]="size.value == '0'? 'unfilled-input' : ''">
         </div>
 
         <img class="close-size-btn" src="../../../assets/img/closeBtn.png" alt="close size choosing" (click)="removeSize(size.key)">

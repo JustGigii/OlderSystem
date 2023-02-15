@@ -78,6 +78,7 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-bottom: 3%;
 }
 
 .added-sizes-text {
@@ -94,6 +95,7 @@ height: 50%;
   font-size: 19rem;
   min-height: 100%;
   position: relative;
+  border-radius: 7px;
 }
 
 .added-sizes-option {
@@ -119,8 +121,21 @@ height: 50%;
   background-color: rgb(133, 169, 169);
 }
 
+.unfilled-input {
+  border-color: #d30707b5;
+  border-width: 3.1px;
+  border-style: ridge;
+}
+
 .select-wrapper {
-  background-color: aqua;
-  height: 50%;
-  width: 22%;
+  height: 57%;
+  width: 21.8%;
+  border-radius: 7px;
+}
+
+.error-message {
+  position: absolute;
+  top: -34%;
+  font-size: 15rem;
+  color: #c52727d6;
 }
