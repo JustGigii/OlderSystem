@@ -50,6 +50,13 @@ CREATE TABLE "prodacts" (
   "IsActive" BIT NULL,
 );
 
+CREATE TABLE "Users" (
+  "UserId" INT IDENTITY(1,1) PRIMARY KEY,
+  "fullName" NVARCHAR(Max) NULL,
+  "ID" NVARCHAR(Max) NULL,
+  "Email" NVARCHAR(Max) NULL,
+  "phoneNumber" NVARCHAR(Max),
+);
 ALTER TABLE "orders" 
 ADD CONSTRAINT "OlderId"
   FOREIGN KEY ("OlderiD")

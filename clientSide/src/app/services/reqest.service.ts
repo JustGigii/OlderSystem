@@ -22,8 +22,12 @@ export class ReqestService {
     return  this.http.get<iolderItem[]>(this.apiUrl+"/Olders");
   }
 
+  getOldersByUser(): Observable<iolderItem[]> {
+    return  this.http.get<iolderItem[]>(this.apiUrl+"/Olders/users/"+1);
+  }
+
   getOlder(id:number): Observable<iolderItemFull>{
-    return this.http.get<iolderItemFull>(this.apiUrl+'/Olders/'+id);
+    return this.http.get<iolderItemFull>(this.apiUrl+'/Olders/'+1+"?olderId="+id);
   }
 
   getProdacts(): Observable<prodact[]>
