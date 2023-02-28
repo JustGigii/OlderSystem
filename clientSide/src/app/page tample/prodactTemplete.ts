@@ -16,11 +16,11 @@ export interface NewOrderpordact
 }
 
 export interface NewOrder
-    {
-        title: string,
-        type: string,
-        date: Date,
-        status: number,
-        isdarft: true,
-        prodact: NewOrderpordact[]
-    }
+{
+  title: string,
+  type: string,
+  date: Date,
+  status: number,
+  isdarft: true,
+  prodact: NewOrderpordact[]
+}

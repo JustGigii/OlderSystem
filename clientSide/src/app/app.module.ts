@@ -9,13 +9,12 @@ import { NavComponent } from './feathers/nav/nav.component';
 import { HomePageComponent } from './pages/home-page/home-page.component';
 import { BlobComponent } from './feathers/blob/blob.component';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
-import { ProdactdetailsComponent } from './feathers/prodactdetails/prodactdetails.component';
 import { PopupProductComponent } from './feathers/popup-product/popup-product.component';
 import { CartPageComponent } from './pages/cart-page/cart-page.component';
-import { CartItemComponent } from './feathers/cart-item/cart-item.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PopUpComponent } from './feathers/pop-up/pop-up.component';
 import { ProfilePageComponent } from './pages/profile-page/profile-page.component';
+import { ProductDetailsComponent } from './feathers/product-details/product-details.component';
 
 
 
@@ -27,11 +26,10 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     BlobComponent,
     PopupProductComponent,
     CatalogPageComponent,
-    ProdactdetailsComponent,
     CartPageComponent,
-    CartItemComponent,
     PopUpComponent,
     ProfilePageComponent,
+    ProductDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +39,7 @@ import { ProfilePageComponent } from './pages/profile-page/profile-page.componen
     ReactiveFormsModule,
     FormsModule
   ],
-  entryComponents: [ProdactdetailsComponent],
+  entryComponents: [ProductDetailsComponent],
   providers: [DatePipe],
   bootstrap: [AppComponent]
 })
