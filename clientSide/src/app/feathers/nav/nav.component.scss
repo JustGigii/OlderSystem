@@ -1,19 +1,20 @@
 .menu {
-  position: fixed;
-  width: 100%;
+  position: absolute;
+  width: 100vw;
   bottom: 0;
   z-index: 1000;
+  background: rgb(88 126 163);
+  height: 70px;
 
-  .mainmenu {
-    background: rgb(88 126 163);
-
+  li {
+    display: inline-block;
+    list-style-type: none;
   }
 
   .icons {
     position: relative;
     height: 30px;
     fill: white;
-
   }
 
   .icons-selected {
@@ -22,82 +23,81 @@
     fill: white;
   }
 
-  ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    // overflow: hidden;
-
-  }
-
-  li {
-
-    width: 25%;
-    display: inline-block;
-    text-align: center;
-    padding: 4% 0;
-
-  }
-
   .show {
-    display: inline-block;
     position: relative;
     fill: rgb(88 126 163);
-    bottom: -18px;
+    bottom: 40px;
     width: 100%;
+    height: 14px;
     animation-name: showup;
     animation-duration: 0.4s;
   }
 
   .unshow {
-
-    display: inline-block;
     position: relative;
     fill: rgb(88 126 163);
-    bottom: -35px;
+    bottom: 27px;
     width: 100%;
+    height: 14px;
     animation-name: showdown;
     animation-duration: 0.4s;
-
   }
 
   .out {
-    display: inline-block;
     position: relative;
     fill: rgb(88 126 163);
-    bottom: -35px;
+    bottom: 27px;
     width: 100%;
+    height: 14px;
   }
+}
 
-  .unshow {
+.menu {
+  ul {
+    list-style-type: none;
+    padding: 0;
+    display: flex;
+    height: 100%;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
 
+.selected-menu {
+  position: absolute;
+  width: 100vw;
+  height: 70px;
+  padding: 0;
+  bottom: 0;
+  fill: rgb(88 126 163);
+
+  li {
+    width: 25vw;
     display: inline-block;
-    position: relative;
-    fill: rgb(88 126 163);
-    bottom: -35px;
-    width: 100%;
-    animation-name: showdown;
-    animation-duration: 0.4s;
   }
 
+  .ul-style {
+    list-style-type: none;
+    padding: 0;
+  }
 }
 
 @keyframes showup {
   from {
-    bottom: -35px;
+    bottom: 27px;
   }
 
   to {
-    bottom: -18px;
+    bottom: 40px;
   }
 }
 
 @keyframes showdown {
   from {
-    bottom: -18px;
+    bottom: 40px;
   }
 
   to {
-    bottom: -35px;
+    bottom: 27px;
   }
 }

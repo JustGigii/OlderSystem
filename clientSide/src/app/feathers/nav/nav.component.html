@@ -1,11 +1,11 @@
 <div class="menu">
-  <ul>
+  <ul class="selected-menu">
     <li><svg [ngClass]="this.cssclass[0]" viewBox="0 0 75.38 12.75">
         <path xmlns="http://www.w3.org/2000/svg"
           d="M75.38,12.75H0A47.29,47.29,0,0,0,28.12,3.12a16.24,16.24,0,0,1,19.14,0,47.29,47.29,0,0,0,28.12,9.63Z" />
       </svg>
     </li>
-    <li><svg [ngClass]="this.cssclass[1]" viewBox="0 0 75.38 12.75">
+    <li><svg class="wave-icon" [ngClass]="this.cssclass[1]" viewBox="0 0 75.38 12.75">
         <path xmlns="http://www.w3.org/2000/svg"
           d="M75.38,12.75H0A47.29,47.29,0,0,0,28.12,3.12a16.24,16.24,0,0,1,19.14,0,47.29,47.29,0,0,0,28.12,9.63Z" />
       </svg></li>
@@ -18,7 +18,7 @@
           d="M75.38,12.75H0A47.29,47.29,0,0,0,28.12,3.12a16.24,16.24,0,0,1,19.14,0,47.29,47.29,0,0,0,28.12,9.63Z" />
       </svg></li>
   </ul>
-  <ul class="mainmenu">
+  <ul class="menu">
     <li (click)="selected(0)" routerLink="/homePage">
       <svg [ngClass]="this.item != 0?'icons':'icons-selected'" xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 32 35.29">
