@@ -9,7 +9,7 @@
 }
 
 .dialog {
-  height: 76vh;
+  height: 68vh;
   width: 91.6vw;
   background-color: #dfe3eb;
   margin: auto;
@@ -33,11 +33,10 @@
 }
 
 .product-image {
-  height: 38%;
+  height: 39%;
   width: 80%;
   margin: auto;
   display: block;
-  padding: 0%;
   border-radius: 45px;
   margin-bottom: 3%;
   max-height: 220px;
@@ -48,9 +47,8 @@
   height: 11%;
   margin: auto;
   margin-right: 16%;
-  overflow: hidden;
   white-space: nowrap;
-  text-overflow: ellipsis;
+  overflow: auto;
 }
 
 .added-sizes-container {
@@ -70,7 +68,7 @@
 .added-sizes {
   background-color: #468b95;
   width: 88%;
-  height: 29%;
+  height: 35%;
   margin: auto;
   margin-top: 2vh;
   position: relative;
@@ -122,7 +120,7 @@ height: 50%;
 }
 
 .unfilled-input {
-  border-color: #d30707b5;
+  border-color: rgb(247 92 93 / 83%);
   border-width: 3.1px;
   border-style: ridge;
 }
@@ -137,5 +135,10 @@ height: 50%;
   position: absolute;
   top: -34%;
   font-size: 15rem;
-  color: #c52727d6;
+  color: rgb(248 88 89);
+}
+
+.error-img {
+  position: absolute;
+  height: 100%;
 }

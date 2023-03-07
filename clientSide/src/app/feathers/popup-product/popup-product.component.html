@@ -6,7 +6,11 @@
     <div class="added-sizes-container">
 
       <div class="added-sizes" *ngFor="let size of addedSizes | keyvalue">
-        <p class="error-message" *ngIf="size.value == '0'">יש לבחור כמות גדולה מ-0</p>
+        <p class="error-message" *ngIf="size.value == '0'">יש לבחור כמות גדולה מ-0
+          <img class="error-img" src="../../../assets/img/warningSign.png" alt="warningSign">
+        </p>
+
+
 
         <p class="added-sizes-text">מידה:</p>
         <div class="select-wrapper">

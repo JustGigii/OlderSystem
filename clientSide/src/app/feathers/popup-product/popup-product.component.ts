@@ -90,18 +90,34 @@ export class PopupProductComponent implements OnInit {
 
   addToCart(){
     //Checking if there is something in the product added sizes
-    if (this.addedSizes.size > 0) {
-      this.sortAddedSizes();
-      var addedProduct: iproduct = {
-        pordactId: this.productId,
-        pordactName: this.prodactName,
-        prodactImage: this.prodactImage,
-        sizes: this.addedSizes
-      };
-      this.updateCurrentChosenSizes();
-      this.onAddToCart.emit(addedProduct);
-    } else
-      alert("choose something to add to the cart");
+    if (!this.areAllQuantitiesPositive()) {
+      alert("quantity 0");
+    } else {
+      console.log("addToCart");
+      if (this.addedSizes.size > 0) {
+        this.sortAddedSizes();
+        var addedProduct: iproduct = {
+          pordactId: this.productId,
+          pordactName: this.prodactName,
+          prodactImage: this.prodactImage,
+          sizes: this.addedSizes
+        };
+        this.updateCurrentChosenSizes();
+        this.onAddToCart.emit(addedProduct);
+      } else
+        alert("choose something to add to the cart");
+    }
+  }
+
+  areAllQuantitiesPositive(): boolean {
+    var flag = true;
+    this.addedSizes.forEach((value, key) => {
+      if (Number(value) == 0) {
+        flag = false;
+      }
+    });
+
+    return flag;
   }
 
   sortAddedSizes() {

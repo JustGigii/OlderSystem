@@ -7,6 +7,7 @@ import { NewOrderpordact, NewOrder } from './../../page tample/prodactTemplete';
   templateUrl: './cart-page.component.html',
   styleUrls: ['./cart-page.component.scss']
 })
+
 export class CartPageComponent implements OnInit {
   orderTitle: string = "";
   orderType: string = "";
@@ -27,7 +28,7 @@ export class CartPageComponent implements OnInit {
     }
   }
 
-  completeOrder(){
+  completeOrder() {
     if (this.orderTitle != "" && this.orderType != "" && this.cart.length != 0) {
       for (let i = 0; i < this.cart.length; i++) {
         this.orderCart[i] = {

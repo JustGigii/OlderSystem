@@ -92,4 +92,53 @@ p {
   font-weight: 500;
 }
 
+div {
+  border-radius: 35px;
+}
 
+button {
+  height: 13.6%;
+  width: 28vw;
+  margin: auto;
+  display: block;
+  font-size: 111%;
+  border-radius: 23px;
+  max-width: 188px;
+  min-width: 114px;
+}
+
+.main-title {
+  font-size: 8vh;
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1%;
+}
+
+.sub-title {
+  font-size: 2.6rem;
+  color: black;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1%;
+  margin-top: 0%;
+}
+
+.text-container {
+  overflow: auto;
+  width: 80%;
+  background-color: antiquewhite;
+  margin: auto;
+  height: 57%;
+  padding: 2%;
+  font-size: 1.4rem;
+  text-align: center;
+}
+
+.inside-container {
+  position: absolute;
+  top: -27%;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}

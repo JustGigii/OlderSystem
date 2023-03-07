@@ -1,27 +1,23 @@
 <div class="cart-page">
   <h2 class="cart-title">ההזמנה שלי</h2>
   <div class="cart-container">
-
     <div class="order-details-container">
-
       <div class="order-details">
         <p class="details-text">שלוחה</p>
         <select class="details-input" id="sizes" name="sizes" size="1">
-          <option value="" disabled selected>שלוחה...</option>
-          <option class="wanted-orders-option">דשכדשכ</option>
-          <option class="wanted-orders-option">כדשכדש</option>
+          <option disabled selected>שלוחה...</option>
+          <option>שלוחה 1</option>
+          <option>שלוחה 2</option>
         </select>
       </div>
-
       <div class="order-details">
         <p class="details-text">סוג הזמנה</p>
         <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderType">
-          <option value="" disabled selected>סוג השמנה...</option>
-          <option class="wanted-orders-option">בלאי</option>
-          <option class="wanted-orders-option">רגיל</option>
+          <option disabled selected>סוג הזמנה...</option>
+          <option>בלאי</option>
+          <option>רגיל</option>
         </select>
       </div>
-
     </div>
 
     <div class="order-title">
