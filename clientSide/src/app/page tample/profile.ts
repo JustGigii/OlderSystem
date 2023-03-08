@@ -67,3 +67,22 @@ export interface iProfile {
     Email: string,
     phoneNumber: string,
 }
+//גיגי
+export interface UserDetails
+{
+    userId:number,
+    fullName:string,
+    id:string,
+    email:string,
+    phoneNumber:string,
+    manageRole: number,
+}
+export interface CreateUserDetails
+{
+    fullName:string,
+    id:string,
+    email:string,
+    phoneNumber:string,
+    manageRole: number,
+}
+
