@@ -1,7 +1,6 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
-@use '@angular/material' as mat;
+@use '@angular/material'as mat;
 // Plus imports for other components in your app.
 
 // Include the common styles for Angular Material. We include this here so that you only
@@ -20,13 +19,10 @@ $OlderSystem-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual
 // theming systems such as "color" or "typography".
-$OlderSystem-theme: mat.define-light-theme((
-  color: (
-    primary: $OlderSystem-primary,
-    accent: $OlderSystem-accent,
-    warn: $OlderSystem-warn,
-  )
-));
+$OlderSystem-theme: mat.define-light-theme((color: (primary: $OlderSystem-primary,
+      accent: $OlderSystem-accent,
+      warn: $OlderSystem-warn,
+    )));
 
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -39,7 +35,7 @@ $OlderSystem-theme: mat.define-light-theme((
 * {
   box-sizing: border-box;
   margin: 0;
-  
+
   //  background: rgba(0, 100, 0, 0.3) !important;
 }
 
@@ -95,9 +91,9 @@ p {
   font-weight: 500;
 }
 
-div {
-  border-radius: 35px;
-}
+// div {
+//   border-radius: 35px;
+// }
 
 button {
   height: 13.6%;
