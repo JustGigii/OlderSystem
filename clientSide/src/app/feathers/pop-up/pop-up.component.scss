@@ -2,7 +2,9 @@
   height: 100vh;
   width: 100vw;
   background-color: rgb(88 126 163 / 72%);
-  z-index: 2;
+  padding: 70px 20px;
+  // padding-bottom: 200px;
+  z-index: 20000;
   position: fixed;
   top: 0px;
   right: 0px;
@@ -10,36 +12,37 @@
 }
 
 .dialog {
-  height: 76vh;
-  width: 91.6vw;
+  height: 100%;
+  width: 100%;
   background-color: #dfe3eb;
   overflow: auto;
-  margin: auto;
-  top: 10.8vh;
-  position: relative;
   border-radius: 41px;
   padding-top: 1%;
   padding-right: 4%;
   padding-left: 4%;
+  padding-bottom: env(safe-area-inset-bottom);
   animation: Zoomin 0.5s linear normal forwards;
 }
 
+
+
+
 @keyframes fadein {
-  0% {
+  from {
       opacity: 0;
 
      }
-  100% {
+     to {
         opacity: 1;
         transform: scale(1, 1);
        }
 }
 
 @keyframes Zoomin {
-  0%{
-    transform: scale(0, 0);
-    }
-  100% {
-    transform: scale(1, 1);
+  from{
+    transform: scale(0, 0);      
   }
-      }
+  to {
+    transform: scale(1, 1); 
+  }
+  }

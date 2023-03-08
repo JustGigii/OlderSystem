@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output,OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-nav',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  @Output() ChaneEvent = new EventEmitter();
   item: number = 0
   cssclass = ["out", "out", "out", "out"]
   constructor() { }
@@ -19,10 +20,12 @@ export class NavComponent implements OnInit {
     }
   }
 
+
   selected(id: number): void {
     this.cssclass[this.item] = "unshow"
     this.cssclass[id] = "show"
     this.item = id
     localStorage.setItem("item", id.toString());
+    this.ChaneEvent.emit();
   }
 }

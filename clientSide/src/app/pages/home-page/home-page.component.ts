@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,Output,EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-home-page',
@@ -8,11 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class HomePageComponent implements OnInit {
   name : string ='אביטל'
   isopen: boolean = false;
-
   constructor() { }
 
   ngOnInit(): void {
-  
   }
+ 
 
 }

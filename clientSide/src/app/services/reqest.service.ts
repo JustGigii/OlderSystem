@@ -37,7 +37,10 @@ export class ReqestService {
   getprdact(id:number): Observable<prodact>{
     return this.http.get<prodact>(this.apiUrl+'/Prodact/'+id);
   }
+  postOlder(older:NewOrder)
+  {
 
+  }
   // sendNewOrder(newOrder: NewOrder) {
   //   return this.http.post<NewOrder>(this);
   // }

@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { AppRoutingModule } from './routing/app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 import { DatePipe } from '@angular/common'
 import { AppComponent } from './app.component';
@@ -33,7 +32,6 @@ import { ProductDetailsComponent } from './feathers/product-details/product-deta
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,

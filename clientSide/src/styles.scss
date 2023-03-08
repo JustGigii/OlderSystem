@@ -39,8 +39,10 @@ $OlderSystem-theme: mat.define-light-theme((
 * {
   box-sizing: border-box;
   margin: 0;
+  
   //  background: rgba(0, 100, 0, 0.3) !important;
 }
+
 
 html,
 body {
@@ -48,9 +50,11 @@ body {
   height: 100%;
   font-family: "heebo";
   font-size: 1px;
+  height: -webkit-fill-avilable;
 }
 
 body {
+
 
   // margin: 0;
   background: #f3f2f0;
@@ -60,7 +64,6 @@ h1 {
   font-size: 40rem;
   font-weight: 700;
   color: #092f34;
-  ;
   display: inline-block;
 
 }

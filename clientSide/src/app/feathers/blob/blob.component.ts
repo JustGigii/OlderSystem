@@ -37,12 +37,10 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 
     ]),
     trigger('flip', [
-      state('close', style({
-        transform: "none",
+      state('close', style({ 
       })),
       state('open', style({
-        transform: "rotateX(180deg)",
-        offset: 0
+        transform: "rotateZ(180deg)" 
       })),
     ])
   ]
@@ -57,6 +55,7 @@ export class BlobComponent implements OnInit {
   constructor(private reqestservice: ReqestService, public datepipe: DatePipe) { }
   //private dialogref: MatDialog
   ngOnInit(): void {
+
     homepage.items = []
     this.reqestservice.getOlders().subscribe((service) => (service.forEach((element) => {
       var details: iolderpage = {
@@ -65,7 +64,6 @@ export class BlobComponent implements OnInit {
         currentState: 'close',
         statusMassage: "",
         date: ""
-
       }
       this.tamplate.items.push(details)
 

@@ -26,11 +26,12 @@
     }
     .icon{
         position: absolute;
-        bottom: 15px;
-        left: 15px;
-        width: 25px;
+        bottom: 1.2vh;
+        left: 4vw;
+        width: 8vw;
     }
     ul{
+        list-style-type: none !important;
         padding: 0;
         margin-bottom: 8px;
     }
@@ -46,4 +47,15 @@
         cursor:pointer;
         text-decoration:underline;
     }
+}
+
+.check {
+bottom: 0;
+position: fixed;
+height: 70px;
+}
+@media (max-width:640px) {
+  section {
+    background-attachment:initial;
+  }
 }

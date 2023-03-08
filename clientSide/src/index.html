@@ -6,12 +6,26 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Add to homescreen for Safari on iOS -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="OlderSystem">
+  <!-- <link rel="apple-touch-icon" href="images/touch/apple-touch-icon.png"> -->
+
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
+<script>
+  if('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw-boot.js', { scope: '/' }).then(function(r) { console.debug('service worker started!'); });
+  }
+</script>
 <body>
   <!-- class="mat-typography" -->
   <app-root></app-root>
+  <script src="dist/vendor.js"></script>
+  <script src="dist/app.js"></script>
 </body>
 </html>

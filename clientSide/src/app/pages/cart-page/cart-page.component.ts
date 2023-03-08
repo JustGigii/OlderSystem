@@ -41,10 +41,11 @@ export class CartPageComponent implements OnInit {
 
       var newOrder: NewOrder = {
         title: `${this.orderShluha}שכבה${this.orderClass}`,
-        date: new Date(),
         type: this.orderType,
+        userid: 0,
+        date: new Date(),
         status: this.orderStatus,
-        isdarft: true,
+        isdarft: false,
         prodact: this.orderCart
       }
 

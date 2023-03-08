@@ -18,9 +18,10 @@ export interface NewOrderpordact
 export interface NewOrder
 {
   title: string,
+  userid: number
   type: string,
   date: Date,
   status: number,
-  isdarft: true,
+  isdarft: boolean,
   prodact: NewOrderpordact[]
 }

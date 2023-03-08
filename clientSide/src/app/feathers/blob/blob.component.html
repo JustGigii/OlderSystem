@@ -17,7 +17,10 @@
     </div>
     </div>
         <img src="../../../assets/icon/more.svg"  (click)="doResize(item)"  [@flip]="item.currentState" class="icon">
-    </div>
+   </div>
+    <div class="check"></div>
+
+
 </div>
 <pop-up (closeEvent)="this.prodactShow = undefined" *ngIf="this.prodactShow !=undefined">
     <product-details *ngIf="this.prodactShow !=undefined" [prodactdetails]="this.prodactShow"></product-details>
