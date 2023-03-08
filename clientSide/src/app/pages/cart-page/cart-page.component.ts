@@ -9,9 +9,11 @@ import { NewOrderpordact, NewOrder } from './../../page tample/prodactTemplete';
 })
 
 export class CartPageComponent implements OnInit {
-  orderTitle: string = "";
-  orderType: string = "";
+  orderType: string = "סוג הזמנה...";
+  orderClass: string = "כיתה...";
   orderStatus: number = 1;
+  orderShluha: string = "שלוחה...";
+  classes: string[] = ['ט', "י", "יא", "יב"];
   orderCart: NewOrderpordact[] = [];
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
@@ -29,7 +31,7 @@ export class CartPageComponent implements OnInit {
   }
 
   completeOrder() {
-    if (this.orderTitle != "" && this.orderType != "" && this.cart.length != 0) {
+    if (this.orderType != "" && this.cart.length != 0) {
       for (let i = 0; i < this.cart.length; i++) {
         this.orderCart[i] = {
           pordactId: this.cart[i].pordactId,
@@ -38,9 +40,9 @@ export class CartPageComponent implements OnInit {
       }
 
       var newOrder: NewOrder = {
-        title: this.orderTitle,
-        type: this.orderType,
+        title: `${this.orderShluha}שכבה${this.orderClass}`,
         date: new Date(),
+        type: this.orderType,
         status: this.orderStatus,
         isdarft: true,
         prodact: this.orderCart
@@ -59,8 +61,8 @@ export class CartPageComponent implements OnInit {
     console.log("initializeVariables");
     sessionStorage.clear();
     this.cart.length = 0;
-    this.orderTitle = "";
     this.orderType = "";
+    this.orderClass = '';
     this.cart.length = 0;
   }
 }

@@ -4,8 +4,7 @@
     <div class="order-details-container">
       <div class="order-details">
         <p class="details-text">שלוחה</p>
-        <select class="details-input" id="sizes" name="sizes" size="1">
-          <option disabled selected>שלוחה...</option>
+        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderShluha">
           <option>שלוחה 1</option>
           <option>שלוחה 2</option>
         </select>
@@ -13,16 +12,16 @@
       <div class="order-details">
         <p class="details-text">סוג הזמנה</p>
         <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderType">
-          <option disabled selected>סוג הזמנה...</option>
           <option>בלאי</option>
           <option>רגיל</option>
         </select>
       </div>
-    </div>
-
-    <div class="order-title">
-      <p class="title-text">שם להזמנה:</p>
-      <input required class="title-input" type="text" [(ngModel)]="orderTitle" placeholder="שם הזמנה...">
+      <div class="order-details">
+        <p class="details-text">כיתה</p>
+        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderClass">
+          <option *ngFor="let class of classes">{{class}}</option>
+        </select>
+      </div>
     </div>
 
     <div class="products-container">

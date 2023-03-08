@@ -1,7 +1,7 @@
 import { iproduct } from './../../page tample/homepage';
 import { prodact } from './../../page tample/prodactTemplete';
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import {NewOrderpordact} from './../../page tample/prodactTemplete';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'popup-product',
@@ -30,6 +30,12 @@ export class PopupProductComponent implements OnInit {
     4 : ["XS","S","M","L","XL"],
     5 : ["ללא מידה"]
   };
+
+  addedSizesForm = new FormGroup({
+    quantityControl: new FormControl('')
+  });
+  get quantityControl() {return this.addedSizesForm.get('quantityControl')}
+
 
   constructor() {}
 
