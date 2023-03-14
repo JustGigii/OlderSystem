@@ -17,13 +17,12 @@ export class StartPageLoginComponent {
 
   login() {
     this.microsoftMsal.logIn();
-
-    console.log("ddddddddd");
-    console.log(this.apiRequest.getUser('324262070'));
+    console.log(this.microsoftMsal.isLogedIn())
     if (this.microsoftMsal.isLogedIn()) {
       this.template = startPageTemplate[1];
-
     }
+
+    setTimeout(() => {console.log(this.microsoftMsal.isLogedIn())}, 5000)
   }
   isLogedIn(): boolean {
     return this.microsoftMsal.isLogedIn();

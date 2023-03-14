@@ -25,7 +25,7 @@ import { MicrosoftMsalService } from './services/login/microsoft-msal.service';
 export function MSAL_InctanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
-      clientId: 'aaefe659-f843-4c41-8e77-e07b882bff7b', //בעיה במה שהבאת לי
+      clientId: 'c25247c6-3cd6-4a30-8af2-7262a89b31c4', //בעיה במה שהבאת לי
       redirectUri: 'http://localhost:4200'
       // redirectUri: 'https://https://oldersystem.azurewebsites.net'
     }
@@ -34,7 +34,7 @@ export function MSAL_InctanceFactory(): IPublicClientApplication {
 
 export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
   const protectedResourceMap = new Map<string, Array<string>>();
-  protectedResourceMap.set('http://localhost:4200', ['api://aaefe659-f843-4c41-8e77-e07b882bff7b/access_as_user']);
+  protectedResourceMap.set('http://localhost:4200/', ['api://c25247c6-3cd6-4a30-8af2-7262a89b31c4/access_as_user']);
   // protectedResourceMap.set('https://https://oldersystem.azurewebsites.net', ['api://aaefe659-f843-4c41-8e77-e07b882bff7b/access_as_user']);
   protectedResourceMap.set('https://graph.microsoft.com/v1.0/me', ['user.read', 'mail.read']);
   return {
