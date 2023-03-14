@@ -7,33 +7,38 @@
 }
 
 .container {
-  padding: 15px;
+  padding: 20px 15px;
 
   .profile-icon {
     display: block;
     margin: 5px auto;
     width: 80px;
   }
+}
 
-  h2 {
-    color: #163B60;
-    margin-bottom: 20px;
-  }
+h2 {
+  color: #0e3138;
+  margin-bottom: 20px;
+}
+
+h1 {
+  margin: 10px 0 40px;
+  font-size: 25rem;
 }
 
 input {
   -webkit-appearance: none;
   position: relative;
   width: 100%;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 16rem;
   margin-bottom: 15px;
   color: #14375b;
-  color: #163B60;
+  color: #0e3138;
   padding: 11px;
   box-sizing: border-box;
   border-radius: 10px;
-  background: rgb(88 126 163);
+  background: #82b5c0;
   border: none;
   // filter: drop-shadow(#00000045 3px 3px 10px);
 
@@ -50,7 +55,7 @@ button {
   margin-top: 15px;
   padding: 6px 24px;
   color: cornsilk;
-  background-color: #163B60;
+  background-color: #0e3138;
   filter: drop-shadow(#00000045 3px 3px 10px);
   border-radius: 10px;
   border: none;
