@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
     if (item !== null) {
       this.item = parseInt(item);
     }
-    console.log(this.item)
+    // console.log(this.item)
   }
   ChanePage(): void {
     var item = localStorage.getItem("item")
