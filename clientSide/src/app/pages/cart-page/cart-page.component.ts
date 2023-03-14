@@ -39,21 +39,21 @@ export class CartPageComponent implements OnInit {
           pordactId: this.cart[i].pordactId,
           size: this.cart[i].sizes
         };
+        
       }
-
+      console.log(this.orderCart)
       var newOrder: NewOrder = {
         title: `${this.orderShluha} שכבה ${this.orderClass}`,
-        type: this.orderType,
         userid: 1,
+        type: this.orderType,
         date: new Date(),
         status: this.orderStatus,
         isdarft: this.orderIsDraft,
         prodact: this.orderCart
       }
 
-      console.log("dsnfkjsfds");
       this.isOrderCompleted = true;
-      console.table(newOrder);
+      console.log(newOrder)
       this.reqestService.postOlder(newOrder).subscribe(response =>
         {
           console.log(response)
@@ -63,7 +63,13 @@ export class CartPageComponent implements OnInit {
       alert("cannot complete order");
     }
   }
-
+  convertMapToObject(metricArguments: Map<string,number>): Record<string,number> {
+    let newObject: Record<string,number> = {}
+    for (let [key, value] of metricArguments) {
+      newObject[key] = value;
+    }
+    return newObject;
+  }
   initializeVariables() {
     console.log("initializeVariables");
     sessionStorage.clear();

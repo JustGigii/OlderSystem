@@ -55,9 +55,8 @@ export class BlobComponent implements OnInit {
   constructor(private reqestservice: ReqestService, public datepipe: DatePipe) { }
   //private dialogref: MatDialog
   ngOnInit(): void {
-
     homepage.items = []
-    this.reqestservice.getOlders().subscribe((service) => (service.forEach((element) => {
+    this.reqestservice.getOldersByUser(1).subscribe((service) => (service.forEach((element) => {
       var details: iolderpage = {
         data: element,
         fulldata: {} as iolderItemFull,

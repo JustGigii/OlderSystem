@@ -34,7 +34,7 @@ export interface iproduct{
     pordactId: number
     pordactName: string;
     prodactImage: string;
-    sizes: Map<string,string>;
+    sizes: Map<string,number>;
 }
 
 

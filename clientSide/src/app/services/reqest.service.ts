@@ -22,8 +22,8 @@ export class ReqestService {
     return  this.http.get<iolderItem[]>(this.apiUrl+"/Olders");
   }
 
-  getOldersByUser(): Observable<iolderItem[]> {
-    return  this.http.get<iolderItem[]>(this.apiUrl+"/Olders/users/"+1);
+  getOldersByUser(number: number ): Observable<iolderItem[]> {
+    return  this.http.get<iolderItem[]>(this.apiUrl+"/Olders/users/"+number);
   }
 
   getOlder(id:number): Observable<iolderItemFull>{
@@ -39,7 +39,8 @@ export class ReqestService {
   }
   postOlder(older:NewOrder): Observable<NewOrder>
   {
-    return this.http.post<NewOrder>(this.apiUrl+"/Olders",older,httpOptions)
+    // return this.http.post<NewOrder>(this.apiUrl+"/Olders",older,httpOptions)
+    return this.http.post<NewOrder>("http://localhost:5075/Olders",older,httpOptions)
   }
   postUser(user:CreateUserDetails): Observable<UserDetails>
   {

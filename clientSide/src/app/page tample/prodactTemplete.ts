@@ -12,7 +12,12 @@ export interface UpDateProdact{
 export interface NewOrderpordact
 {
     pordactId: number,
-    size: Map<string,string>;
+    size: Map<string,number>;
+}
+export interface NewOrderpordactsend
+{
+    pordactId: number,
+    size: Record<string,number>;
 }
 
 export interface NewOrder
@@ -23,5 +28,5 @@ export interface NewOrder
   date: Date,
   status: number,
   isdarft: boolean,
-  prodact: NewOrderpordact[]
+  prodact: NewOrderpordactsend[]
 }

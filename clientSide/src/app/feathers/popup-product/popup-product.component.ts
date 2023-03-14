@@ -19,7 +19,7 @@ export class PopupProductComponent implements OnInit {
   prodactImage: string = "";
   f = false;
 
-  addedSizes: Map<string, string> = new Map<string,string>();
+  addedSizes: Map<string, number> = new Map<string,number>();
   availableSizes: Array<any> = [];
   alreadyChosenSizes: Array<any> = [];
   previousSize: any;
@@ -76,7 +76,7 @@ export class PopupProductComponent implements OnInit {
     //Checking if there are already a number (= the amount of available sizes for the product) of elements open
     if (this.addedSizes.size != this.sizes[this.productTypeSize].length) {
       var sizeToAdd = this.availableSizes.pop();
-      this.addedSizes.set(sizeToAdd, "1");
+      this.addedSizes.set(sizeToAdd, 1);
       this.alreadyChosenSizes.push(sizeToAdd);
       this.updateCurrentChosenSizes();
     }
@@ -121,7 +121,7 @@ export class PopupProductComponent implements OnInit {
     }
   }
 
-  checkIfOver100(strNum: string){
+  checkIfOver100(strNum: number){
     return Number(strNum) > 100;
   }
 
@@ -157,13 +157,13 @@ export class PopupProductComponent implements OnInit {
     this.availableSizes.splice(index, 1);
 
     //Updating the addedSizes map according to the changes
-    this.addedSizes.set(newSize, this.addedSizes.get(this.previousSize) || "");
+    this.addedSizes.set(newSize, this.addedSizes.get(this.previousSize) || 1);
     this.addedSizes.delete(this.previousSize);
 
     this.updateCurrentChosenSizes();
   }
 
-  onValueInput(key: string, value: string){
+  onValueInput(key: string, value: number){
     this.addedSizes.set(key, value);
     this.updateCurrentChosenSizes();
   }
