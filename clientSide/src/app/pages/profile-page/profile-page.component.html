@@ -1,7 +1,7 @@
 <div class="background">
     <div class="container">
-        <img src="../../../assets/icon/profile1.png" class="profile-icon">
-        <h2>{{pagePattern.title}}</h2>
+        <!-- <img src="../../../assets/icon/profile1.png" class="profile-icon"> -->
+        <h1>{{pagePattern.title}}</h1>
 
         <ng-container *ngIf="pagePattern.formGroup">
             <form [formGroup]="pagePattern.formGroup" (ngSubmit)="submit()">

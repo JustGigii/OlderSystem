@@ -1,0 +1,12 @@
+<div class="container" *ngIf="!isLogedIn()">
+    <h1>{{template.title}}</h1>
+    <ng-container *ngFor="let paragraph of template.paragraphs">
+        <h2>{{paragraph}}</h2>
+    </ng-container>
+
+    <h2 (click)="login()"><span>התחברות</span></h2>
+</div>
+
+<div class="profile-page-container" *ngIf="isLogedIn()">
+    <app-profile-page></app-profile-page>
+</div>
