@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { iproduct } from './../../page tample/homepage';
 import { NewOrderpordact, NewOrder } from './../../page tample/prodactTemplete';
+import { ReqestService } from 'src/app/services/reqest.service';
 
 @Component({
   selector: 'app-cart-page',
@@ -18,7 +19,7 @@ export class CartPageComponent implements OnInit {
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
 
-  constructor() { }
+  constructor(private reqestService: ReqestService) { }
 
   ngOnInit(): void {
     if (sessionStorage.getItem("cartItemsArray") != null) {
@@ -31,7 +32,7 @@ export class CartPageComponent implements OnInit {
   }
 
   completeOrder() {
-    if (this.orderType != "" && this.cart.length != 0) {
+    if (this.orderType != "" && this.cart.length != 0 && this.orderClass != "" && this.orderShluha != "") {
       for (let i = 0; i < this.cart.length; i++) {
         this.orderCart[i] = {
           pordactId: this.cart[i].pordactId,
@@ -52,6 +53,10 @@ export class CartPageComponent implements OnInit {
       this.isOrderCompleted = true;
       console.table(newOrder);
       //sending to backend
+      this.reqestService.postOlder(newOrder).subscribe(respone =>
+        {
+          console.log(respone)
+        });
       this.initializeVariables();
     } else {
       alert("cannot complete order");

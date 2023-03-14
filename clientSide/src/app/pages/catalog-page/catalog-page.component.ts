@@ -15,6 +15,15 @@ export class CatalogPageComponent implements OnInit {
   sizes: [][] = [[]];
   search: string = "";
   currProduct?: prodact;
+  categories = [
+    {
+      title: "women",
+      src: "../../../assets/img/women.jpg"
+    },{
+      title: "women",
+      src: "../../../assets/img/women.jpg"
+    }
+  ];
 
   constructor(private reqestService: ReqestService) {
   }

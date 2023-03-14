@@ -17,11 +17,13 @@ export class PopupProductComponent implements OnInit {
   productTypeSize: number = 0;
   prodactName: string = "";
   prodactImage: string = "";
+  f = false;
 
   addedSizes: Map<string, string> = new Map<string,string>();
   availableSizes: Array<any> = [];
   alreadyChosenSizes: Array<any> = [];
   previousSize: any;
+  addedToCart: boolean = false;
 
   sizes: Record<number, string[]> = {
     1 : ["ג","ב","א"],
@@ -35,7 +37,6 @@ export class PopupProductComponent implements OnInit {
     quantityControl: new FormControl('')
   });
   get quantityControl() {return this.addedSizesForm.get('quantityControl')}
-
 
   constructor() {}
 
@@ -96,11 +97,12 @@ export class PopupProductComponent implements OnInit {
 
   addToCart(){
     //Checking if there is something in the product added sizes
-    if (!this.areAllQuantitiesPositive()) {
+    if (!this.areAllQuantitiesValid()) {
       alert("quantity 0");
     } else {
       console.log("addToCart");
       if (this.addedSizes.size > 0) {
+        this.addedToCart = true;
         this.sortAddedSizes();
         var addedProduct: iproduct = {
           pordactId: this.productId,
@@ -110,15 +112,23 @@ export class PopupProductComponent implements OnInit {
         };
         this.updateCurrentChosenSizes();
         this.onAddToCart.emit(addedProduct);
+
+        setTimeout(() => {
+          this.onClose.emit();
+        }, 1800);
       } else
         alert("choose something to add to the cart");
     }
   }
 
-  areAllQuantitiesPositive(): boolean {
+  checkIfOver100(strNum: string){
+    return Number(strNum) > 100;
+  }
+
+  areAllQuantitiesValid(): boolean {
     var flag = true;
     this.addedSizes.forEach((value, key) => {
-      if (Number(value) == 0) {
+      if (Number(value) == 0 || Number(value) > 100) {
         flag = false;
       }
     });

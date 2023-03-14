@@ -1,35 +1,63 @@
 .catalog-page {
   background-color: #f4f2f0;
   height: 100%;
+  padding-bottom: 100px;
+}
+
+.categories-container {
+  height: 69vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  overflow: auto;
+  align-items: center;
+  width: 98vw;
+  margin: auto;
+  margin-top: 3vh;
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 36vh;
+  margin-bottom: 8%;
+  position: inherit;
+  width: 80%;
+}
+
+.category-img {
+  height: 50%;
+  width: 100%;
+}
+
+.category-title {
+  position: absolute;
 }
 
 .products-container{
+  height: 40%;
   display: flex;
-  width: 96vw;
-  height: 71vh;
-  position: relative;
-  margin: auto;
-  justify-content: space-around;
-  align-content: flex-start;
-  flex-wrap: wrap;
   flex-direction: row;
-  overflow: auto;
-  margin-top: 9%;
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: 100%;
+  margin-top: 7%;
 }
 
 .product {
-  display: flex;
-  background-color: rgb(35 87 137);
-  align-items: center;
-  flex-direction: column;
   position: relative;
-  min-height: 50px;
-  width: 42vw;
-  height: 29.5%;
-  margin: 3%;
-  overflow: auto;
   word-break: break-word;
   border-radius: 28px;
+  font-size: 20rem;
+  background-color: rgb(35, 87, 137);
+  position: relative;
+  position: relative;
+  height: 100%;
+  width: 43%;
+  min-width: 38vw;
+  margin-left: 7%;
 }
 
 .product-title {
@@ -45,6 +73,7 @@
 .product-image {
   position: absolute;
   height: 76%;
+  border-radius: 28px 28px 0px 0px;
   width: 100%;
 }
 
