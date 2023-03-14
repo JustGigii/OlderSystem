@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { startPageTemplate } from 'src/app/page tample/start-page';
 import { MicrosoftMsalService } from 'src/app/services/login/microsoft-msal.service';
 import { ReqestService } from '../../services/reqest.service'
+import { MsalService } from '@azure/msal-angular';
+import { AuthenticationResult } from '@azure/msal-browser';
 
 
 @Component({
@@ -11,18 +13,27 @@ import { ReqestService } from '../../services/reqest.service'
 })
 export class StartPageLoginComponent {
   template: any = startPageTemplate[0];
-  // l = this.isLogin();
+  showProfilePage: boolean = true;
+  profileIndex: number = 1;
 
-  constructor(private microsoftMsal: MicrosoftMsalService, private apiRequest: ReqestService) { }
+  constructor(private microsoftMsal: MicrosoftMsalService, private apiConnection: ReqestService, private msalService: MsalService,) { }
 
   login() {
-    this.microsoftMsal.logIn();
-    console.log(this.microsoftMsal.isLogedIn())
-    if (this.microsoftMsal.isLogedIn()) {
-      this.template = startPageTemplate[1];
-    }
-
-    setTimeout(() => {console.log(this.microsoftMsal.isLogedIn())}, 5000)
+    this.msalService.loginPopup().subscribe((response: AuthenticationResult) => {
+      this.msalService.instance.setActiveAccount(response.account);
+      
+      // this.apiConnection.getUser(this.microsoftMsal.userID()).subscribe(
+        this.apiConnection.getUser('123456789').subscribe(
+        res => {
+          console.log('exist user');
+          this.showProfilePage = false; // exist user
+        }, 
+        err => {
+          console.log('new user');
+          this.showProfilePage = true; // new user
+        }
+      );
+      })
   }
   isLogedIn(): boolean {
     return this.microsoftMsal.isLogedIn();

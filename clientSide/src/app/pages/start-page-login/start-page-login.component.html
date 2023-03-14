@@ -7,6 +7,6 @@
     <h2 (click)="login()"><span>התחברות</span></h2>
 </div>
 
-<!-- <div class="profile-page-container" *ngIf="isLogedIn()">
-    <app-profile-page></app-profile-page>
-</div> -->
+<div class="profile-page-container" *ngIf="isLogedIn() && showProfilePage">
+    <app-profile-page [pageIndex]=1></app-profile-page>
+</div>

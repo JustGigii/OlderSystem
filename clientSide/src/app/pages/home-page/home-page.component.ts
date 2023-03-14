@@ -13,7 +13,7 @@ export class HomePageComponent implements OnInit {
 
   constructor(private microsoftMsal: MicrosoftMsalService, private apiConnection: ReqestService) { 
     this.name = microsoftMsal.userProfile()?.name || '';
-    apiConnection.getUser(('3242692070')).subscribe(res => console.log(res), err => console.log(err.error));
+    // apiConnection.getUser(('3242692070')).subscribe(res => console.log(res), err => console.log(err.error));
   }
 
   ngOnInit(): void {
