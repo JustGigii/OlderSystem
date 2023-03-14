@@ -15,10 +15,10 @@
             <h3 class="product-title">{{product.pordactName}}</h3>
             <!-- <h1>dhsakj</h1> -->
           </div>
-          <popup-product [hidden]="currProduct != product" [product]="product"
-          (onClose)="closeDialog()" (onAddToCart)="addToCart($event)"></popup-product>
         </ng-container>
       </div>
     </div>
+    <popup-product *ngIf="currProduct != undefined" [product]="currProduct"
+    (onClose)="closeDialog()" (onAddToCart)="addToCart($event)"></popup-product>
   </div>
 </div>

@@ -10,11 +10,12 @@ import { ReqestService } from 'src/app/services/reqest.service';
 })
 
 export class CartPageComponent implements OnInit {
-  orderType: string = "סוג הזמנה...";
-  orderClass: string = "כיתה...";
+  orderType: string = "";
+  orderClass: string = "";
   orderStatus: number = 1;
-  orderShluha: string = "שלוחה...";
-  classes: string[] = ['ט', "י", "יא", "יב"];
+  orderIsDraft: boolean = false;
+  orderShluha: string = "";
+  classes: string[] = ['ט', "י", "יא", "יב", "יג", "יד"];
   orderCart: NewOrderpordact[] = [];
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
@@ -41,21 +42,21 @@ export class CartPageComponent implements OnInit {
       }
 
       var newOrder: NewOrder = {
-        title: `${this.orderShluha}שכבה${this.orderClass}`,
+        title: `${this.orderShluha} שכבה ${this.orderClass}`,
         type: this.orderType,
-        userid: 0,
+        userid: 1,
         date: new Date(),
         status: this.orderStatus,
-        isdarft: false,
+        isdarft: this.orderIsDraft,
         prodact: this.orderCart
       }
 
+      console.log("dsnfkjsfds");
       this.isOrderCompleted = true;
       console.table(newOrder);
-      //sending to backend
-      this.reqestService.postOlder(newOrder).subscribe(respone =>
+      this.reqestService.postOlder(newOrder).subscribe(response =>
         {
-          console.log(respone)
+          console.log(response)
         });
       this.initializeVariables();
     } else {
@@ -69,6 +70,8 @@ export class CartPageComponent implements OnInit {
     this.cart.length = 0;
     this.orderType = "";
     this.orderClass = '';
+    this.orderShluha = "";
     this.cart.length = 0;
+    this.orderIsDraft = false;
   }
 }
