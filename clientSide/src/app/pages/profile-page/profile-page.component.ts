@@ -13,12 +13,13 @@ import { Input } from '@angular/core';
   styleUrls: ['./profile-page.component.scss']
 })
 export class ProfilePageComponent {
-  
+
   ProfilePagePattern: iProfilePattern; // index: 0-show profile, 1-edit profile
-  pagePattern: iPages;
-  personalInfo: {name: string, id: string, email: string, phoneNum: string} | undefined;
+  pagePattern: iPages = ProfilePattern.pages[0];
+  personalInfo: { name: string, id: string, email: string, phoneNum: string } | undefined;
 
   @Input() pageIndex: number = 0;
+  @Input() newUserTitle: string = '';
 
   editProfile = new FormGroup({
     fullName: new FormControl('', Validators.required),
@@ -28,11 +29,11 @@ export class ProfilePageComponent {
 
   constructor(private apiConnection: ReqestService, private microsoftMsal: MicrosoftMsalService) {
     this.ProfilePagePattern = ProfilePattern;
-    console.log(this.pageIndex)
-    this.pagePattern = ProfilePattern.pages[this.pageIndex];
 
-    this.ProfilePagePattern.pages[1].formGroup = this.editProfile;    
-    
+
+
+    this.ProfilePagePattern.pages[1].formGroup = this.editProfile;
+
     apiConnection.getUser(microsoftMsal.userID()).subscribe((
       response => {
         this.personalInfo = {
@@ -45,6 +46,8 @@ export class ProfilePageComponent {
   }
 
   ngOnInit(): void {
+    this.pagePattern = ProfilePattern.pages[this.pageIndex];
+    console.log(this.pageIndex)
   }
 
   submit() {

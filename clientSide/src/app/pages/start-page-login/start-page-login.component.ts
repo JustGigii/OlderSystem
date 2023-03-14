@@ -13,7 +13,7 @@ import { AuthenticationResult } from '@azure/msal-browser';
 })
 export class StartPageLoginComponent {
   template: any = startPageTemplate[0];
-  showProfilePage: boolean = true;
+  showProfilePage: boolean = false;
   profileIndex: number = 1;
 
   constructor(private microsoftMsal: MicrosoftMsalService, private apiConnection: ReqestService, private msalService: MsalService,) { }
@@ -21,19 +21,19 @@ export class StartPageLoginComponent {
   login() {
     this.msalService.loginPopup().subscribe((response: AuthenticationResult) => {
       this.msalService.instance.setActiveAccount(response.account);
-      
+
       // this.apiConnection.getUser(this.microsoftMsal.userID()).subscribe(
-        this.apiConnection.getUser('123456789').subscribe(
+      this.apiConnection.getUser('123456789').subscribe(
         res => {
           console.log('exist user');
           this.showProfilePage = false; // exist user
-        }, 
+        },
         err => {
           console.log('new user');
           this.showProfilePage = true; // new user
         }
       );
-      })
+    })
   }
   isLogedIn(): boolean {
     return this.microsoftMsal.isLogedIn();
