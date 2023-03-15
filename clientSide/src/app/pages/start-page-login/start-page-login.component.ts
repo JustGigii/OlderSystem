@@ -1,9 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter } from '@angular/core';
 import { startPageTemplate } from 'src/app/page tample/start-page';
 import { MicrosoftMsalService } from 'src/app/services/login/microsoft-msal.service';
 import { ReqestService } from '../../services/reqest.service'
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-browser';
+import { Output } from '@angular/core';
+import { outputAst } from '@angular/compiler';
 
 
 @Component({
@@ -15,6 +17,8 @@ export class StartPageLoginComponent {
   template: any = startPageTemplate[0];
   showProfilePage: boolean = false;
   profileIndex: number = 1;
+  @Output() selectedPage = new EventEmitter();
+
 
   constructor(private microsoftMsal: MicrosoftMsalService, private apiConnection: ReqestService, private msalService: MsalService,) { }
 
@@ -31,6 +35,7 @@ export class StartPageLoginComponent {
         err => {
           console.log('new user');
           this.showProfilePage = true; // new user
+          this.selectedPage.emit('new-user-profile');
         }
       );
     })

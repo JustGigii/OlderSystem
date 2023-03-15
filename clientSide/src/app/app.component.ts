@@ -8,8 +8,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'OlderSystem';
   page: string = '';
-  @Output() closeEvent = new EventEmitter();
+  // @Output() closeEvent = new EventEmitter();
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 }
