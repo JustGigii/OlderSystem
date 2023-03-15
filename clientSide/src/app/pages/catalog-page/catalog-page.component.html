@@ -6,8 +6,10 @@
   </div>
   <div class="categories-container">
     <div class="category" *ngFor="let category of categories">
-      <h2 class="category-title">{{category.title}}</h2>
-      <img class="category-img" [src]="category.src" alt="src">
+      <div class="category-details">
+        <h2 class="category-title">{{category.title}}</h2>
+        <img class="category-img" [src]="category.src" alt="src">
+      </div>
       <div class="products-container">
         <ng-container *ngFor="let product of products">
           <div class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick(product)">
