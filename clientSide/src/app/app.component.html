@@ -1,6 +1,6 @@
-<app-start-page-login></app-start-page-login>
-<app-home-page *ngIf="this.item == 0" ></app-home-page>
-<app-profile-page *ngIf="this.item == 1" ></app-profile-page>
-<catalog-page *ngIf="this.item == 2"></catalog-page>
-<app-cart-page *ngIf="this.item == 3"></app-cart-page>
-<app-nav (ChaneEvent)="ChanePage()"></app-nav>
+<app-start-page-login *ngIf="page === 'start-page'"></app-start-page-login>
+<app-home-page *ngIf="page === 'home-page'" ></app-home-page>
+<app-profile-page *ngIf="page === 'frofile'" ></app-profile-page>
+<catalog-page *ngIf="page === 'products'"></catalog-page>
+<app-cart-page *ngIf="page === 'cart'"></app-cart-page>
+<app-nav (selectedPage)="page = $event"></app-nav>
