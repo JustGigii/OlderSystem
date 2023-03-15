@@ -1,6 +1,10 @@
-<app-start-page-login *ngIf="page === 'start-page'"></app-start-page-login>
+<app-start-page-login (selectedPage)="page = $event" *ngIf="page === 'start-page'"></app-start-page-login>
 <app-home-page *ngIf="page === 'home-page'" ></app-home-page>
-<app-profile-page *ngIf="page === 'frofile'" ></app-profile-page>
+<app-profile-page (selectedPage)="page = $event" *ngIf="page === 'frofile'" ></app-profile-page>
 <catalog-page *ngIf="page === 'products'"></catalog-page>
 <app-cart-page *ngIf="page === 'cart'"></app-cart-page>
 <app-nav (selectedPage)="page = $event"></app-nav>
+
+<div class="profile-page-container" *ngIf="page === 'new-user-profile'">
+    <app-profile-page (selectedPage)="page = $event" [page]="page"></app-profile-page>
+</div>

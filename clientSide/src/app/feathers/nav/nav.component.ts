@@ -11,7 +11,7 @@ export class NavComponent implements OnInit {
 
   @Output() selectedPage = new EventEmitter();
   item: number = 0;
-  cssclass = ["out", "out", "out", "out"];
+  cssclass = ["show", "out", "out", "out"];
 
   constructor(private microsoftMsal: MicrosoftMsalService) {
   }
@@ -19,9 +19,7 @@ export class NavComponent implements OnInit {
   ngOnInit(): void {
     if (this.microsoftMsal.isLogedIn()) {
       this.selectedPage.emit(navPages[2]);
-      this.cssclass[0] = "show";
-    }
-    else {
+    } else {
       this.selectedPage.emit(navPages[0]);
     }
   }

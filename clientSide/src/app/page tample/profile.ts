@@ -2,8 +2,21 @@ import { FormGroup } from "@angular/forms";
 
 export const ProfilePattern: iProfilePattern =
 {
-    profile: [],
-    profileTitle: ['שם מלא', 'תעודת זהות', 'אימייל', 'מספר טלפון'],
+    userInfo: [{
+        title: 'שם מלא',
+        info: ''
+    }, {
+        title: 'תעודת זהות',
+        info: ''
+    },
+    {
+        title: 'אימייל',
+        info: ''
+    },
+    {
+        title: 'מספר טלפון',
+        info: ''
+    }],
     pages:
         [{
             index: 0,
@@ -19,7 +32,7 @@ export const ProfilePattern: iProfilePattern =
                 {
                     title: "שם פרטי",
                     HTMLelement: "input",
-                    validName: "name",
+                    validName: "fullName",
                 },
                 {
                     title: "תעודת זהות",
@@ -40,6 +53,12 @@ export const ProfilePattern: iProfilePattern =
         }]
 };
 
+export interface iProfilePattern {
+    // profile: iProfile;
+    userInfo: Array<{ title: string, info: string }>;
+    pages: iPages[];
+}
+
 export interface iPages {
     title: string;
     index: number;
@@ -49,40 +68,32 @@ export interface iPages {
     formGroup?: FormGroup | null;
 }
 
-export interface iProfilePattern {
-    profile: iProfile[];
-    profileTitle: any[];
-    pages: iPages[];
-}
-
 export interface iElement {
     title: string,
     text?: string
     HTMLelement?: string,
-    validName?: string,
+    validName: string,
 }
 export interface iProfile {
     fullName: string,
-    ID: string
-    Email: string,
+    id: string
+    email: string,
     phoneNumber: string,
 }
 //גיגי
-export interface UserDetails
-{
-    userId:number,
-    fullName:string,
-    id:string,
-    email:string,
-    phoneNumber:string,
+export interface UserDetails {
+    userId: number,
+    fullName: string,
+    id: string,
+    email: string,
+    phoneNumber: string,
     manageRole: number,
 }
-export interface CreateUserDetails
-{
-    fullName:string,
-    id:string,
-    email:string,
-    phoneNumber:string,
+export interface CreateUserDetails {
+    fullName: string,
+    id: string,
+    email: string,
+    phoneNumber: string,
     manageRole: number,
 }
 
