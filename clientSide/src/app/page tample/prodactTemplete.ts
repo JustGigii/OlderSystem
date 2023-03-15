@@ -17,7 +17,7 @@ export interface NewOrderpordact
 export interface NewOrderpordactsend
 {
     pordactId: number,
-    size: Record<string,number>;
+    sizes: Record<string,number>;
 }
 
 export interface NewOrder
@@ -28,5 +28,5 @@ export interface NewOrder
   date: Date,
   status: number,
   isdarft: boolean,
-  prodact: NewOrderpordact[]
+  prodact: NewOrderpordactsend[]
 }

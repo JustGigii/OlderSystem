@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { iproduct } from './../../page tample/homepage';
-import { NewOrderpordact, NewOrder } from './../../page tample/prodactTemplete';
+import { NewOrderpordactsend, NewOrder } from './../../page tample/prodactTemplete';
 import { ReqestService } from 'src/app/services/reqest.service';
 
 @Component({
@@ -16,7 +16,7 @@ export class CartPageComponent implements OnInit {
   orderIsDraft: boolean = false;
   orderShluha: string = "";
   classes: string[] = ['ט', "י", "יא", "יב", "יג", "יד"];
-  orderCart: NewOrderpordact[] = [];
+  orderCart: NewOrderpordactsend[] = [];
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
 
@@ -37,7 +37,7 @@ export class CartPageComponent implements OnInit {
       for (let i = 0; i < this.cart.length; i++) {
         this.orderCart[i] = {
           pordactId: this.cart[i].pordactId,
-          size: this.cart[i].sizes
+          sizes: this.convertMapToObject(this.cart[i].sizes)
         };
         
       }
@@ -53,7 +53,7 @@ export class CartPageComponent implements OnInit {
       }
 
       this.isOrderCompleted = true;
-      console.log(newOrder)
+      console.log(JSON.stringify(newOrder))
       this.reqestService.postOlder(newOrder).subscribe(response =>
         {
           console.log(response)
