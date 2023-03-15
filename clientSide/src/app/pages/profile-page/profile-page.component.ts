@@ -18,7 +18,7 @@ export class ProfilePageComponent {
   pagePattern: iPages = ProfilePattern.pages[0];
   personalInfo: { name: string, id: string, email: string, phoneNum: string } | undefined;
 
-  @Input() pageIndex: number = 0;
+  @Input() pageIndex: number | undefined;
   @Input() newUserTitle: string = '';
 
   editProfile = new FormGroup({
@@ -29,9 +29,6 @@ export class ProfilePageComponent {
 
   constructor(private apiConnection: ReqestService, private microsoftMsal: MicrosoftMsalService) {
     this.ProfilePagePattern = ProfilePattern;
-
-
-
     this.ProfilePagePattern.pages[1].formGroup = this.editProfile;
 
     apiConnection.getUser(microsoftMsal.userID()).subscribe((
@@ -46,8 +43,7 @@ export class ProfilePageComponent {
   }
 
   ngOnInit(): void {
-    this.pagePattern = ProfilePattern.pages[this.pageIndex];
-    console.log(this.pageIndex)
+    this.pagePattern = ProfilePattern.pages[this.pageIndex || 0];
   }
 
   submit() {

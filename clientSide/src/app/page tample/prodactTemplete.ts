@@ -28,5 +28,5 @@ export interface NewOrder
   date: Date,
   status: number,
   isdarft: boolean,
-  prodact: NewOrderpordactsend[]
+  prodact: NewOrderpordact[]
 }

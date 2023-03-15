@@ -7,22 +7,9 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class AppComponent implements OnInit {
   title = 'OlderSystem';
-  item: Number = 10
+  page: string = '';
   @Output() closeEvent = new EventEmitter();
 
   ngOnInit(): void {
-    var item = localStorage.getItem("item")
-    if (item !== null) {
-      this.item = parseInt(item);
-    }
-    // console.log(this.item)
   }
-  ChanePage(): void {
-    var item = localStorage.getItem("item")
-    if (item !== null) {
-      this.item = parseInt(item);
-    }
-    // console.log(this.item)
-  }
-
 }

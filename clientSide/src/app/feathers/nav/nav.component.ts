@@ -1,4 +1,6 @@
-import { Component, EventEmitter, Output,OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { navPages } from 'src/app/page tample/nav-pages';
+import { MicrosoftMsalService } from 'src/app/services/login/microsoft-msal.service';
 
 @Component({
   selector: 'app-nav',
@@ -7,25 +9,27 @@ import { Component, EventEmitter, Output,OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
-  @Output() ChaneEvent = new EventEmitter();
-  item: number = 0
-  cssclass = ["out", "out", "out", "out"]
-  constructor() { }
+  @Output() selectedPage = new EventEmitter();
+  item: number = 0;
+  cssclass = ["out", "out", "out", "out"];
+
+  constructor(private microsoftMsal: MicrosoftMsalService) {
+  }
 
   ngOnInit(): void {
-    var item = localStorage.getItem("item")
-    if (item !== null) {
-      this.item = parseInt(item);
-      this.cssclass[this.item] = "show";
+    if (this.microsoftMsal.isLogedIn()) {
+      this.selectedPage.emit(navPages[2]);
+      this.cssclass[0] = "show";
+    }
+    else {
+      this.selectedPage.emit(navPages[0]);
     }
   }
 
-
-  selected(id: number): void {
-    this.cssclass[this.item] = "unshow"
-    this.cssclass[id] = "show"
-    this.item = id
-    localStorage.setItem("item", id.toString());
-    this.ChaneEvent.emit();
+  PageTitle(index: number): void {
+    this.cssclass[this.item] = "unshow";
+    this.cssclass[index] = "show";
+    this.item = index;
+    this.selectedPage.emit(navPages[index + 2]);
   }
 }
