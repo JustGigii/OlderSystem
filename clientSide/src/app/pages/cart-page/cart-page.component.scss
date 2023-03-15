@@ -91,12 +91,20 @@ input, select {
   position: absolute;
 }
 
-.is-draft {
+#bottom-container {
   text-align: center;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
-.is-draft-text {
+.bottom-container-text {
   font-size: 22rem;
+}
+
+#is-draft-container {
+  display: flex;
+  align-items: center;
 }
 
 .checkbox-wrapper-31:hover .check {

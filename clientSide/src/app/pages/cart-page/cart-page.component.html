@@ -26,19 +26,22 @@
     </div>
 
     <div class="products-container">
-      <product-details [prodactdetails]="cart"></product-details>
+      <product-details [prodactdetails]="cart" [isEditable]="isEditable"></product-details>
     </div>
 
-    <div class="is-draft">
-      <span class="is-draft-text">טיוטה: </span>
-      <div class="checkbox-wrapper-31">
-      <input type="checkbox" [(ngModel)]="orderIsDraft"/>
-      <svg viewBox="0 0 35.6 35.6">
-        <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
-        <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
-        <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
-      </svg>
-      </div>
+    <div id="bottom-container">
+      <button (click)="toggleEditability()" class="bottom-container-text">עריכה</button>
+      <span id="is-draft-container">
+        <span class="bottom-container-text">טיוטה:</span>
+        <div class="checkbox-wrapper-31">
+        <input type="checkbox" [(ngModel)]="orderIsDraft"/>
+        <svg viewBox="0 0 35.6 35.6">
+          <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+          <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+          <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+        </svg>
+        </div>
+      </span>
     </div>
 
     <img id="complete-order-btn" src="../../../assets/img/cartBtn.png" alt="order" (click)="completeOrder()">

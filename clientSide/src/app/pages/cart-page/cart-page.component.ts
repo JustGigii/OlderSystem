@@ -19,6 +19,7 @@ export class CartPageComponent implements OnInit {
   orderCart: NewOrderpordactsend[] = [];
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
+  isEditable: boolean = false;
 
   constructor(private reqestService: ReqestService) { }
 
@@ -32,6 +33,11 @@ export class CartPageComponent implements OnInit {
     }
   }
 
+  toggleEditability() {
+    this.isEditable = !this.isEditable;
+    console.log(this.isEditable);
+  }
+
   completeOrder() {
     if (this.orderType != "" && this.cart.length != 0 && this.orderClass != "" && this.orderShluha != "") {
       for (let i = 0; i < this.cart.length; i++) {
@@ -39,7 +45,7 @@ export class CartPageComponent implements OnInit {
           pordactId: this.cart[i].pordactId,
           sizes: this.convertMapToObject(this.cart[i].sizes)
         };
-        
+
       }
       console.log(this.orderCart)
       var newOrder: NewOrder = {
@@ -63,6 +69,7 @@ export class CartPageComponent implements OnInit {
       alert("cannot complete order");
     }
   }
+
   convertMapToObject(metricArguments: Map<string,number>): Record<string,number> {
     let newObject: Record<string,number> = {}
     for (let [key, value] of metricArguments) {
@@ -70,6 +77,7 @@ export class CartPageComponent implements OnInit {
     }
     return newObject;
   }
+
   initializeVariables() {
     console.log("initializeVariables");
     sessionStorage.clear();

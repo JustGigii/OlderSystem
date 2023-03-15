@@ -11,6 +11,7 @@ import { ReqestService } from 'src/app/services/reqest.service';
 export class ProductDetailsComponent {
   id?: number
   @Input() prodactdetails?: iproduct[]
+  @Input() isEditable?: boolean;
   constructor( private reqestservice: ReqestService)
   {
 

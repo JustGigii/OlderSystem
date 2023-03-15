@@ -112,3 +112,41 @@ td {
   width: fit-content;
   margin-top: 6%;
 }
+
+#delete-item-btn {
+  position: absolute;
+  right: -10%;
+  top: 34%;
+  height: 32%;
+  background-color: #fb6666;
+  border-radius: 34px;
+}
+
+.slide-left {
+  animation: 0.8s slide-left forwards;
+}
+
+@keyframes slide-left {
+  from {
+    right: 0vw;
+  }
+  to {
+    right: 4vw;
+    transform: scale(0.9);
+  }
+}
+
+.slide-right {
+  animation: 0.8s slide-right forwards;
+}
+
+@keyframes slide-right {
+  from {
+    transform: scale(0.9);
+    right: 4vw;
+  }
+  to {
+    right: 0vw;
+    transform: scale(1);
+  }
+}
