@@ -12,7 +12,7 @@ export interface UpDateProdact{
 export interface NewOrderpordact
 {
     pordactId: number,
-    sizes: Map<string,number>;
+    size: Map<string,number>;
 }
 export interface NewOrderpordactsend
 {
@@ -23,10 +23,10 @@ export interface NewOrderpordactsend
 export interface NewOrder
 {
   title: string,
-  useriId: number
+  userid: number
   type: string,
   date: Date,
   status: number,
   isdarft: boolean,
-  prodact: NewOrderpordact[]
+  prodact: NewOrderpordactsend[]
 }

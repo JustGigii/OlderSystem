@@ -44,7 +44,7 @@ export class CartPageComponent implements OnInit {
       console.log(this.orderCart)
       var newOrder: NewOrder = {
         title: `${this.orderShluha} שכבה ${this.orderClass}`,
-        useriId: 1,
+        userid: 1,
         type: this.orderType,
         date: new Date(),
         status: this.orderStatus,
