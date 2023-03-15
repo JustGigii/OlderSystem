@@ -37,10 +37,10 @@ import { ProductDetailsComponent } from '../product-details/product-details.comp
 
     ]),
     trigger('flip', [
-      state('close', style({ 
+      state('close', style({
       })),
       state('open', style({
-        transform: "rotateZ(180deg)" 
+        transform: "rotateZ(180deg)"
       })),
     ])
   ]
@@ -64,7 +64,7 @@ export class BlobComponent implements OnInit {
         statusMassage: "",
         date: ""
       }
-      this.tamplate.items.push(details)
+      this.tamplate.items.unshift(details)
 
     })))
   }
