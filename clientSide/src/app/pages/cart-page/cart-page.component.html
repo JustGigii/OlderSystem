@@ -14,7 +14,7 @@
         <p class="details-text">סוג הזמנה</p>
         <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderType">
           <option>בלאי</option>
-          <option>רגיל</option>
+          <option>חדש</option>
         </select>
       </div>
       <div class="order-details">
@@ -26,7 +26,7 @@
     </div>
 
     <div class="products-container">
-      <product-details [prodactdetails]="cart" [isEditable]="isEditable"></product-details>
+      <product-details [prodactdetails]="cart" [isEditable]="isEditable" (onRemoveProduct)="removeProduct($event)"></product-details>
     </div>
 
     <div id="bottom-container">

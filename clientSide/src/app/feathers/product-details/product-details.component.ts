@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { iproduct } from 'src/app/page tample/homepage';
 import { ReqestService } from 'src/app/services/reqest.service';
 
@@ -12,6 +12,9 @@ export class ProductDetailsComponent {
   id?: number
   @Input() prodactdetails?: iproduct[]
   @Input() isEditable?: boolean;
+
+
+
   constructor( private reqestservice: ReqestService)
   {
 
@@ -55,5 +58,14 @@ export class ProductDetailsComponent {
       prodact.sizes = mapsize;
     });
       this.prodactdetails = service
+  }
+
+
+
+
+  @Output() onRemoveProduct: EventEmitter<iproduct> = new EventEmitter();
+
+  removeFromCart(product: iproduct) {
+    this.onRemoveProduct.emit(product);
   }
 }

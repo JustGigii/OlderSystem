@@ -38,8 +38,6 @@ export class PopupProductComponent implements OnInit {
   });
   get quantityControl() {return this.addedSizesForm.get('quantityControl')}
 
-  constructor() {}
-
   ngOnInit(): void {
     //Getting Id and TypeSize variables
     if (this.product) {
@@ -115,7 +113,7 @@ export class PopupProductComponent implements OnInit {
 
         setTimeout(() => {
           this.onClose.emit();
-        }, 1800);
+        }, 1300);
       } else
         alert("choose something to add to the cart");
     }

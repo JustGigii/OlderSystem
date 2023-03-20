@@ -14,6 +14,6 @@
         </div>
       </div>
     </div>
-    <img src="../../../assets/img/closeBtn.png" alt="closing button" [hidden]="!isEditable" id="delete-item-btn">
+    <img src="../../../assets/img/closeBtn.png" alt="closing button" (click)="removeFromCart(prodact)" [hidden]="!isEditable" id="delete-item-btn">
   </div>
 </div>

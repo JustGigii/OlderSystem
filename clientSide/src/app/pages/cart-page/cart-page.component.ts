@@ -38,6 +38,12 @@ export class CartPageComponent implements OnInit {
     console.log(this.isEditable);
   }
 
+  removeProduct(product: iproduct) {
+    this.cart.splice(this.cart.indexOf(product), 1)
+    sessionStorage.setItem("cartItemsArray", JSON.stringify(this.cart));
+
+  }
+
   completeOrder() {
     if (this.orderType != "" && this.cart.length != 0 && this.orderClass != "" && this.orderShluha != "") {
       for (let i = 0; i < this.cart.length; i++) {
