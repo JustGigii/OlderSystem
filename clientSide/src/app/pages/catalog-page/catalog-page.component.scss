@@ -156,7 +156,7 @@
 // }
 
 .category-container{
-  height: 13%;
+  height: 19%;
   display: flex;
   flex-direction: row;
   overflow-y: hidden;
@@ -176,17 +176,23 @@
   width: 43%;
   min-width: 29vw;
   margin-left: 7%;
+  max-height: 11vh;
+  margin: auto;
+  margin-left: 3%;
+  margin-right: 3%;
 }
 
 .chosen-category {
-  transform: scale(1.1);
+  // height: 110%;
+  transform: scale(1.15);
+  filter: drop-shadow(2px 4px 6px cadetblue);
 }
 
 .category-img {
   height: 100%;
   border-radius: 50%;
-  border-style: groove;
-  border-color: aquamarine;
+  border-style: inset;
+  border-color: #5166d7;
   border-width: thick;
 }
 

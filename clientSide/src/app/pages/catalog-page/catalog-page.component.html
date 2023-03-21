@@ -14,9 +14,9 @@
   </div> -->
   <h2>קטגוריות</h2>
   <div class="category-container">
-    <div  *ngFor="let category of categories" [class]="category.id == chosenCategory ? 'chosen-category' : 'category'">
+    <div (click)="changeCategory(category.id)" *ngFor="let category of categories" class="category" [class]="category.id == chosenCategory ? 'chosen-category' : ''">
       <h4 class="category-title">{{category.name}}</h4>
-      <img class="category-img" [src]="category.url" alt="category img">
+      <img class="category-img" [src]="category.url" alt="category img" >
     </div>
   </div>
   <div class="products-container">

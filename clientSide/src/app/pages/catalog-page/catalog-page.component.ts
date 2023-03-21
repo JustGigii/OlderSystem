@@ -105,6 +105,10 @@ export class CatalogPageComponent implements OnInit {
     this.currProduct = product;
   }
 
+  changeCategory(newCategory: number) {
+    this.chosenCategory = newCategory;
+  }
+
   closeDialog(){
     this.currProduct = undefined;
   }
