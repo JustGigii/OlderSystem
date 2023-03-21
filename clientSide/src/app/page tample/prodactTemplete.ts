@@ -4,6 +4,13 @@ export interface prodact{
     prodactImage: string,
     typeSize: number
 }
+export interface demoprodact{
+  prodactId: number,
+  pordactName: string,
+  prodactImage: string,
+  typeSize: number,
+  category: number
+}
 export interface UpDateProdact{
     prodactId: number,
     pordactName: string,

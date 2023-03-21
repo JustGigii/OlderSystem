@@ -4,23 +4,37 @@
     <input class="catalog-search-bar" type="text" [(ngModel)]="search">
     <img class="search-bar-img" src="../../../assets/img/searchBtn.png" alt="search">
   </div>
-  <div class="categories-container">
-    <div class="category" *ngFor="let category of categories">
-      <div class="category-details">
-        <h2 class="category-title">{{category.title}}</h2>
-        <img class="category-img" [src]="category.src" alt="src">
+  <!-- <div class="products-container">
+    <ng-container *ngFor="let product of products">
+      <div class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick(product)">
+        <img class="product-image" src={{product.prodactImage}} alt="product image">
+        <h3 class="product-title">{{product.pordactName}}</h3>
       </div>
-      <div class="products-container">
-        <ng-container *ngFor="let product of products">
-          <div class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick(product)">
-            <img class="product-image" src={{product.prodactImage}} alt="product image">
-            <h3 class="product-title">{{product.pordactName}}</h3>
-            <!-- <h1>dhsakj</h1> -->
-          </div>
-        </ng-container>
-      </div>
+    </ng-container>
+  </div> -->
+  <h2>קטגוריות</h2>
+  <div class="category-container">
+    <div  *ngFor="let category of categories" [class]="category.id == chosenCategory ? 'chosen-category' : 'category'">
+      <h4 class="category-title">{{category.name}}</h4>
+      <img class="category-img" [src]="category.url" alt="category img">
     </div>
-    <popup-product *ngIf="currProduct != undefined" [product]="currProduct"
-    (onClose)="closeDialog()" (onAddToCart)="addToCart($event)"></popup-product>
+  </div>
+  <div class="products-container">
+    <ng-container *ngFor="let product of demoproducts">
+      <div *ngIf="chosenCategory == -1;else categoryProducts">
+        <div class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick(product)">
+          <img class="product-image" src={{product.prodactImage}} alt="product image">
+          <h3 class="product-title">{{product.pordactName}}</h3>
+        </div>
+      </div>
+      <ng-template #categoryProducts>
+        <div class="product" *ngIf="product.pordactName.includes(search) && product.category == chosenCategory" (click)="onClick(product)">
+          <img class="product-image" src={{product.prodactImage}} alt="product image">
+          <h3 class="product-title">{{product.pordactName}}</h3>
+        </div>
+      </ng-template>
+    </ng-container>
   </div>
 </div>
+<popup-product *ngIf="currProduct != undefined" [product]="currProduct"
+(onClose)="closeDialog()" (onAddToCart)="addToCart($event)"></popup-product>
