@@ -12,7 +12,6 @@
       </div>
     </ng-container>
   </div> -->
-  <h2>קטגוריות</h2>
   <div class="category-container">
     <div (click)="changeCategory(category.id)" *ngFor="let category of categories" class="category" [class]="category.id == chosenCategory ? 'chosen-category' : ''">
       <h4 class="category-title">{{category.name}}</h4>

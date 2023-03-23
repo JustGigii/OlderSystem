@@ -26,19 +26,7 @@ export class CatalogPageComponent implements OnInit {
       id: 3,
       name: "professions",
       url: "../../../assets/demo/places.png"
-    },{
-      id: 3,
-      name: "professions",
-      url: "../../../assets/demo/places.png"
-    },{
-      id: 3,
-      name: "professions",
-      url: "../../../assets/demo/places.png"
-    },{
-      id: 3,
-      name: "professions",
-      url: "../../../assets/demo/places.png"
-    }
+    },
   ];
   demoproducts: demoprodact[] =  [
     {
