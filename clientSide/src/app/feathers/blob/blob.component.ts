@@ -6,6 +6,7 @@ import { ReqestService } from 'src/app/services/reqest.service'
 import { DatePipe } from '@angular/common'
 import { MatDialog } from '@angular/material/dialog';
 import { ProductDetailsComponent } from '../product-details/product-details.component';
+import { MicrosoftMsalService } from 'src/app/services/login/microsoft-msal.service';
 
 @Component({
   selector: 'app-blob',
@@ -52,7 +53,7 @@ export class BlobComponent implements OnInit {
   prodactShow?: iproduct[]
   showdetails = true
   message: string = "";
-  constructor(private reqestservice: ReqestService, public datepipe: DatePipe) { }
+  constructor(private reqestservice: ReqestService, public datepipe: DatePipe, private userControl: MicrosoftMsalService) { }
   //private dialogref: MatDialog
   ngOnInit(): void {
     homepage.items = []

@@ -1,6 +1,7 @@
 <div class="dialog-background closeDialog" (click)="closeDialog($event)">
   <div class="dialog" *ngIf="product">
     <div *ngIf="!addedToCart" style="height: 100%;">
+      <!-- make tample to the page  -->
       <img class="close-btn closeDialog" src="../../../assets/img/closeBtn.png" alt="close-button" (click)="closeDialog($event)">
       <h1 class="product-title">{{product.pordactName}}</h1>
       <img class="product-image" [src]="product.prodactImage" alt="clicked-product-image">
@@ -10,7 +11,7 @@
           <p class="error-message" *ngIf="size.value == 0">יש לבחור כמות גדולה מ-0
             <img class="error-img" src="../../../assets/img/warningSign.png" alt="warningSign">
           </p>
-
+          
           <p class="error-message" *ngIf="checkIfOver100(size.value)">יש לבחור כמות קטנה מ- 100
             <img class="error-img" src="../../../assets/img/warningSign.png" alt="warningSign">
           </p>

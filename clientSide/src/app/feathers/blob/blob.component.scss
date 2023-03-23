@@ -18,17 +18,14 @@
         border-radius: 0 20px 20px 0;
     }
     .status{
-        position: relative;
-        width: 87%;
-        right: 50%;
-        transform: translateX(50%);
-        margin: 28px 0 5px;
+        max-width: 288px;
+        margin: 16px 0;
     }
     .icon{
         position: absolute;
         bottom: 1.2vh;
         left: 4vw;
-        width: 8vw;
+        width: 34px;
     }
     ul{
         list-style-type: none !important;
