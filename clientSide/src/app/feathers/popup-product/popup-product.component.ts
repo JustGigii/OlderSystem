@@ -1,7 +1,9 @@
+import { sizes } from './../../page tample/popup-product';
 import { iproduct } from './../../page tample/homepage';
 import { prodact } from './../../page tample/prodactTemplete';
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { messages } from './../../page tample/popup-product';
 
 @Component({
   selector: 'popup-product',
@@ -11,10 +13,10 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 export class PopupProductComponent implements OnInit {
   @Output() onClose: EventEmitter<any> = new EventEmitter();
   @Output() onAddToCart: EventEmitter<any> = new EventEmitter();
-  
-  
-  //add other compenent to add prodact 
-  @Input() product: prodact = {prodactId: 1, prodactImage: "", pordactName: "", typeSize: 1}; 
+
+
+  //add other compenent to add prodact
+  @Input() product: prodact = {prodactId: 1, prodactImage: "", pordactName: "", typeSize: 1};
   f = false;
   addedSizes: Map<string, number> = new Map<string,number>();
   availableSizes: Array<any> = [];
@@ -22,20 +24,10 @@ export class PopupProductComponent implements OnInit {
   previousSize: any;
   addedToCart: boolean = false;
 
-
-  sizes: Record<number, string[]> = { //put in other tamplate
-    1 : ["ג","ב","א"],
-    2 : ['36', '37', '38', '39', '40', '41', '42', '43', '44', '45', '46', '47', '48', '49', '50'],
-    3 : ["מידשכלךש","מידת מכנסייםםםםםםם","מידת מכנסיים"],
-    4 : ["XS","S","M","L","XL"],
-    5 : ["ללא מידה"]
-  };
+  messages = messages;
+  sizes = sizes ;
 
   ngOnInit(): void {
-    //Getting Id and TypeSize variables
-    // if (this.product != undefined) { 
-
-
     //Getting the info (addedSizes, alreadyChosenSizes, availableSizes) from session storage.
     if (sessionStorage.getItem(`addedSizes${String(this.product.prodactId)}`) != null) {
       var storedAddedSizes = sessionStorage.getItem(`addedSizes${String(this.product.prodactId)}`);
@@ -46,7 +38,7 @@ export class PopupProductComponent implements OnInit {
 
       var storedAvailableSizes = sessionStorage.getItem(`availableSizes${this.product.prodactId}`);
       this.availableSizes = JSON.parse(storedAvailableSizes || '{}');
-      } 
+      }
       //If there isn't any info (null), initializing variables for first use.
     else {
       this.sizes[this.product.typeSize].forEach(cell => {
@@ -66,34 +58,19 @@ export class PopupProductComponent implements OnInit {
       var sizeToAdd = this.availableSizes.pop();
       this.addedSizes.set(sizeToAdd, 1);
       this.alreadyChosenSizes.push(sizeToAdd);
-      this.updateCurrentChosenSizes();
     }
     else
       alert("No more available sizes"); //erro
   }
 
-  removeSize(sizeToRemove: string){
-    //Removing the size from the map of wanted sizes
-    this.addedSizes.delete(sizeToRemove);
-
-    var index = this.alreadyChosenSizes.indexOf(sizeToRemove);
-    this.alreadyChosenSizes.splice(index, 1);
-
-    this.availableSizes.push(sizeToRemove);
-    this.updateCurrentChosenSizes(); //on destory ngOnDestory 
-  }
-
   addToCart(){
     //Checking if there is something in the product added sizes
     if (!this.areAllQuantitiesValid()) {
-      alert("quantity 0"); //erro massage 
-      } 
-    else 
-    {
+      alert("quantity 0"); //erro massage
+    } else {
       if (this.addedSizes.size > 0) {
         this.addedToCart = true;
         this.sortAddedSizes();
-        this.updateCurrentChosenSizes();//on destory ngOnDestory 
         this.onAddToCart.emit(this.product);
         setTimeout(() => {
           this.onClose.emit();
@@ -109,21 +86,30 @@ export class PopupProductComponent implements OnInit {
   areAllQuantitiesValid(): boolean {
     var flag = true;
     this.addedSizes.forEach((value) => {
-      if (Number(value) > 0 || Number(value) > 100) {
+      if (Number(value) <= 0 || Number(value) > 100) {
         flag = false;
       }
     });
-
     return flag;
   }
 
   sortAddedSizes() {
   }
 
-  updateCurrentChosenSizes() {
+  ngOnDestroy() {
     sessionStorage.setItem(`addedSizes${String(this.product.prodactId)}`, JSON.stringify(Array.from(this.addedSizes.entries())));
     sessionStorage.setItem(`alreadyChosenSizes${this.product.prodactId}`, JSON.stringify(this.alreadyChosenSizes));
     sessionStorage.setItem(`availableSizes${this.product.prodactId}`, JSON.stringify(this.availableSizes));
+  }
+
+  removeSize(sizeToRemove: string){
+    //Removing the size from the map of wanted sizes
+    this.addedSizes.delete(sizeToRemove);
+
+    var index = this.alreadyChosenSizes.indexOf(sizeToRemove);
+    this.alreadyChosenSizes.splice(index, 1);
+
+    this.availableSizes.push(sizeToRemove);
   }
 
   onKeyInput(newSize: string) { //make it genric with remove size
@@ -140,12 +126,9 @@ export class PopupProductComponent implements OnInit {
     //Updating the addedSizes map according to the changes
     this.addedSizes.set(newSize, this.addedSizes.get(this.previousSize) || 1);
     this.addedSizes.delete(this.previousSize);
-
-    this.updateCurrentChosenSizes();
   }
 
   onValueInput(key: string, value: number){
     this.addedSizes.set(key, value);
-    this.updateCurrentChosenSizes();
   }
 }

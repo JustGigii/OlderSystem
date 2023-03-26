@@ -1,0 +1,48 @@
+[
+{
+categoryName: skajfkjsa
+url: jhsakfkjsaf
+products: []
+}
+
+{
+categoryName: skajfkjsa
+url: jhsakfkjsaf
+products: []
+}
+
+{
+categoryName: skajfkjsa
+url: jhsakfkjsaf
+products: []
+}
+
+{
+categoryName: skajfkjsa
+url: jhsakfkjsaf
+products: []
+}
+
+{
+categoryName: skajfkjsa
+url: jhsakfkjsaf
+products: []
+}
+
+]
+
+
+[
+{
+productsId: 0
+typeSize: 2
+categoryId: 1/"kids"
+}
+
+{
+productsId: 2
+typeSize: 2
+categoryId: 2/"womens"
+}
+
+]

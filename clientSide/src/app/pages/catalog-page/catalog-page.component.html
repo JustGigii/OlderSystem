@@ -4,14 +4,6 @@
     <input class="catalog-search-bar" type="text" [(ngModel)]="search">
     <img class="search-bar-img" src="../../../assets/img/searchBtn.png" alt="search">
   </div>
-  <!-- <div class="products-container">
-    <ng-container *ngFor="let product of products">
-      <div class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick(product)">
-        <img class="product-image" src={{product.prodactImage}} alt="product image">
-        <h3 class="product-title">{{product.pordactName}}</h3>
-      </div>
-    </ng-container>
-  </div> -->
   <div class="category-container">
     <div (click)="changeCategory(category.id)" *ngFor="let category of categories" class="category" [class]="category.id == chosenCategory ? 'chosen-category' : ''">
       <h4 class="category-title">{{category.name}}</h4>
