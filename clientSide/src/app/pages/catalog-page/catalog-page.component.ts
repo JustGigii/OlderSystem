@@ -1,4 +1,4 @@
-import { demoprodact, prodact } from './../../page tample/prodactTemplete';
+import { Category, prodact } from './../../page tample/prodactTemplete';
 import { ReqestService } from 'src/app/services/reqest.service';
 import { Component, OnInit, Inject } from '@angular/core';
 import { iproduct } from 'src/app/page tample/homepage';
@@ -9,54 +9,59 @@ import { iproduct } from 'src/app/page tample/homepage';
   styleUrls: ['./catalog-page.component.scss']
 })
 export class CatalogPageComponent implements OnInit {
-  categories = [
-    {
-      id: 0,
-      name: "people",
-      url: "../../../assets/demo/people.png"
-    },{
-      id: 1,
-      name: "fruits",
-      url: "../../../assets/demo/fruits.png"
-    },{
-      id: 2,
-      name: "places",
-      url: "../../../assets/demo/places.png"
-    },{
-      id: 3,
-      name: "professions",
-      url: "../../../assets/demo/places.png"
-    },
-  ];
-  demoproducts: demoprodact[] =  [
-    {
-      prodactId: 1,
-      pordactName: "noa",
-      prodactImage: "../../../assets/demo/Noa.jpg",
-      typeSize: 1,
-      category: 0
-    },{
-      prodactId: 2,
-      pordactName: "rome",
-      prodactImage: "../../../assets/demo/rome.png",
-      typeSize: 2,
-      category: 2
-    },{
-      prodactId: 3,
-      pordactName: "apple",
-      prodactImage: "../../../assets/demo/apple.webp",
-      typeSize: 1,
-      category: 1
-    },{
-      prodactId: 4,
-      pordactName: "pear",
-      prodactImage: "../../../assets/demo/pear.avif",
-      typeSize: 1,
-      category: 1
-    },
-  ];
-  chosenCategory: number = -1;
-
+  // categories = [
+  //   {
+  //     id: -1,
+  //     name: "ALL",
+  //     url: "../../../assets/demo/places.png"
+  //   },{
+  //     id: 0,
+  //     name: "people",
+  //     url: "../../../assets/demo/people.png"
+  //   },{
+  //     id: 1,
+  //     name: "fruits",
+  //     url: "../../../assets/demo/fruits.png"
+  //   },{
+  //     id: 2,
+  //     name: "places",
+  //     url: "../../../assets/demo/places.png"
+  //   },{
+  //     id: 3,
+  //     name: "professions",
+  //     url: "../../../assets/demo/places.png"
+  //   },
+  // ];
+  // demoproducts: demoprodact[] =  [
+  //   {
+  //     prodactId: 1,
+  //     pordactName: "noa",
+  //     prodactImage: "../../../assets/demo/Noa.jpg",
+  //     typeSize: 1,
+  //     category: 0
+  //   },{
+  //     prodactId: 2,
+  //     pordactName: "rome",
+  //     prodactImage: "../../../assets/demo/rome.png",
+  //     typeSize: 2,
+  //     category: 2
+  //   },{
+  //     prodactId: 3,
+  //     pordactName: "apple",
+  //     prodactImage: "../../../assets/demo/apple.webp",
+  //     typeSize: 1,
+  //     category: 1
+  //   },{
+  //     prodactId: 4,
+  //     pordactName: "pear",
+  //     prodactImage: "../../../assets/demo/pear.avif",
+  //     typeSize: 1,
+  //     category: 1
+  //   },
+  // ];
+  categories: Category[] = [];
+  chosenCategory: number = 0;
+  deafultCategory = 0;
 
 
 
@@ -67,21 +72,13 @@ export class CatalogPageComponent implements OnInit {
   sizes: [][] = [[]];
   search: string = "";
   currProduct?: prodact;
-  // categories = [
-  //   {
-  //     title: "women",
-  //     src: "../../../assets/img/women.jpg"
-  //   },{
-  //     title: "women",
-  //     src: "../../../assets/img/women.jpg"
-  //   }
-  // ];
 
   constructor(private reqestService: ReqestService) {
   }
 
   ngOnInit(): void {
     this.reqestService.getProdacts().subscribe(element=>this.products = element );
+    this.reqestService.getCategories().subscribe(element=>this.categories = element );
 
     if (sessionStorage.getItem("cartItemsArray") != null) {
       var storedArray = sessionStorage.getItem("cartItemsArray");

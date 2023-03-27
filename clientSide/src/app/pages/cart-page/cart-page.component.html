@@ -5,22 +5,19 @@
       <div class="order-details">
         <p class="details-text">שלוחה</p>
         <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderShluha">
-          <option>שלוחה 1</option>
-          <option>שלוחה 2</option>
-          <option>קייזר</option>
+          <option *ngFor="let shluhaItem of shluhaArray">{{shluhaItem}}</option>
         </select>
       </div>
       <div class="order-details">
         <p class="details-text">סוג הזמנה</p>
         <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderType">
-          <option>בלאי</option>
-          <option>חדש</option>
+          <option *ngFor="let orderTypeItem of orderTypeArray">{{orderTypeItem}}</option>
         </select>
       </div>
       <div class="order-details">
         <p class="details-text">כיתה</p>
         <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderClass">
-          <option *ngFor="let class of classes">{{class}}</option>
+          <option *ngFor="let classItem of classesArray">{{classItem}}</option>
         </select>
       </div>
     </div>

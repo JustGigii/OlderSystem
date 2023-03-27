@@ -1,34 +1,28 @@
-export interface prodact{
+export interface prodact {
     prodactId: number,
     pordactName: string,
     prodactImage: string,
-    typeSize: number
+    typeSize: number,
+    categoryId: number
 }
-export interface demoprodact{
-  prodactId: number,
-  pordactName: string,
-  prodactImage: string,
-  typeSize: number,
-  category: number
-}
-export interface UpDateProdact{
+
+export interface UpDateProdact {
     prodactId: number,
     pordactName: string,
     typeSize: number
 }
-export interface NewOrderpordact
-{
+
+export interface NewOrderpordact {
     pordactId: number,
     size: Map<string,number>;
 }
-export interface NewOrderpordactsend
-{
+
+export interface NewOrderpordactsend {
     pordactId: number,
     sizes: Record<string,number>;
 }
 
-export interface NewOrder
-{
+export interface NewOrder {
   title: string,
   userid: number
   type: string,
@@ -36,4 +30,10 @@ export interface NewOrder
   status: number,
   isdarft: boolean,
   prodact: NewOrderpordactsend[]
+}
+
+export interface Category {
+  categoryName: string,
+  categoryImage: string,
+  categoryId: number
 }

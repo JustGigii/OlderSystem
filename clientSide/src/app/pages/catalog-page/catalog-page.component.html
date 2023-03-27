@@ -5,21 +5,21 @@
     <img class="search-bar-img" src="../../../assets/img/searchBtn.png" alt="search">
   </div>
   <div class="category-container">
-    <div (click)="changeCategory(category.id)" *ngFor="let category of categories" class="category" [class]="category.id == chosenCategory ? 'chosen-category' : ''">
-      <h4 class="category-title">{{category.name}}</h4>
-      <img class="category-img" [src]="category.url" alt="category img" >
+    <div (click)="changeCategory(category.categoryId)" *ngFor="let category of categories" class="category" [class]="category.categoryId == chosenCategory ? 'chosen-category' : ''">
+      <h4 class="category-title">{{category.categoryName}}</h4>
+      <img class="category-img" [src]="category.categoryImage" alt="category img" >
     </div>
   </div>
   <div class="products-container">
-    <ng-container *ngFor="let product of demoproducts">
-      <div *ngIf="chosenCategory == -1;else categoryProducts">
+    <ng-container *ngFor="let product of products">
+      <div *ngIf="chosenCategory == deafultCategory;else categoryProducts">
         <div class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick(product)">
           <img class="product-image" src={{product.prodactImage}} alt="product image">
           <h3 class="product-title">{{product.pordactName}}</h3>
         </div>
       </div>
       <ng-template #categoryProducts>
-        <div class="product" *ngIf="product.pordactName.includes(search) && product.category == chosenCategory" (click)="onClick(product)">
+        <div class="product" *ngIf="product.pordactName.includes(search) && product.categoryId == chosenCategory" (click)="onClick(product)">
           <img class="product-image" src={{product.prodactImage}} alt="product image">
           <h3 class="product-title">{{product.pordactName}}</h3>
         </div>

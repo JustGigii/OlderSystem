@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { iproduct } from './../../page tample/homepage';
 import { NewOrderpordactsend, NewOrder } from './../../page tample/prodactTemplete';
 import { ReqestService } from 'src/app/services/reqest.service';
+import { shluhaArray, orderTypeArray, classesArray } from 'src/app/page tample/cart-page';
 
 @Component({
   selector: 'app-cart-page',
@@ -15,11 +16,14 @@ export class CartPageComponent implements OnInit {
   orderStatus: number = 1;
   orderIsDraft: boolean = false;
   orderShluha: string = "";
-  classes: string[] = ['ט', "י", "יא", "יב", "יג", "יד"];
   orderCart: NewOrderpordactsend[] = [];
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
   isEditable: boolean = false;
+
+  classesArray = classesArray;
+  shluhaArray = shluhaArray;
+  orderTypeArray = orderTypeArray;
 
   constructor(private reqestService: ReqestService) { }
 

@@ -16,10 +16,11 @@ export class PopupProductComponent implements OnInit {
 
 
   //add other compenent to add prodact
-  @Input() product: prodact = {prodactId: 1, prodactImage: "", pordactName: "", typeSize: 1};
+  @Input() product: prodact = {prodactId: 1, prodactImage: "", pordactName: "", typeSize: 1, categoryId: 0};
   f = false;
   addedSizes: Map<string, number> = new Map<string,number>();
   availableSizes: Array<any> = [];
+  // dont need,
   alreadyChosenSizes: Array<any> = [];
   previousSize: any;
   addedToCart: boolean = false;
