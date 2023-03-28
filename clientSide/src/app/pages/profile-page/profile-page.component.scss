@@ -1,13 +1,22 @@
 .header {
   background-color: #c8dbdf;
-  height: 280px;
+  height: 270px;
   width: 100vw;
-  padding: 40px 15px;
+  padding: 30px 15px;
 
-  img {
+  .profile-icon {
     display: block;
     margin: auto;
     width: 120px;
+  }
+   
+  .edit-icon {
+    position: absolute;
+    top: 115px;
+    padding-left: 110px;
+    height: 20px;
+    right: 50%;
+    transform: translateX(50%);
   }
 
   h2{ 
@@ -18,17 +27,19 @@
 
 .info-container {
   position: relative;
-  margin-top: -70px;
+  margin-top: -65px;
   background-color: #f3f2f0;
   height: -webkit-fill-available;
   width: 90%;
   right: 50%;
   transform: translateX(50%);
   border-radius: 30px;
-  padding: 30px;
+  padding: 20px;
 }
 
-
+h4 {
+  margin-bottom: 15px;
+}
 
 
 

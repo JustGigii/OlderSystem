@@ -5,7 +5,7 @@ import { ReqestService } from '../../services/reqest.service'
 import { MsalService } from '@azure/msal-angular';
 import { AuthenticationResult } from '@azure/msal-browser';
 import { Output } from '@angular/core';
-import { outputAst } from '@angular/compiler';
+import { TransformApiResService } from 'src/app/services/transform-api-res/transform-api-res.service';
 
 
 @Component({
@@ -15,27 +15,29 @@ import { outputAst } from '@angular/compiler';
 })
 export class StartPageLoginComponent {
   template: any = startPageTemplate[0];
-  showProfilePage: boolean = false;
-  profileIndex: number = 1;
+  // profileIndex: number = 1;
+
   @Output() selectedPage = new EventEmitter();
+  @Output() userInfo = new EventEmitter();
 
 
-  constructor(private microsoftMsal: MicrosoftMsalService, private apiConnection: ReqestService, private msalService: MsalService,) { }
+  constructor(private microsoftMsal: MicrosoftMsalService, private apiConnection: ReqestService, private msalService: MsalService,
+     private transformRes: TransformApiResService) { }
 
   login() {
     this.msalService.loginPopup().subscribe((response: AuthenticationResult) => {
       this.msalService.instance.setActiveAccount(response.account);
+      sessionStorage.setItem('userLogged', 'login');
 
       // this.apiConnection.getUser(this.microsoftMsal.userID()).subscribe(
-      this.apiConnection.getUser('123456789').subscribe(
+      this.apiConnection.getUser('12346789').subscribe(
         res => {
-          console.log('exist user');
-          this.showProfilePage = false; // exist user
+          this.selectedPage.emit('home-page'); //exist user
+          this.userInfo.emit(res);
         },
         err => {
-          console.log('new user');
-          this.showProfilePage = true; // new user
-          this.selectedPage.emit('new-user-profile');
+          this.selectedPage.emit('new-user-profile'); // new user
+          this.userInfo.emit(this.transformRes.NullApiRes());
         }
       );
     })
@@ -43,5 +45,4 @@ export class StartPageLoginComponent {
   isLogedIn(): boolean {
     return this.microsoftMsal.isLogedIn();
   }
-
 }

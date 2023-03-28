@@ -1,11 +1,14 @@
 <div class="header">
-    <img src="../../../assets/icon/user2.png">
+    <img src="../../../assets/icon/user2.png" class="profile-icon">
+    <img src="../../../assets/icon/edit-icon.png" class="edit-icon">
     <h2>נועם טלבי</h2>
 </div>
 
 
 <div class="info-container">
-    <h4>שךוםםם</h4>
+    <ng-container *ngFor="let element of ProfilePagePattern.userInfo">
+        <h4>{{element.title}}: {{element.info}}</h4>
+    </ng-container>
 </div>
 
 

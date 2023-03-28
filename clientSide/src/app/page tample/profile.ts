@@ -19,13 +19,13 @@ export const ProfilePattern: iProfilePattern =
     }],
     pages:
         [{
-            index: 0,
+            // index: 0,
             title: 'הפרופיל שלי',
             buttonText: 'עריכה'
         },
         {
             title: 'עריכת פרטים אישיים',
-            index: 1,
+            // index: 1,
             buttonText: "אישור",
             formGroup: null,
             element: [
@@ -55,13 +55,18 @@ export const ProfilePattern: iProfilePattern =
 
 export interface iProfilePattern {
     // profile: iProfile;
-    userInfo: Array<{ title: string, info: string }>;
+    userInfo: iUserInfo[];
     pages: iPages[];
+}
+
+export interface iUserInfo {
+    title: string;
+    info: string;
 }
 
 export interface iPages {
     title: string;
-    index: number;
+    // index: number;
     buttonText: string;
     element?: iElement[];
     // profile?: iProfile | null;

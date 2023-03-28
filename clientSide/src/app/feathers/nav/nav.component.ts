@@ -18,6 +18,8 @@ export class NavComponent implements OnInit {
 
   ngOnInit(): void {
     if (this.microsoftMsal.isLogedIn()) {
+      sessionStorage.removeItem("userLogged");
+      // לבדוק לפני למילא פרטים אישיים
       this.selectedPage.emit(navPages[2]);
     } else {
       this.selectedPage.emit(navPages[0]);
