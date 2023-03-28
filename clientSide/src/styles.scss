@@ -100,15 +100,22 @@ p {
 //   border-radius: 35px;
 // }
 
+// button {
+//   height: 13.6%;
+//   width: 28vw;
+//   // margin: auto;
+//   display: block;
+//   font-size: 111%;
+//   border-radius: 23px;
+//   max-width: 188px;
+//   min-width: 114px;
+// }
+
 button {
-  height: 13.6%;
-  width: 28vw;
-  // margin: auto;
-  display: block;
-  font-size: 111%;
-  border-radius: 23px;
-  max-width: 188px;
-  min-width: 114px;
+  border: none;
+  font-family: "heebo";
+  font-size: 22px;
+  font-weight: 800;
 }
 
 .main-title {

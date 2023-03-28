@@ -5,6 +5,10 @@
 <app-cart-page *ngIf="page === 'cart'"></app-cart-page>
 <app-nav (selectedPage)="page = $event"></app-nav>
 
+
+<div class="selected-page-container"><app-selected-product></app-selected-product></div>
+
+
 <div class="profile-page-container" *ngIf="page === 'new-user-profile'">
     <app-profile-page (selectedPage)="page = $event" [page]="page"></app-profile-page>
 </div>

@@ -20,6 +20,7 @@ import { MsalInterceptor, MsalInterceptorConfiguration, MsalModule, MsalService,
 import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { StartPageLoginComponent } from './pages/start-page-login/start-page-login.component';
 import { MicrosoftMsalService } from './services/login/microsoft-msal.service';
+import { SelectedProductComponent } from './pages/selected-product/selected-product.component';
 
 
 
@@ -58,6 +59,7 @@ export function MSALInterceptorConfigFactory(): MsalInterceptorConfiguration {
     ProfilePageComponent,
     ProductDetailsComponent,
     StartPageLoginComponent,
+    SelectedProductComponent,
     // MicrosoftMsalService
   ],
   imports: [

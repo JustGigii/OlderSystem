@@ -5,3 +5,13 @@
   background-color: #c8dbdf;
   width: 100vw;
 }
+
+
+.selected-page-container {
+  position: absolute;
+  height: 100vh;
+  z-index: 100000000;
+  background-color: #c8dbdf;
+  width: 100vw;
+  top: 0;
+}
