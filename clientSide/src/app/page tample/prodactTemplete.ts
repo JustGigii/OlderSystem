@@ -1,9 +1,16 @@
-export interface prodact {
-    prodactId: number,
-    pordactName: string,
-    prodactImage: string,
-    typeSize: number,
-    categoryId: number
+export interface prodact{
+  prodactId: number,
+  pordactName: string,
+  prodactImage: string,
+  categoryId: number,
+  typeSize: number
+}
+export interface demoprodact{
+  prodactId: number,
+  pordactName: string,
+  prodactImage: string,
+  typeSize: number,
+  category: number
 }
 
 export interface UpDateProdact {

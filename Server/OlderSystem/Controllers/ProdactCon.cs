@@ -72,7 +72,7 @@ namespace Controllers
 
         }
         [HttpPost("azure")]
-        public async Task<IActionResult> AddProdactImage( WriteProdactDto prodactDto)
+        public async Task<IActionResult> AddProdactImage(WriteProdactDto prodactDto)
         {
             try
             {
@@ -100,7 +100,8 @@ namespace Controllers
             try
             {
                 var prodact = await _prodact.GetPordact(prodactid);
-                if (await _prodact.DeleteProdact(prodact)) {
+                if (await _prodact.DeleteProdact(prodact))
+                {
                     return Ok(new
                     {
                         status = "succes",

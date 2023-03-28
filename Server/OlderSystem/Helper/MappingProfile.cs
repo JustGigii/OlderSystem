@@ -33,6 +33,7 @@ namespace Helper
             CreateMap<User,WirteUserDto>().ReverseMap();
 
             CreateMap<WriteCatagory, Category>().ReverseMap();
+            CreateMap<CatagoryDto, Category>().ReverseMap();
         }
     }
 }

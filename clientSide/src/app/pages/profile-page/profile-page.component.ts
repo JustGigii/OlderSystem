@@ -1,6 +1,6 @@
 import { Component, EventEmitter } from '@angular/core';
 // import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { iProfilePattern, ProfilePattern, iPages } from 'src/app/page tample/profile';
+import { iProfilePattern, ProfilePattern, iPages,CreateUserDetails } from 'src/app/page tample/profile';
 import { FormGroup, FormControl, Validators, ValidatorFn, ValidationErrors, AbstractControl, FormArray, RequiredValidator } from '@angular/forms';
 import { ReqestService } from 'src/app/services/reqest.service';
 import { MicrosoftMsalService } from 'src/app/services/login/microsoft-msal.service';
@@ -69,12 +69,27 @@ export class ProfilePageComponent {
         case 0: this.pagePattern = this.ProfilePagePattern.pages[1];
           break;
         case 1: this.pagePattern = this.ProfilePagePattern.pages[0];
+        if(this.page === 'new-user-profile')
+        {
+          this.CreateUser()
+        }
           console.log(this.editProfile)
           break;
       }
     }
   }
-
+  CreateUser()
+  {
+   let user: CreateUserDetails = 
+  {
+    fullName : this.editProfile.value.fullName||"",
+    id:this.editProfile.value.id||"",
+    email:this.editProfile.value.email||"",
+    phoneNumber:this.editProfile.value.phoneNumber||"",
+    manageRole:0
+  }
+  console.log(user)
+  }
   setValueFormGroup() {
     this.editProfile.controls['fullName'].setValue(this.ProfilePagePattern.userInfo[0].info);
     this.editProfile.controls['id'].setValue(this.ProfilePagePattern.userInfo[1].info);

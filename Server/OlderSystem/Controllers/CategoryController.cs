@@ -27,7 +27,7 @@ namespace OlderHandeler.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<UpdateOldersDto>))]
+        [ProducesResponseType(200, Type = typeof(CatagoryDto))]
         public async Task<IActionResult> GetAllcatgoey()
         {
             try
@@ -37,8 +37,9 @@ namespace OlderHandeler.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                return Ok(categories);
+                return Ok( _mapper.Map<IEnumerable<CatagoryDto>>(categories));
             }
+            catch (NullReferenceException) { return NotFound(); }
             catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
         }
         [HttpGet("{catgory}")]
@@ -54,11 +55,12 @@ namespace OlderHandeler.Controllers
 
                 return Ok(_mapper.Map<IEnumerable<ReadPordactDto>>(prodact));
             }
+            catch (NullReferenceException) { return NotFound(); }
             catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
         }
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(WriteCatagory))]
-        public async Task<IActionResult> CreateCatagory(WriteCatagory newCatgorydto)//to work
+        public async Task<IActionResult> CreateCatagory(WriteCatagory newCatgorydto)
         {
             try
             {
@@ -74,11 +76,31 @@ namespace OlderHandeler.Controllers
                     });
                 }
                 catagory.categoryId = categoryId;
-                return Ok(catagory);
+                return Ok(_mapper.Map<CatagoryDto>(catagory));
             }
+            catch (NullReferenceException) { return NotFound(); }
             catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
             }
-       
+        [HttpPost("prodact")]
+        [ProducesResponseType(200, Type = typeof(WriteProdactDto))]
+        public async Task<IActionResult> AddItemToCatgory(int prodactid,int catgoryid)
+        {
+            try
+            {
+                
+                var protdact = await _context.AddprodactToCategory(prodactid,catgoryid);
+                if (protdact)
+                    return Ok(new
+                    {
+                        status = "succes",
+                        data = "the porfact get new catgoryfrom the system"
+                    });
+                throw new Exception();
+            }
+            catch (NullReferenceException) { return NotFound(); }
+            catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
+        }
+
         [HttpDelete("{catgoryid}")]
         public async Task<IActionResult> DeleteCatgory(int catgoryid)
         {

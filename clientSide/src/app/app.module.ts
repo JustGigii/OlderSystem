@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { environment } from 'src/environments/environment';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DatePipe } from '@angular/common'
@@ -26,8 +27,8 @@ export function MSAL_InctanceFactory(): IPublicClientApplication {
   return new PublicClientApplication({
     auth: {
       clientId: 'c25247c6-3cd6-4a30-8af2-7262a89b31c4', //בעיה במה שהבאת לי
-      redirectUri: 'http://localhost:4200'
-      // redirectUri: 'https://https://oldersystem.azurewebsites.net'
+      redirectUri:(environment.production)?'https://oldersystemweb.azurewebsites.net/': 'http://localhost:4200'
+      // \redirectUri: 'https://https://oldersystem.azurewebsites.net'
     }
   })
 }

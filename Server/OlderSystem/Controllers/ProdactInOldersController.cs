@@ -19,7 +19,7 @@ namespace OlderSystem.Controllers
             _mapper = mapper;
             _context = context;
         }
-        
+
         [HttpPut("{userid}")]
         public async Task<IActionResult> UpdateOlder(int userid, UpdateOldersDto olderDto)
         {

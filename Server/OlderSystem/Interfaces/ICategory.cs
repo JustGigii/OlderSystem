@@ -9,5 +9,6 @@ namespace Interfaces
         Task<ICollection<Category>> getAllCategories();
         Task<bool> AddprodactToCategory(int pordactid, int cadagoryId);
         Task<ICollection<Prodact>> AllpordactInCategory(int cadagoryId);
+        //Task<>
     }
 }

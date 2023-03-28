@@ -42,6 +42,19 @@ namespace OlderHandeler.Controllers
         }
         [HttpGet("users/{UserId}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<UpdateOldersDto>))]
+        public async Task<IActionResult> GetAllOlders(int UserId)
+        {
+            try
+            {
+                var olders = await _context.GetAllOlders(UserId);
+
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                return Ok(_mapper.Map<IEnumerable<UpdateOldersDto>>(olders));
+            }
+            catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
+        }
         [HttpPost]
         [ProducesResponseType(200, Type = typeof(WirteOldersDto))]
         public async Task<IActionResult> CreateOlders(WirteOldersDto newOldersdto)
@@ -92,10 +105,10 @@ namespace OlderHandeler.Controllers
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
-                
+
                 if (!await CheackUser(userid, olderId)) return BadRequest(new { status = "faild", data = "you are not the user who create the orders" });
                 var older = await _context.GetOrdersOlder(olderId);
-                ReadOldersDto mapOlder =await Tosend(older.OlderiD);
+                ReadOldersDto mapOlder = await Tosend(older.OlderiD);
                 return Ok(mapOlder);
             }
             catch (NullReferenceException) { return NotFound(); }
@@ -103,15 +116,15 @@ namespace OlderHandeler.Controllers
         }
 
         [HttpPut("/promote{userid}")]
-        public async Task<IActionResult> PromoteOlders(int userid,int olderId)
+        public async Task<IActionResult> PromoteOlders(int userid, int olderId)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
-            
+
                 if (!await CheackUser(userid, olderId)) return BadRequest(new { status = "faild", data = "you are not the user who create the orders" });
-             
+
                 await _context.PromoteOlders(olderId);
                 return Ok(await Tosend(olderId));
             }
@@ -125,14 +138,14 @@ namespace OlderHandeler.Controllers
             }
             catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
         }
-       
+
         [HttpDelete("{userid}")]
-        public async Task<IActionResult> Deleteolder(int olderId,int userid)
+        public async Task<IActionResult> Deleteolder(int olderId, int userid)
         {
             try
             {
                 if (!await CheackUser(userid, olderId)) return BadRequest(new { status = "faild", data = "you are not the user who create the orders" });
-                  
+
                 if (await _context.DeleteOlder(olderId))
                     return Ok(new
                     {
@@ -159,70 +172,10 @@ namespace OlderHandeler.Controllers
             return mapOlder;
         }
 
-        private async Task<bool> CheackUser(int userId,int olderid)
+        private async Task<bool> CheackUser(int userId, int olderid)
         {
-            var older =await  _context.GetOrdersOlder(olderid);
-            return older.UserId== userId;
+            var older = await _context.GetOrdersOlder(olderid);
+            return older.UserId == userId;
         }
-
-        //[HttpPost]
-        //[Route("Iafbase")]
-        //[ProducesResponseType(200, Type = typeof(WirteOldersDto))]
-        //public async Task<IActionResult> older(ReadOlderProdactDto newOldersdto)
-        //{
-        //    try
-        //    {
-
-        //        if (!ModelState.IsValid) return BadRequest(ModelState);
-
-        //        int prodactid = newOldersdto.PordactId;
-
-        //        foreach (var item in newOldersdto.Sizes ?? throw new NullReferenceException())
-        //        {
-        //            if (!await _context.CreateOlderpordact(new Olderpordact()
-        //            {
-        //                PordactId = prodactid,
-        //                OlderId = 2,
-        //                Sizes = item.Key,
-        //                quantity = item.Value
-        //            })) throw new Exception("Create Older pordact faild");
-
-        //        }
-        //        return Ok("succes");
-        //    }
-        //    catch (NullReferenceException e) { return NotFound(); }
-        //    catch (Exception e) { return BadRequest(GlobalMethod.ProblemAtSend(e.Message)); }
-        //}
     }
 }
-
-//{
-//    "title": "הגיגית של גיגי",
-//  "type": "רגיל",
-//  "date": "2022-12-26T13:10:52.745Z",
-//  "status": 1,
-//  "isdarft": false,
-//  "prodact": [
-//    {
-//        "pordactId": 1,
-//      "sizes": {
-//            "ג": 5,
-//        "ב": 2,
-//        "ק": 1
-//      }
-//    }
-//  ]
-//}
-
-
-
-
-
-//{
-//    "pordactId": 1,
-//      "sizes": {
-//        "ג": 5,
-//        "ב": 2,
-//        "ק": 1
-//      }
-//}

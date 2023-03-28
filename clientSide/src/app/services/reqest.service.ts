@@ -58,6 +58,7 @@ export class ReqestService {
   updateUser(user:UserDetails): Observable<UserDetails> {
     return this.http.put<UserDetails>(this.apiUrl+"/Users",user,httpOptions)
   }
+  
   // sendNewOrder(newOrder: NewOrder) {
   //   return this.http.post<NewOrder>(this);
   // }
