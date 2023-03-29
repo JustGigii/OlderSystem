@@ -19,11 +19,13 @@ export const ProfilePattern: iProfilePattern =
     }],
     pages:
         [{
+            url: 'show-profile',
             // index: 0,
-            title: 'הפרופיל שלי',
+            title: '',
             buttonText: 'עריכה'
         },
         {
+            url: 'edit-profile',
             title: 'עריכת פרטים אישיים',
             // index: 1,
             buttonText: "אישור",
@@ -65,6 +67,7 @@ export interface iUserInfo {
 }
 
 export interface iPages {
+    url: string;
     title: string;
     // index: number;
     buttonText: string;

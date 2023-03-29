@@ -31,7 +31,8 @@ export class ProfilePageComponent {
 
   ngOnInit(): void {
     this.ProfilePagePattern.pages[1].formGroup = this.editProfile;
-    this.ProfilePagePattern.userInfo = this.userInfo || this.transformRes.nullUserInfo();
+    this.ProfilePagePattern.userInfo = this.userInfo || this.transformRes.nullUserInfo();  
+    if(this.userInfo) { this.ProfilePagePattern.pages[0].title = this.userInfo[0].info; }
 
     if (this.page === 'new-user-profile') {
       this.pagePattern = ProfilePattern.pages[1];
@@ -39,6 +40,8 @@ export class ProfilePageComponent {
     } else {
       this.pagePattern = ProfilePattern.pages[0];
     }
+
+    // this.pagePattern = ProfilePattern.pages[1];
   }
 
   submit() {
@@ -58,6 +61,10 @@ export class ProfilePageComponent {
     //   }
   
     // }
+  }
+
+  editClicked() {
+    this.pagePattern = this.ProfilePagePattern.pages[1];
   }
   
   setValueFormGroup() {

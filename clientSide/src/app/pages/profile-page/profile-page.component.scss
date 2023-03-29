@@ -3,11 +3,30 @@
   height: 270px;
   width: 100vw;
   padding: 30px 15px;
+  text-align: center;
+
+  &.heder__animation {
+    animation: 0.2s header-minimize 0s linear forwards;
+  }
+
+  @keyframes header-minimize {
+    from { height: 270px; }
+    to { height: 230px; padding: 15px; }
+  }
 
   .profile-icon {
     display: block;
     margin: auto;
     width: 120px;
+  
+    &.profile-icon__icon-animation {
+      animation: 0.2s profile-minimize 0s linear forwards;
+    }
+  }
+
+  @keyframes profile-minimize {
+    from { width: 120px; }
+    to { width: 100px; }
   }
    
   .edit-icon {
@@ -20,8 +39,8 @@
   }
 
   h2{ 
-    text-align: center;
     font-weight: 600;
+    font-size: 20px;
   }
 }
 
@@ -29,7 +48,7 @@
   position: relative;
   margin-top: -65px;
   background-color: #f3f2f0;
-  height: -webkit-fill-available;
+  // height: -webkit-fill-available;
   width: 90%;
   right: 50%;
   transform: translateX(50%);
@@ -41,6 +60,34 @@ h4 {
   margin-bottom: 15px;
 }
 
+h5 {
+  margin-bottom: 3px;
+}
+
+hr {
+  border: #e0e0e0 1px solid;
+  margin-bottom: 15px;
+}
+
+hr:last-child {
+  display: none;
+}
+
+input {
+  width: 100%;
+  border: solid 2px #d8d8d8;
+  margin-bottom: 20px;
+  border-radius: 12px;
+  padding: 4px 6px;
+}
+
+button {
+  border: none;
+  background: none;
+  font-size: 18px;
+  font-weight: 500;
+
+}
 
 
 
