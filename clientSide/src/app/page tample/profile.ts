@@ -20,26 +20,18 @@ export const ProfilePattern: iProfilePattern =
     pages:
         [{
             url: 'show-profile',
-            // index: 0,
             title: '',
-            buttonText: 'עריכה'
         },
         {
             url: 'edit-profile',
             title: 'עריכת פרטים אישיים',
-            // index: 1,
             buttonText: "אישור",
             formGroup: null,
             element: [
                 {
-                    title: "שם פרטי",
+                    title: "שם מלא",
                     HTMLelement: "input",
                     validName: "fullName",
-                },
-                {
-                    title: "תעודת זהות",
-                    HTMLelement: "input",
-                    validName: "id",
                 },
                 {
                     title: "אימייל",
@@ -69,10 +61,8 @@ export interface iUserInfo {
 export interface iPages {
     url: string;
     title: string;
-    // index: number;
-    buttonText: string;
+    buttonText?: string;
     element?: iElement[];
-    // profile?: iProfile | null;
     formGroup?: FormGroup | null;
 }
 

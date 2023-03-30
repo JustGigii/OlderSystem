@@ -1,17 +1,25 @@
 .header {
   background-color: #c8dbdf;
-  height: 270px;
+  height: 269px;
+  height: 260px;
   width: 100vw;
   padding: 30px 15px;
   text-align: center;
 
-  &.heder__animation {
+  &.header__minimize-animation {
     animation: 0.2s header-minimize 0s linear forwards;
+  }
+  &.header__maximize-animation {
+    animation: 0.2s header-maximize 0s linear forwards;
   }
 
   @keyframes header-minimize {
     from { height: 270px; }
     to { height: 230px; padding: 15px; }
+  }
+  @keyframes header-maximize {
+    from { height: 230x; }
+    to { height: 270px;}
   }
 
   .profile-icon {
@@ -19,14 +27,21 @@
     margin: auto;
     width: 120px;
   
-    &.profile-icon__icon-animation {
+    &.profile-icon__minimize-animation {
       animation: 0.2s profile-minimize 0s linear forwards;
     }
-  }
-
-  @keyframes profile-minimize {
-    from { width: 120px; }
-    to { width: 100px; }
+    &.profile-icon__maximize-animation {
+      animation: 0.2s profile-maximize 0s linear forwards;
+    }
+    
+    @keyframes profile-minimize {
+      from { width: 120px; }
+      to { width: 100px; }
+    }
+    @keyframes profile-maximize {
+      from { width: 100px; }
+      to { width: 120px; }
+    }
   }
    
   .edit-icon {

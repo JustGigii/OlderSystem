@@ -1,9 +1,9 @@
-<app-start-page-login (selectedPage)="page = $event" (userInfo)="createUserInfo($event)" *ngIf="page === 'start-page'"></app-start-page-login>
+<app-start-page-login (selectedPage)="page = $event" (user)="user = $event" *ngIf="page === 'start-page'"></app-start-page-login>
 <app-nav (selectedPage)="page = $event"></app-nav>
 
 
 <app-home-page *ngIf="page === 'home-page'" ></app-home-page>
-<app-profile-page (selectedPage)="page = $event" [userInfo]="userInfo" *ngIf="page === 'profile'" ></app-profile-page>
+<app-profile-page (selectedPage)="page = $event" [user]="user" *ngIf="page === 'profile'" ></app-profile-page>
 <catalog-page *ngIf="page === 'products'"></catalog-page>
 <app-cart-page *ngIf="page === 'cart'"></app-cart-page>
 

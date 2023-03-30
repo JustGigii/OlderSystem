@@ -1,9 +1,9 @@
-<div class="header" [class.heder__animation]="pagePattern.url === 'edit-profile'">
-    <img src="../../../assets/icon/user2.png" class="profile-icon" [class.profile-icon__icon-animation]="pagePattern.url === 'edit-profile'">
+<div class="header" [class.header__maximize-animation]="animation === 'maximize'"  [class.header__minimize-animation]="animation === 'minimize'">
+    <img src="../../../assets/icon/user2.png" class="profile-icon" [class.profile-icon__minimize-animation]="animation === 'minimize'" 
+    [class.profile-icon__maximize-animation]="animation === 'maximize'">
     <img src="../../../assets/icon/edit-icon.png" *ngIf="pagePattern.url === 'show-profile'" (click)="editClicked()" class="edit-icon">
     <h2>{{pagePattern.title}}</h2>
 </div>
-
 
 <div class="info-container">
     <ng-container *ngIf="pagePattern.url === 'show-profile'">
@@ -11,16 +11,15 @@
             <h4>{{element.title}}: {{element.info}}</h4>
             <hr>
         </ng-container>
-    </ng-container>
-    
+    </ng-container>    
 
     <ng-container *ngIf="pagePattern.formGroup">
         <form [formGroup]="pagePattern.formGroup" (ngSubmit)="submit()">
             <ng-container *ngFor="let element of pagePattern.element">
-                <h5>{{element.title}}</h5>
+                <h5 *ngIf="element.title != 'תעודת זהות'">{{element.title}}</h5>
                 <input *ngIf="element.HTMLelement === 'input'" [formControlName] ="element.validName">
             </ng-container>
-            <button type="submit">{{pagePattern.buttonText}}</button>        
+            <button type="submit">{{pagePattern.buttonText}}</button>
         </form>
     </ng-container>
 </div>

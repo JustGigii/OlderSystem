@@ -15,10 +15,10 @@ import { TransformApiResService } from 'src/app/services/transform-api-res/trans
 })
 export class StartPageLoginComponent {
   template: any = startPageTemplate[0];
-  // profileIndex: number = 1;
 
   @Output() selectedPage = new EventEmitter();
   @Output() userInfo = new EventEmitter();
+  @Output() user = new EventEmitter();
 
 
   constructor(private microsoftMsal: MicrosoftMsalService, private apiConnection: ReqestService, private msalService: MsalService,
@@ -30,10 +30,11 @@ export class StartPageLoginComponent {
       sessionStorage.setItem('userLogged', 'login');
 
       // this.apiConnection.getUser(this.microsoftMsal.userID()).subscribe(
-      this.apiConnection.getUser('12346789').subscribe(
+      this.apiConnection.getUser('324262070').subscribe(
         res => {
           this.selectedPage.emit('home-page'); //exist user
           this.userInfo.emit(res);
+          this.user.emit(res);
         },
         err => {
           this.selectedPage.emit('new-user-profile'); // new user
