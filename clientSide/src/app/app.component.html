@@ -3,7 +3,7 @@
 
 
 <app-home-page *ngIf="page === 'home-page'" ></app-home-page>
-<app-profile-page (selectedPage)="page = $event" [user]="user" *ngIf="page === 'profile'" ></app-profile-page>
+<app-profile-page (selectedPage)="page = $event" (updatedUser)="user = $event" [user]="user" *ngIf="page === 'profile'" ></app-profile-page>
 <catalog-page *ngIf="page === 'products'"></catalog-page>
 <app-cart-page *ngIf="page === 'cart'"></app-cart-page>
 

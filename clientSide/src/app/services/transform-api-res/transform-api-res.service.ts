@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { UserDetails, iUserInfo } from 'src/app/page tample/profile';
+import { MicrosoftMsalService } from '../login/microsoft-msal.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransformApiResService {
 
-  constructor() { }
+  constructor(private microsoftMSAL: MicrosoftMsalService) { }
 
   getUserInfo(response: UserDetails | undefined): iUserInfo[] {
     if(response) {
@@ -31,7 +32,7 @@ export class TransformApiResService {
       info: '',
     }, {
       title: 'תעודת זהות',
-      info: '',
+      info: this.microsoftMSAL.userID(),
     },
     {
       title: 'אימייל',
@@ -53,24 +54,5 @@ export class TransformApiResService {
       phoneNumber: '',
       manageRole: '',
     };
-  }
-
-  nullUserInfo(): iUserInfo[] {
-    
-    return [{
-      title: 'שם מלא',
-      info: '',
-    }, {
-      title: 'תעודת זהות',
-      info: '',
-    },
-    {
-      title: 'אימייל',
-      info: '',
-    },
-    {
-      title: 'מספר טלפון',
-      info: ''
-    }];
   }
 }

@@ -20,10 +20,10 @@ export class ProfilePageComponent {
   @Input() user: UserDetails | undefined;
   @Input() page: string | undefined;
   @Output() selectedPage = new EventEmitter();
+  @Output() updatedUser = new EventEmitter();
 
   editProfile = new FormGroup({
     fullName: new FormControl('', Validators.required),
-    id: new FormControl('', Validators.required),
     email: new FormControl('', Validators.required),
     phoneNumber: new FormControl('', Validators.required)
   });
@@ -38,7 +38,6 @@ export class ProfilePageComponent {
     this.setValueFormGroup();
     this.ProfilePagePattern.pages[0].title = this.user?.fullName || '';
 
-
     if (this.page === 'new-user-profile') {
       this.pagePattern = ProfilePattern.pages[1];
     } else {
@@ -48,17 +47,31 @@ export class ProfilePageComponent {
 
   submit() {
     if(this.editProfile.valid) {
-
-      if(this.page === 'new-user-profile') { 
-        this.selectedPage.emit('home-page');
-      } else {
-        this.animation = 'maximize';
+      if(this.page === 'new-user-profile') {
+        this.apiConnection.postUser(this.createUserInterface()).subscribe(
+          res => {
+            this.user = res;
+            this.ProfilePagePattern.userInfo = this.transformRes.getUserInfo(res);
+            this.updatedUser.emit(res);
+            this.selectedPage.emit('home-page');
+          },
+          err => console.log(err),
+        )
+        // this.selectedPage.emit('home-page');
+      }
+      else {
+        if(this.isProfileChanged()) {
+          this.apiConnection.updateUser(this.createUserInterface()).subscribe(
+            res => {
+              this.user = res;
+              this.ProfilePagePattern.userInfo = this.transformRes.getUserInfo(res);
+              this.updatedUser.emit(res);
+            },
+            err => console.log(err),
+          );
+        }
+        this.animation = 'maximize'
         this.pagePattern = this.ProfilePagePattern.pages[0];
-
-        // this.apiConnection.updateUser(this.createUserInterface()).subscribe(
-        //   res => console.log(res),
-        //   err => console.log(err),
-        // );
       }
     }
   }
@@ -71,10 +84,16 @@ export class ProfilePageComponent {
   setValueFormGroup() {
     if(this.ProfilePagePattern.userInfo) {
       this.editProfile.controls['fullName'].setValue(this.user?.fullName || '');
-      this.editProfile.controls['id'].setValue(this.user?.id || '');
       this.editProfile.controls['email'].setValue(this.user?.email || '');
       this.editProfile.controls['phoneNumber'].setValue(this.user?.phoneNumber || '');
     }
+  }
+
+  isProfileChanged() {
+    let newProfile = this.createUserInterface();
+
+    return (this.user?.fullName != newProfile.fullName) || (this.user.email != newProfile.email) ||
+      (this.user.phoneNumber != newProfile.phoneNumber);
   }
 
   createUserInterface(): UserDetails {

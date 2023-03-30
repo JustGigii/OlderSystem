@@ -1,6 +1,7 @@
-import { Component, EventEmitter, Output, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit, Input } from '@angular/core';
 import { navPages } from 'src/app/page tample/nav-pages';
 import { MicrosoftMsalService } from 'src/app/services/login/microsoft-msal.service';
+import { UserDetails } from 'src/app/page tample/profile';
 
 @Component({
   selector: 'app-nav',
@@ -17,10 +18,10 @@ export class NavComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     if (this.microsoftMsal.isLogedIn()) {
       sessionStorage.removeItem("userLogged");
-      // לבדוק לפני למילא פרטים אישיים
-      this.selectedPage.emit(navPages[2]);
+      this.selectedPage.emit(navPages[2]); 
     } else {
       this.selectedPage.emit(navPages[0]);
     }

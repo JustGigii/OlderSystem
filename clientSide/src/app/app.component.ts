@@ -1,5 +1,5 @@
-import { Component, OnInit, Output, EventEmitter} from '@angular/core';
-import { UserDetails, iUserInfo } from './page tample/profile';
+import { Component, OnInit } from '@angular/core';
+import { UserDetails } from './page tample/profile';
 import { ReqestService } from './services/reqest.service';
 import { MicrosoftMsalService } from './services/login/microsoft-msal.service';
 
@@ -10,41 +10,18 @@ import { MicrosoftMsalService } from './services/login/microsoft-msal.service';
 })
 export class AppComponent implements OnInit {
 
-  // userInfo: iUserInfo[] | undefined;
-
   user: UserDetails | undefined;
   title = 'OlderSystem';
   page: string = '';
 
 
   constructor( private apiConnection: ReqestService, private microsoftMsal: MicrosoftMsalService) {
-    if(!sessionStorage.getItem('userLogged')) { 
+    if(!sessionStorage.getItem('userLogged') && microsoftMsal.isLogedIn()) { 
       this.apiConnection.getUser(this.microsoftMsal.userID()).subscribe(
-        // res => { this.createUserInfo(res); this.user = res;},
         res => this.user = res,
-        err => console.log(err),
+        err => this.page = 'new-user-profile',
       )
     }
   }
   ngOnInit(): void {  }
-
-
-  // createUserInfo(apiRes: UserDetails) {
-    
-  //   this.userInfo = [{
-  //     title: 'שם מלא',
-  //     info: apiRes.fullName,
-  //   }, {
-  //     title: 'תעודת זהות',
-  //     info: apiRes.id,
-  //   },
-  //   {
-  //     title: 'אימייל',
-  //     info: apiRes.email,
-  //   },
-  //   {
-  //     title: 'מספר טלפון',
-  //     info: apiRes.phoneNumber
-  //   }];
-  // }
 }
