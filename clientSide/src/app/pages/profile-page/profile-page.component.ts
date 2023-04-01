@@ -24,8 +24,8 @@ export class ProfilePageComponent {
 
   editProfile = new FormGroup({
     fullName: new FormControl('', Validators.required),
-    email: new FormControl('', Validators.required),
-    phoneNumber: new FormControl('', Validators.required)
+    email: new FormControl('', Validators.email),
+    phoneNumber: new FormControl('', [Validators.required, Validators.pattern("[0][5][0-9]{8}")])
   });
 
   constructor(private transformRes: TransformApiResService, private apiConnection: ReqestService) {
@@ -57,21 +57,23 @@ export class ProfilePageComponent {
           },
           err => console.log(err),
         )
-        // this.selectedPage.emit('home-page');
       }
       else {
         if(this.isProfileChanged()) {
           this.apiConnection.updateUser(this.createUserInterface()).subscribe(
             res => {
               this.user = res;
+              this.ProfilePagePattern.pages[0].title = res.fullName;
               this.ProfilePagePattern.userInfo = this.transformRes.getUserInfo(res);
               this.updatedUser.emit(res);
+              this.backToProfileViewe();
             },
             err => console.log(err),
           );
         }
-        this.animation = 'maximize'
-        this.pagePattern = this.ProfilePagePattern.pages[0];
+        else{
+          this.backToProfileViewe();
+        }
       }
     }
   }
@@ -79,6 +81,11 @@ export class ProfilePageComponent {
   editClicked() {
     this.pagePattern = this.ProfilePagePattern.pages[1];
     this.animation = 'minimize';
+  }
+
+  backToProfileViewe() {
+    this.animation = 'maximize'
+    this.pagePattern = this.ProfilePagePattern.pages[0]; 
   }
   
   setValueFormGroup() {

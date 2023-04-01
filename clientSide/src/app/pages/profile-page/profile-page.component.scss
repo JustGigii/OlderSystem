@@ -1,7 +1,5 @@
 .header {
   background-color: #c8dbdf;
-  // height: 269px;
-  // height: 260px;
   width: 100vw;
   padding: 30px 15px 95px;
   text-align: center;
@@ -22,10 +20,15 @@
     to { padding: 30px 15px 95px; }
   }
 
+  .icons-container {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+  }
+
   .profile-icon {
-    display: block;
-    margin: auto;
-    width: 120px;
+    width: 105px;
+    margin: 10px 0 10px 20px;
   
     &.profile-icon__minimize-animation {
       animation: 0.2s profile-minimize 0s linear forwards;
@@ -35,22 +38,25 @@
     }
     
     @keyframes profile-minimize {
-      from { width: 120px; }
-      to { width: 100px; }
+      from { width: 105px; margin: 10px; }
+      to { width: 85px; margin: 10px; }
     }
     @keyframes profile-maximize {
-      from { width: 100px; }
-      to { width: 120px; }
+      from { width: 85px; }
+      to { width: 105px; }
     }
   }
    
   .edit-icon {
-    position: absolute;
-    top: 115px;
-    padding-left: 110px;
-    height: 20px;
-    right: 50%;
-    transform: translateX(50%);
+    width: 20px;
+    height: fit-content;
+    margin-bottom: 20px;
+  }
+
+  .cancel-icon {
+    width: 20px;
+    height: fit-content;
+    margin-left: 3px;
   }
 
   h2{ 

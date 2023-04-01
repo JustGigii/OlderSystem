@@ -1,8 +1,13 @@
 <div class="header" [class.header__maximize-animation]="animation === 'maximize'"  [class.header__minimize-animation]="animation === 'minimize'">
-    <img src="../../../assets/icon/user2.png" class="profile-icon" [class.profile-icon__minimize-animation]="animation === 'minimize'" 
-    [class.profile-icon__maximize-animation]="animation === 'maximize'">
-    <img src="../../../assets/icon/edit-icon.png" *ngIf="pagePattern.url === 'show-profile'" (click)="editClicked()" class="edit-icon">
-    <h2>{{pagePattern.title}}</h2>
+    <div class="icons-container">
+        <img src="../../../assets/icon/edit-icon.png" *ngIf="pagePattern.url === 'show-profile'" (click)="editClicked()" class="edit-icon">
+        <img src="../../../assets/icon/soldier.png" class="profile-icon" [class.profile-icon__minimize-animation]="animation === 'minimize'" 
+        [class.profile-icon__maximize-animation]="animation === 'maximize'">
+    </div>
+    <div class="icons-container" style="align-items: center;">
+        <img src="../../../assets/icon/cancel.png" class="cancel-icon" (click)="backToProfileViewe()" *ngIf="pagePattern.url === 'edit-profile'">
+        <h2>{{pagePattern.title}}</h2>
+    </div>
 </div>
 
 <div class="info-container">
