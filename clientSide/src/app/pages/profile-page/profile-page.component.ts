@@ -66,8 +66,8 @@ export class ProfilePageComponent {
               this.ProfilePagePattern.pages[0].title = res.fullName;
               this.ProfilePagePattern.userInfo = this.transformRes.getUserInfo(res);
               this.updatedUser.emit(res);
-              this.backToProfileViewe();
-            },
+              this.animation = 'maximize'
+              this.pagePattern = this.ProfilePagePattern.pages[0];             },
             err => console.log(err),
           );
         }
@@ -84,6 +84,7 @@ export class ProfilePageComponent {
   }
 
   backToProfileViewe() {
+    this.setValueFormGroup();
     this.animation = 'maximize'
     this.pagePattern = this.ProfilePagePattern.pages[0]; 
   }

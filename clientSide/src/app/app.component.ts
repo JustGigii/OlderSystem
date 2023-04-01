@@ -10,9 +10,16 @@ import { MicrosoftMsalService } from './services/login/microsoft-msal.service';
 })
 export class AppComponent implements OnInit {
 
-  user: UserDetails | undefined;
   title = 'OlderSystem';
   page: string = '';
+  user: UserDetails = {
+    userId: 0,
+    fullName: '',
+    id: '',
+    email: '',
+    phoneNumber: '',
+    manageRole: 0,
+  };
 
 
   constructor( private apiConnection: ReqestService, private microsoftMsal: MicrosoftMsalService) {

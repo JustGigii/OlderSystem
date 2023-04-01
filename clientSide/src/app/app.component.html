@@ -2,7 +2,7 @@
 <app-nav (selectedPage)="page = $event"></app-nav>
 
 
-<app-home-page *ngIf="page === 'home-page'" ></app-home-page>
+<app-home-page *ngIf="page === 'home-page'" [userName]="user.fullName"></app-home-page>
 <app-profile-page (selectedPage)="page = $event" (updatedUser)="user = $event" [user]="user" *ngIf="page === 'profile'" ></app-profile-page>
 <catalog-page *ngIf="page === 'products'"></catalog-page>
 <app-cart-page *ngIf="page === 'cart'"></app-cart-page>

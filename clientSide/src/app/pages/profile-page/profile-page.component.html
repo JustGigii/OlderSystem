@@ -22,8 +22,9 @@
         <form [formGroup]="pagePattern.formGroup" (ngSubmit)="submit()">
             <ng-container *ngFor="let element of pagePattern.element">
                 <h5 *ngIf="element.title != 'תעודת זהות'">{{element.title}}</h5>
-                <input *ngIf="element.HTMLelement === 'input'" [formControlName] ="element.validName">
+                <input *ngIf="element.HTMLelement === 'input'" [formControlName] ="element.validName" [class.input__error]="!editProfile.get(element.validName)?.valid">
             </ng-container>
+            <h5 *ngIf="!editProfile.valid" style="color: red;">הכנס בבקשה ערך חוקי</h5>
             <button type="submit">{{pagePattern.buttonText}}</button>
         </form>
     </ng-container>
