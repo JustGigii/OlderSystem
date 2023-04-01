@@ -17,12 +17,12 @@
   .icon {
     display: block;
     margin: auto;
-    width: 25px;
+    width: 27px;
   }
   .selected-icon {
     display: block;
     margin: auto;
-    width: 25px;
+    width: 27px;
   }
 }
 
@@ -42,13 +42,13 @@
 .show {
   flex-grow: 1;
   width: 85%;
-  animation: 0.2s show-animation 0s ease-in-out forwards;
+  animation: 0.5s show-animation 0s cubic-bezier(0, 0.92, 1, 1) forwards;
 }
 
 .unshow {
   flex-grow: 1;
   width: 85%;
-  animation: 0.2s unshow-animation 0s ease-in-out forwards;
+  animation: 0.5s unshow-animation 0s ease-in-out forwards;
 }
 
 @keyframes show-animation {
