@@ -16,6 +16,9 @@ export class ProfilePageComponent {
   ProfilePagePattern: iProfilePattern; // page index: 0-show profile, 1-edit profile
   pagePattern: iPages = ProfilePattern.pages[0];
   animation: string = '';
+  
+  apiLoading: boolean = false;
+  apiError: string = '';
 
   @Input() user: UserDetails | undefined;
   @Input() page: string | undefined;
@@ -48,11 +51,13 @@ export class ProfilePageComponent {
   submit() {
     if(this.editProfile.valid) {
       if(this.page === 'new-user-profile') {
+        this.apiLoading = true;
         this.apiConnection.postUser(this.createUserInterface()).subscribe(
           res => {
             this.user = res;
             this.ProfilePagePattern.userInfo = this.transformRes.getUserInfo(res);
             this.updatedUser.emit(res);
+            this.apiLoading = false;
             this.selectedPage.emit('home-page');
           },
           err => console.log(err),
@@ -60,15 +65,21 @@ export class ProfilePageComponent {
       }
       else {
         if(this.isProfileChanged()) {
+          this,this.apiLoading = true;
           this.apiConnection.updateUser(this.createUserInterface()).subscribe(
             res => {
               this.user = res;
               this.ProfilePagePattern.pages[0].title = res.fullName;
               this.ProfilePagePattern.userInfo = this.transformRes.getUserInfo(res);
               this.updatedUser.emit(res);
+              this.apiLoading = false;
               this.animation = 'maximize'
-              this.pagePattern = this.ProfilePagePattern.pages[0];             },
-            err => console.log(err),
+              this.pagePattern = this.ProfilePagePattern.pages[0];             
+            },
+            err => {
+              this.apiError = 'error';
+              console.log(err);
+            },
           );
         }
         else{

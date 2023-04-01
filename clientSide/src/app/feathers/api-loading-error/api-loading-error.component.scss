@@ -1,0 +1,41 @@
+.back-ground-container {
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    padding: 30px;
+    background-color: rgb(224 224 224 / 33%);
+    z-index: 10000000;
+
+    .output-container {
+        position: relative;
+        top: 50%;
+        right: 50%;
+        height: fit-content;
+        width: fit-content;
+        transform: translate(50%, -50%);
+        padding: 10px;
+
+        &.output-container__message {
+            background-color: white;
+            border-radius: 10px;
+        }
+    }
+    
+    .loading-icon {
+        width: 35px;
+        transform: rotate(0);
+        animation: 1s rotate-icon 0s linear infinite;
+
+        @keyframes rotate-icon {
+        from { transform: rotate(0); }
+        to { transform: rotate(360deg); }
+        }
+    }
+}
+
+h1 {
+    padding: none;
+    font-size: 30px;
+    text-align: center;
+}

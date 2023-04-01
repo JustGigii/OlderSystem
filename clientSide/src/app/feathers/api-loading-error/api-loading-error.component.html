@@ -1,0 +1,9 @@
+<div class="back-ground-container" (click)="closeEvent()">
+    <div class="output-container" *ngIf="!apiError">
+        <img src="../../../assets/icon/loading.png" class="loading-icon">
+    </div>
+
+    <div class="output-container" *ngIf="apiError" [class.output-container__message]="true">
+        <h1>מצטערים, משהו השתבש...</h1>
+    </div>
+</div>

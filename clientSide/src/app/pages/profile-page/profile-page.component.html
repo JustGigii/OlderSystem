@@ -30,6 +30,8 @@
     </ng-container>
 </div>
 
+<app-api-loading-error *ngIf="apiLoading" [apiError]="apiError" (closeMessage)="apiLoading = $event; backToProfileViewe()"></app-api-loading-error>
+
 
 
 <!-- <div class="background">
