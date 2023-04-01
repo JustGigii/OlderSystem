@@ -14,7 +14,7 @@ import { Output } from '@angular/core';
 })
 export class StartPageLoginComponent {
   
-  template: any = startPageTemplate[0];
+  template: any = startPageTemplate;
 
   @Output() selectedPage = new EventEmitter();
   @Output() userInfo = new EventEmitter();

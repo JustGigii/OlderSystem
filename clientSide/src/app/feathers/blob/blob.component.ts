@@ -1,11 +1,8 @@
 import { trigger, state, style, animate, transition, query, group } from '@angular/animations';
 import { Component, OnInit } from '@angular/core';
-import { windowWhen } from 'rxjs';
 import { iolderpage, homepage, iolderItemFull, ihomePage, iproduct } from 'src/app/page tample/homepage';
 import { ReqestService } from 'src/app/services/reqest.service'
 import { DatePipe } from '@angular/common'
-import { MatDialog } from '@angular/material/dialog';
-import { ProductDetailsComponent } from '../product-details/product-details.component';
 import { MicrosoftMsalService } from 'src/app/services/login/microsoft-msal.service';
 
 @Component({

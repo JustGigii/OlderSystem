@@ -1,3 +1,77 @@
+.nav-container {
+  position: absolute;
+  height: 100px;
+  width: 100vw;
+  bottom: 0;
+  padding-bottom: 30px;
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #82b5c0;
+  fill: #ffffff;
+
+  .icon-container {
+    flex-grow: 1;
+  }
+  .icon {
+    display: block;
+    margin: auto;
+    width: 25px;
+  }
+  .selected-icon {
+    display: block;
+    margin: auto;
+    width: 25px;
+  }
+}
+
+.wave-container {
+  position: absolute;
+  height: 100px;
+  width: 100vw;
+  bottom: 0;
+  padding-bottom: 30px;
+  z-index: 10000;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  fill: #82b5c0;
+}
+
+.show {
+  flex-grow: 1;
+  width: 85%;
+  animation: 0.2s show-animation 0s ease-in-out forwards;
+}
+
+.unshow {
+  flex-grow: 1;
+  width: 85%;
+  animation: 0.2s unshow-animation 0s ease-in-out forwards;
+}
+
+@keyframes show-animation {
+  from { margin-bottom: 0; }
+  to { margin-bottom: 69px; }
+}
+@keyframes unshow-animation {
+  from { margin-bottom: 69px }
+  to { margin-bottom: 0; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 .menu {
   position: fixed;
   width: 100vw;
@@ -24,33 +98,33 @@
     fill: white;
   }
 
-  .show {
-    position: relative;
-    fill: #82b5c0;
-    bottom: 57px;
-    width: 100%;
-    height: 14px;
-    animation-name: showup;
-    animation-duration: 0.4s;
-  }
+  // .show {
+  //   position: relative;
+  //   fill: #82b5c0;
+  //   bottom: 57px;
+  //   width: 100%;
+  //   height: 14px;
+  //   animation-name: showup;
+  //   animation-duration: 0.4s;
+  // }
 
-  .unshow {
-    position: relative;
-    fill: #82b5c0;
-    bottom: 37px;
-    width: 100%;
-    height: 14px;
-    animation-name: showdown;
-    animation-duration: 0.4s;
-  }
+  // .unshow {
+  //   position: relative;
+  //   fill: #82b5c0;
+  //   bottom: 37px;
+  //   width: 100%;
+  //   height: 14px;
+  //   animation-name: showdown;
+  //   animation-duration: 0.4s;
+  // }
 
-  .out {
-    position: relative;
-    fill: rgb(88 126 163);
-    bottom: 30px;
-    width: 100%;
-    height: 14px;
-  }
+  // .out {
+  //   position: relative;
+  //   fill: rgb(88 126 163);
+  //   bottom: 30px;
+  //   width: 100%;
+  //   height: 14px;
+  // }
 }
 
 .menu {

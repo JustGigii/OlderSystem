@@ -12,7 +12,9 @@ export class NavComponent implements OnInit {
 
   @Output() selectedPage = new EventEmitter();
   item: number = 0;
-  cssclass = ["show", "out", "out", "out"];
+  // cssclass = ["show", "out", "out", "out"];
+  cssclass = ["show", "unshow", "unshow", "unshow"];
+
 
   constructor(private microsoftMsal: MicrosoftMsalService) {
   }
@@ -27,7 +29,7 @@ export class NavComponent implements OnInit {
     }
   }
 
-  PageTitle(index: number): void {
+  navigatePage(index: number): void {
     this.cssclass[this.item] = "unshow";
     this.cssclass[index] = "show";
     this.item = index;
