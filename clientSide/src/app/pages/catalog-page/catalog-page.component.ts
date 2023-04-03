@@ -33,12 +33,10 @@ export class CatalogPageComponent implements OnInit {
   }
 
   onClick(product: prodact){
-    console.log(`product print category ${product.categoryId}`);
     this.currProduct = product;
   }
 
   changeCategory(newCategory: number) {
-    console.log(`category change ${newCategory}`);
     this.chosenCategory = newCategory;
   }
 
@@ -46,7 +44,7 @@ export class CatalogPageComponent implements OnInit {
     this.currProduct = undefined;
   }
 
-  addToCart(addedProduct: any){
+  addToCart(addedProduct: iproduct){
     if (this.cart.find(c => c.pordactId === addedProduct.pordactId)) {
       var foundIndex = this.cart.findIndex(x => x.pordactId == addedProduct.pordactId);
       this.cart.splice(foundIndex, 1);

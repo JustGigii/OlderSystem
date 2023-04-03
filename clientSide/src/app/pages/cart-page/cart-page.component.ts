@@ -39,7 +39,6 @@ export class CartPageComponent implements OnInit {
 
   toggleEditability() {
     this.isEditable = !this.isEditable;
-    console.log(this.isEditable);
   }
 
   removeProduct(product: iproduct) {
@@ -57,7 +56,6 @@ export class CartPageComponent implements OnInit {
         };
 
       }
-      console.log(this.orderCart)
       var newOrder: NewOrder = {
         title: `${this.orderShluha} שכבה ${this.orderClass}`,
         userid: 1,
@@ -67,9 +65,7 @@ export class CartPageComponent implements OnInit {
         isdarft: this.orderIsDraft,
         prodact: this.orderCart
       }
-
       this.isOrderCompleted = true;
-      console.log(JSON.stringify(newOrder))
       this.reqestService.postOlder(newOrder).subscribe(response =>
         {
           console.log(response)
@@ -89,7 +85,6 @@ export class CartPageComponent implements OnInit {
   }
 
   initializeVariables() {
-    console.log("initializeVariables");
     sessionStorage.clear();
     this.cart.length = 0;
     this.orderType = "";

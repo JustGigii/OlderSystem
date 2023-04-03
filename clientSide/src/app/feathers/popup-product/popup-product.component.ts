@@ -12,7 +12,7 @@ import { messages } from './../../page tample/popup-product';
 })
 export class PopupProductComponent implements OnInit {
   @Output() onClose: EventEmitter<any> = new EventEmitter();
-  @Output() onAddToCart: EventEmitter<any> = new EventEmitter();
+  @Output() onAddToCart: EventEmitter<iproduct> = new EventEmitter();
 
 
   //add other compenent to add prodact
@@ -72,7 +72,13 @@ export class PopupProductComponent implements OnInit {
       if (this.addedSizes.size > 0) {
         this.addedToCart = true;
         this.sortAddedSizes();
-        this.onAddToCart.emit(this.product);
+        var addedProduct: iproduct = {
+          pordactId: this.product.prodactId,
+          pordactName: this.product.pordactName,
+          prodactImage: this.product.prodactImage,
+          sizes: this.addedSizes
+        };
+        this.onAddToCart.emit(addedProduct);
         setTimeout(() => {
           this.onClose.emit();
         }, 1200);
