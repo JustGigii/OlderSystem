@@ -1,5 +1,8 @@
 <div *ngIf="this.prodactdetails">
-  <div class="product" *ngFor="let prodact of prodactdetails" [class]="isEditable ? 'slide-left' : 'slide-right'">
+  <div class="product" *ngFor="let prodact of prodactdetails" [ngClass]="isEditable">
+    <!-- <div class="product" *ngFor="let prodact of prodactdetails" [class]="isEditable === true ? 'slide-left' : 'slide-right'"> -->
+
+
     <img class="product-image" [src]="prodact.prodactImage">
     <div class="mainContent">
       <p class="product-title">{{prodact.pordactName}}</p>
@@ -14,6 +17,6 @@
         </div>
       </div>
     </div>
-    <img src="../../../assets/img/closeBtn.png" alt="closing button" (click)="removeFromCart(prodact)" [hidden]="!isEditable" id="delete-item-btn">
+    <img src="../../../assets/img/closeBtn.png" alt="closing button" (click)="removeFromCart(prodact)" [hidden]="isEditable !== 'editing'" id="delete-item-btn">
   </div>
 </div>

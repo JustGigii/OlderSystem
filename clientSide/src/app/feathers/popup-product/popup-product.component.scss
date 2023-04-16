@@ -57,12 +57,12 @@
   height: 29%;
   position: relative;
   margin: auto;
-  justify-content: space-around;
-  align-content: flex-start;
-  flex-wrap: wrap;
-  flex-direction: row;
+  // justify-content: space-around;
+  // align-content: flex-start;
+  // flex-wrap: wrap;
+  // flex-direction: row;
   overflow: auto;
-  display: flex;
+  // display: flex;
 }
 
 .added-sizes {
@@ -88,12 +88,14 @@
 }
 
 .added-sizes-input {
+  min-height: 4.2vh;
   height: fit-content;
   width: 100%;
   font-size: 19rem;
   position: relative;
   border-radius: 7px;
   max-height: 130px;
+  border: none;
 }
 
 .added-sizes-option {
@@ -101,7 +103,7 @@
   position: relative;
   z-index: 5;
   min-height: 32px;
-  height: 4vh;
+  height: 3vh;
 }
 
 .close-size-btn {

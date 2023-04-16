@@ -19,7 +19,7 @@ export class CartPageComponent implements OnInit {
   orderCart: NewOrderpordactsend[] = [];
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
-  isEditable: boolean = false;
+  isEditable: string = '';
 
   classesArray = classesArray;
   shluhaArray = shluhaArray;
@@ -38,7 +38,7 @@ export class CartPageComponent implements OnInit {
   }
 
   toggleEditability() {
-    this.isEditable = !this.isEditable;
+    this.isEditable = this.isEditable === 'editing' ? 'not-editing' : 'editing';
   }
 
   removeProduct(product: iproduct) {

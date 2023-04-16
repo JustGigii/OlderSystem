@@ -11,7 +11,7 @@ import { ReqestService } from 'src/app/services/reqest.service';
 export class ProductDetailsComponent {
   id?: number
   @Input() prodactdetails?: iproduct[]
-  @Input() isEditable?: boolean;
+  @Input() isEditable: string | undefined;
 
 
 
