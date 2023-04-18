@@ -4,28 +4,19 @@
     <input class="catalog-search-bar" type="text" [(ngModel)]="search">
     <img class="search-bar-img" src="../../../assets/img/searchBtn.png" alt="search">
   </div>
-  <div class="category-container">
-    <div (click)="changeCategory(category.categoryId)" *ngFor="let category of categories" class="category" [class]="category.categoryId == chosenCategory ? 'chosen-category' : ''">
-      <h4 class="category-title">{{category.categoryName}}</h4>
-      <img class="category-img" [src]="category.categoryImage" alt="category img" >
-    </div>
-  </div>
-  <div class="products-container">
-    <ng-container *ngFor="let product of products">
-      <div *ngIf="chosenCategory == deafultCategory;else categoryProducts">
-        <div class="product" *ngIf="product.pordactName.includes(search)" (click)="onClick(product)">
-          <img class="product-image" src={{product.prodactImage}} alt="product image">
-          <h3 class="product-title">{{product.pordactName}}</h3>
-        </div>
+
+  <div class="categories-container">
+    <div class="category" *ngFor="let category of categories">
+      <h2 class="category-title">{{category.categoryName}}</h2>
+      <div class="products-container">
+        <ng-container *ngFor="let product of products">
+            <img class="product-image"
+            (click)="onClick(product)"
+            *ngIf="product.pordactName.includes(search) && product.categoryId === category.categoryId"
+            src={{product.prodactImage}}
+            alt="product image">
+        </ng-container>
       </div>
-      <ng-template #categoryProducts>
-        <div class="product" *ngIf="product.pordactName.includes(search) && product.categoryId == chosenCategory" (click)="onClick(product)">
-          <img class="product-image" src={{product.prodactImage}} alt="product image">
-          <h3 class="product-title">{{product.pordactName}}</h3>
-        </div>
-      </ng-template>
-    </ng-container>
-  </div>
+    </div>
 </div>
-<popup-product *ngIf="currProduct != undefined" [product]="currProduct"
-(onClose)="closeDialog()" (onAddToCart)="addToCart($event)"></popup-product>
+<div class="selected-page-container" *ngIf="currProduct != undefined"><app-selected-product (onAddToCart)="addToCart($event)" (onClose)="this.currProduct = undefined;" [product]="currProduct"></app-selected-product></div>

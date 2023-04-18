@@ -1,16 +1,17 @@
-.product-img-container {    
+.product-img-container {
     width: 100vw;
     height: 64vh;
     padding-bottom: 110px;
     background-color: white;
 
     .product-img {
-        position: relative;
-        transform: translate(50%, -50%);
-        max-width: 250px;
-        top: 50%;
-        right: 50%;
-        width: 65%;
+      width: 73vw;
+      height: 45vh;
+      margin: auto;
+      display: block;
+      padding: 3%;
+      top: 18%;
+      position: relative;
     }
 
     .icons-container{
@@ -18,8 +19,10 @@
         justify-content: space-between;
         height: 55px;
         padding: 25px 20px 0;
+        left: 0;
+        position: absolute;
 
-        img{ 
+        img{
             width: 30px;
         }
     }
@@ -40,14 +43,42 @@
     background-color: #c8dbdf;
 
     .amount-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-around;
-        border: solid #476181 1px;
-        border: solid #000000 1px;
-        border-radius: 15px;
-        height: 42px;
-        width: 115px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      border: solid #476181 1px;
+      border: solid #000000 1px;
+      border-radius: 15px;
+      height: 42px;
+      width: 115px;
+      user-select: none;
+      position: relative;
+
+      .sign {
+        text-align: center;
+        height: 90%;
+        width: 50%;
+        font-size: 26px;
+
+      }
+
+      #amount {
+        height: 100%;
+        width: 57%;
+        border: none;
+        text-align: center;
+        font-size: 22px;
+        direction: ltr;
+      }
+
+      .invalidations {
+        position: absolute;
+        top: 100%;
+        width: max-content;
+        p {
+          color: red;
+        }
+      }
     }
 
     .size-container {
@@ -64,6 +95,8 @@
         margin-left: 10px;
         border-radius: 15px;
         display: inline-block;
+        width: fit-content;
+        min-width: 55px;
 
         &.size-element__selected-size {
             border: #000000 solid 1px;
@@ -84,4 +117,8 @@ button {
     color: white;
     height: 42px;
     border-radius: 15px;
+}
+
+input {
+  background-color: #c8dbdf;
 }

@@ -4,19 +4,19 @@
     <div class="order-details-container">
       <div class="order-details">
         <p class="details-text">שלוחה</p>
-        <select class="details-input" id="sizes" name="sizes" size="1" onfocus="this.size = 4;" [(ngModel)]="orderShluha">
+        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderShluha">
           <option *ngFor="let shluhaItem of shluhaArray">{{shluhaItem}}</option>
         </select>
       </div>
       <div class="order-details">
         <p class="details-text">סוג הזמנה</p>
-        <select class="details-input" id="sizes" name="sizes" size="1" onfocus="this.size = 4;" [(ngModel)]="orderType">
+        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderType">
           <option *ngFor="let orderTypeItem of orderTypeArray">{{orderTypeItem}}</option>
         </select>
       </div>
       <div class="order-details">
         <p class="details-text">כיתה</p>
-        <select class="details-input" id="sizes" name="sizes" size="1" onfocus="this.size = 4;" [(ngModel)]="orderClass">
+        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderClass">
           <option *ngFor="let classItem of classesArray">{{classItem}}</option>
         </select>
       </div>

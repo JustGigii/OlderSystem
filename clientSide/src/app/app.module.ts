@@ -20,7 +20,7 @@ import { MsalInterceptor, MsalInterceptorConfiguration, MsalModule, MsalService,
 import { InteractionType, IPublicClientApplication, PublicClientApplication } from '@azure/msal-browser';
 import { StartPageLoginComponent } from './pages/start-page-login/start-page-login.component';
 import { MicrosoftMsalService } from './services/login/microsoft-msal.service';
-import { SelectedProductComponent } from './pages/selected-product/selected-product.component';
+import { SelectedProductComponent } from './feathers/selected-product/selected-product.component';
 import { ApiLoadingErrorComponent } from './feathers/api-loading-error/api-loading-error.component';
 
 

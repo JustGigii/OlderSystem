@@ -1,0 +1,32 @@
+<div class="product-img-container">
+    <div class="icons-container">
+      <img src="../../../assets/icon/back.png" (click)="close()">
+    </div>
+
+    <img class="product-img" [src]="product.prodactImage">
+</div>
+
+<form class="product-container" action="" [formGroup]="productForm" (ngSubmit)="addToCart()">
+  <h2>{{product.pordactName}}</h2>
+
+  <div class="amount-container">
+    <h4 class="sign" (click)="quantityHandling(1)">+</h4>
+    <input id="amount" type="number" formControlName="quantity" max="999">
+    <h4 class="sign" (click)="quantityHandling(-1)">-</h4>
+
+    <div *ngIf="productForm.controls['quantity'].invalid" class="invalidations">
+      <p *ngIf="productForm.controls['quantity'].errors?.['max']">טיפה יותר מידי</p>
+      <p *ngIf="productForm.controls['quantity'].errors?.['min']">פחות מידי</p>
+      <p *ngIf="productForm.controls['quantity'].errors?.['required']">לא משהו</p>
+    </div>
+
+  </div>
+
+  <div class="size-container" *ngIf="product.typeSize !== 5">
+    <div [class.size-element__selected-size]="chosenSize === size" class="size-element"
+    *ngFor="let size of sizes[product.typeSize]" (click)="chooseSize($event)">
+    <span>{{size}}</span></div>
+  </div>
+
+  <button type="submit">הוסף לעגלה</button>
+</form>
