@@ -70,44 +70,35 @@
       font-size: 38rem;
     }
 
-    .products-container{
+    .products-container {
       height: fit-content;
       display: flex;
       flex-direction: row;
       overflow-y: hidden;
 
-      .product {
-        background-color: aqua;
-        position: relative;
-        // word-break: break-word;
-        // border-radius: 28px;
-        // font-size: 20rem;
-        // position: relative;
-        // height: 100%;
-        // width: 43%;
-        min-width: 26vw;
-        min-height: 26vw;
-        margin-left: 7%;
-
-        .product-title {
-          // position: absolute;
-          // bottom: 5%;
-          // overflow: hidden;
-          // white-space: nowrap;
-          // text-overflow: ellipsis;
-          // width: 88%;
-          background-color: brown;
-        }
-      }
       .product-image {
         position: relative;
-        min-width: 26vw;
-        min-height: 26vw;
         margin-left: 7%;
         height: 26vw;
         width: 26vw;
       }
     }
+  }
+}
+
+#all-products-container {
+  height: 63vh;
+  width: 90vw;
+  overflow: auto;
+  margin: auto;
+  margin-top: 16%;
+  display: flex;
+  flex-wrap: wrap;
+
+  .product-image {
+    position: relative;
+    height: 35vw;
+    width: 35vw;
   }
 }
 

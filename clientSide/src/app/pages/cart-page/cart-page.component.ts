@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { iproduct } from './../../page tample/homepage';
 import { NewOrderpordactsend, NewOrder } from './../../page tample/prodactTemplete';
 import { ReqestService } from 'src/app/services/reqest.service';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { shluhaArray, orderTypeArray, classesArray } from 'src/app/page tample/cart-page';
 
 @Component({
@@ -11,15 +12,17 @@ import { shluhaArray, orderTypeArray, classesArray } from 'src/app/page tample/c
 })
 
 export class CartPageComponent implements OnInit {
-  orderType: string = "";
-  orderClass: string = "";
   orderStatus: number = 1;
-  orderIsDraft: boolean = false;
-  orderShluha: string = "";
-  orderCart: NewOrderpordactsend[] = [];
   cart: iproduct[] = [];
   isOrderCompleted: boolean = false;
   isEditable: string = '';
+
+  orderForm = new FormGroup({
+    orderType: new FormControl('', Validators.required),
+    orderClass: new FormControl('', Validators.required),
+    orderIsDraft: new FormControl(false, Validators.required),
+    orderShluha: new FormControl('', Validators.required),
+  })
 
   classesArray = classesArray;
   shluhaArray = shluhaArray;
@@ -44,36 +47,42 @@ export class CartPageComponent implements OnInit {
   removeProduct(product: iproduct) {
     this.cart.splice(this.cart.indexOf(product), 1)
     sessionStorage.setItem("cartItemsArray", JSON.stringify(this.cart));
-
   }
 
   completeOrder() {
-    if (this.orderType != "" && this.cart.length != 0 && this.orderClass != "" && this.orderShluha != "") {
-      for (let i = 0; i < this.cart.length; i++) {
-        this.orderCart[i] = {
-          pordactId: this.cart[i].pordactId,
-          sizes: this.convertMapToObject(this.cart[i].sizes)
-        };
-
-      }
+    if (this.cart.length != 0 && this.orderForm.valid) {
       var newOrder: NewOrder = {
-        title: `${this.orderShluha} שכבה ${this.orderClass}`,
+        title: `${this.orderForm.controls["orderShluha"].value} שכבה ${this.orderForm.controls["orderClass"].value}`,
         userid: 1,
-        type: this.orderType,
+        type: this.orderForm.controls["orderType"].value || '',
         date: new Date(),
         status: this.orderStatus,
-        isdarft: this.orderIsDraft,
-        prodact: this.orderCart
+        isdarft: this.orderForm.controls["orderIsDraft"].value || false,
+        prodact: this.convertToNewOrderProduct()
       }
       this.isOrderCompleted = true;
-      this.reqestService.postOlder(newOrder).subscribe(response =>
-        {
-          console.log(response)
-        });
-      this.initializeVariables();
-    } else {
-      alert("cannot complete order");
+      console.table(newOrder);
+      // this.reqestService.postOlder(newOrder).subscribe(response =>
+      //   {
+      //     console.log(response)
+      //   });
+
+      // initialize variables
+      sessionStorage.clear();
+      this.cart.length = 0;
     }
+  }
+
+  convertToNewOrderProduct(){
+    var orderCart: NewOrderpordactsend[] = [];
+    for (let i = 0; i < this.cart.length; i++) {
+      orderCart[i] = {
+        pordactId: this.cart[i].pordactId,
+        sizes: this.convertMapToObject(this.cart[i].sizes)
+      };
+    }
+
+    return orderCart;
   }
 
   convertMapToObject(metricArguments: Map<string,number>): Record<string,number> {
@@ -82,15 +91,5 @@ export class CartPageComponent implements OnInit {
       newObject[key] = value;
     }
     return newObject;
-  }
-
-  initializeVariables() {
-    sessionStorage.clear();
-    this.cart.length = 0;
-    this.orderType = "";
-    this.orderClass = '';
-    this.orderShluha = "";
-    this.cart.length = 0;
-    this.orderIsDraft = false;
   }
 }

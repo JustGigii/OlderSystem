@@ -6,7 +6,7 @@
     <img class="product-img" [src]="product.prodactImage">
 </div>
 
-<form class="product-container" action="" [formGroup]="productForm" (ngSubmit)="addToCart()">
+<form class="product-container" [formGroup]="productForm" (ngSubmit)="addToCart()">
   <h2>{{product.pordactName}}</h2>
 
   <div class="amount-container">
@@ -23,7 +23,7 @@
   </div>
 
   <div class="size-container" *ngIf="product.typeSize !== 5">
-    <div [class.size-element__selected-size]="chosenSize === size" class="size-element"
+    <div [class.size-element__selected-size]="productForm.controls['quantity'] === size" class="size-element"
     *ngFor="let size of sizes[product.typeSize]" (click)="chooseSize($event)">
     <span>{{size}}</span></div>
   </div>

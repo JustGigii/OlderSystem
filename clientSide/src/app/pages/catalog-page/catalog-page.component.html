@@ -5,18 +5,31 @@
     <img class="search-bar-img" src="../../../assets/img/searchBtn.png" alt="search">
   </div>
 
-  <div class="categories-container">
+  <div class="categories-container" *ngIf="search === ''; else allproducts">
     <div class="category" *ngFor="let category of categories">
       <h2 class="category-title">{{category.categoryName}}</h2>
       <div class="products-container">
         <ng-container *ngFor="let product of products">
             <img class="product-image"
             (click)="onClick(product)"
-            *ngIf="product.pordactName.includes(search) && product.categoryId === category.categoryId"
+            *ngIf="product.categoryId === category.categoryId"
             src={{product.prodactImage}}
             alt="product image">
         </ng-container>
       </div>
     </div>
-</div>
+  </div>
+
+  <ng-template #allproducts>
+    <div id="all-products-container">
+      <ng-container *ngFor="let product of products">
+        <img class="product-image"
+        (click)="onClick(product)"
+        *ngIf="product.pordactName.includes(search)"
+        src={{product.prodactImage}}
+        alt="product image">
+      </ng-container>
+    </div>
+  </ng-template>
+
 <div class="selected-page-container" *ngIf="currProduct != undefined"><app-selected-product (onAddToCart)="addToCart($event)" (onClose)="this.currProduct = undefined;" [product]="currProduct"></app-selected-product></div>

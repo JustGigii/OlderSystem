@@ -3,12 +3,13 @@
   width: 100vw;
   background-color: #90abc3;
   padding-bottom: 100px;
-}
 
-.cart-title {
-  text-align: center;
-  font-size: 45rem;
-  color: #3a454a;
+  .cart-title {
+    text-align: center;
+    font-size: 45rem;
+    color: #3a454a;
+  }
+
 }
 
 .cart-container {
@@ -21,39 +22,10 @@
   border-radius: 46px;
 }
 
-.details-text {
-  height: 41%;
-  width: 100%;
-  font-size: 21rem;
-  text-align: center;
-  color: aliceblue;
-}
-
-.details-input {
-  height: 50%;
-  width: 80%;
-}
-
-.order-title {
-  text-align: center;
-  font-size: 24rem;
-  height: 13%;
-}
-
-.title-text {
-  color: aliceblue;
-  font-size: 24rem;
-}
-
 input, select {
   text-align: center;
   border-radius: 11px;
   font-size: 21rem;
-}
-
-.title-input {
-  height: 44%;
-  width: 57%;
 }
 
 .order-details-container {
@@ -64,13 +36,38 @@ input, select {
   display: flex;
   justify-content: space-around;
   align-items: center;
+
+  .order-details {
+    height: 76%;
+    width: 47%;
+    text-align: center;
+    position: relative;
+
+    .details-text {
+      height: 41%;
+      width: 100%;
+      font-size: 21rem;
+      text-align: center;
+      color: aliceblue;
+    }
+
+    .details-input {
+      height: 50%;
+      width: 80%;
+    }
+
+    .invalid-text {
+      position: absolute;
+      top: 100%;
+      height: 30%;
+      width: 100%;
+      text-align: center;
+      font-size: 17rem;
+      color: red;
+    }
+  }
 }
 
-.order-details {
-  height: 76%;
-  width: 47%;
-  text-align: center;
-}
 
 .products-container {
   height: 54%;
@@ -78,17 +75,50 @@ input, select {
   margin: auto;
   overflow: auto;
   border-radius: 13px;
-  margin-top: -1%;
+  margin-top: 6%;
+  position: relative;
+
+  #empty-cart {
+    font-size: 24rem;
+    text-align: center;
+  }
+
+  #edit-icon {
+    position: absolute;
+    max-height: 38px;
+    left: 0;
+    top: 0;
+    height: 12%;
+    z-index: 5;
+  }
 }
 
 #complete-order-btn {
-  left: 0;
-  right: 0;
-  bottom: 2%;
-  width: 16%;
-  margin: auto;
-  display: block;
-  position: absolute;
+  height: fit-content;
+  border-radius: 15px;
+  width: fit-content;
+  padding: 2% 11%;
+
+  // #complete-order-btn:hover {
+  //   /* Start the shake animation and make the animation last for 0.5 seconds */
+  //   animation: shake 0.5s;
+
+  //   /* When the animation is finished, start again */
+  //   animation-iteration-count: infinite;
+  // }
+
+  // @keyframes shake {
+  //   0% { transform: translate(1px, 1px) rotate(0deg); }
+  //   10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  //   20% { transform: translate(-3px, 0px) rotate(1deg); }
+  //   30% { transform: translate(3px, 2px) rotate(0deg); }
+  //   40% { transform: translate(1px, -1px) rotate(1deg); }
+  //   50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  //   60% { transform: translate(-3px, 1px) rotate(0deg); }
+  //   70% { transform: translate(3px, 1px) rotate(-1deg); }
+  //   80% { transform: translate(-1px, -1px) rotate(1deg); }
+  //   90% { transform: translate(1px, 2px) rotate(0deg); }
+  //   100% { transform: translate(1px, -2px) rotate(-1deg); }
 }
 
 #bottom-container {
@@ -96,16 +126,16 @@ input, select {
   display: flex;
   justify-content: space-around;
   align-items: center;
+  #is-draft-container {
+    display: flex;
+    align-items: center;
+    .bottom-container-text {
+      font-size: 22rem;
+    }
+  }
 }
 
-.bottom-container-text {
-  font-size: 22rem;
-}
 
-#is-draft-container {
-  display: flex;
-  align-items: center;
-}
 
 .checkbox-wrapper-31:hover .check {
   stroke-dashoffset: 0;
@@ -153,8 +183,6 @@ input, select {
   top: 0;
   margin: 0;
   opacity: 0;
-  -appearance: none;
-  -webkit-appearance: none;
 }
 .checkbox-wrapper-31 input[type=checkbox]:hover {
   cursor: pointer;

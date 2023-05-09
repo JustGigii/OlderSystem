@@ -1,52 +1,62 @@
 <div class="cart-page">
   <h2 class="cart-title">ההזמנה שלי</h2>
-  <div class="cart-container">
+  <form class="cart-container" [formGroup]="orderForm" (ngSubmit)="completeOrder()">
     <div class="order-details-container">
       <div class="order-details">
         <p class="details-text">שלוחה</p>
-        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderShluha">
+        <select class="details-input" size="1" formControlName="orderShluha">
+          <option selected value="">שלוחה...</option>
           <option *ngFor="let shluhaItem of shluhaArray">{{shluhaItem}}</option>
         </select>
+        <p class="invalid-text" *ngIf="orderForm.controls['orderShluha'].errors && orderForm.controls['orderShluha'].dirty" >חסר שלוחה</p>
       </div>
       <div class="order-details">
         <p class="details-text">סוג הזמנה</p>
-        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderType">
+        <select class="details-input" size="1" formControlName="orderType">
+          <option selected value="">סוג הזמנה...</option>
           <option *ngFor="let orderTypeItem of orderTypeArray">{{orderTypeItem}}</option>
         </select>
+        <p class="invalid-text" *ngIf="orderForm.controls['orderType'].errors && orderForm.controls['orderType'].dirty">חסר הזמנה</p>
       </div>
       <div class="order-details">
         <p class="details-text">כיתה</p>
-        <select class="details-input" id="sizes" name="sizes" size="1" [(ngModel)]="orderClass">
+        <select class="details-input" size="1" formControlName="orderClass">
+          <option selected value="">כיתה...</option>
           <option *ngFor="let classItem of classesArray">{{classItem}}</option>
         </select>
+        <p class="invalid-text" *ngIf="orderForm.controls['orderClass'].errors && orderForm.controls['orderClass'].dirty" >חסר כיתה</p>
       </div>
     </div>
 
+    <!-- כאשר המששתמש מנסה לבצע הזמנה גם אפ הזין את פרטי ההזמנה נכון אך לא הזין פרטי משתמש לחציה על העגלת קניות ישלח אותו לדף פרופיל -->
+
     <div class="products-container">
+      <img id="edit-icon" [src]="this.cart.length === 0 ? '../../../assets/icon/editability-disabled.png' : '../../../assets/icon/editability.png'" alt="edit" (click)="toggleEditability()">
+      <p id="empty-cart" *ngIf="cart.length === 0">עגלה ריקה</p>
       <product-details [prodactdetails]="cart" [isEditable]="isEditable" (onRemoveProduct)="removeProduct($event)"></product-details>
     </div>
 
     <div id="bottom-container">
-      <button (click)="toggleEditability()" class="bottom-container-text">עריכה</button>
-      <span id="is-draft-container">
+      <!-- <span id="is-draft-container">
         <span class="bottom-container-text">טיוטה:</span>
         <div class="checkbox-wrapper-31">
-        <input type="checkbox" [(ngModel)]="orderIsDraft"/>
-        <svg viewBox="0 0 35.6 35.6">
-          <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
-          <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
-          <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
-        </svg>
+          <input type="checkbox" form="orderForm" formControlName="orderIsDraft"/>
+          <svg viewBox="0 0 35.6 35.6">
+            <circle class="background" cx="17.8" cy="17.8" r="17.8"></circle>
+            <circle class="stroke" cx="17.8" cy="17.8" r="14.37"></circle>
+            <polyline class="check" points="11.78 18.12 15.55 22.23 25.17 12.87"></polyline>
+          </svg>
         </div>
-      </span>
+      </span> -->
+      <button id="complete-order-btn" (click)="completeOrder()">סיימתי</button>
     </div>
 
-    <img id="complete-order-btn" src="../../../assets/img/cartBtn.png" alt="order" (click)="completeOrder()">
+
     <pop-up *ngIf="isOrderCompleted" (closeEvent)="this.isOrderCompleted = false">
       <p>Order is Completed!</p>
     </pop-up>
 
-  </div>
+  </form>
 </div>
 
 

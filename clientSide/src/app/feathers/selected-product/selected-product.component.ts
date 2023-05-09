@@ -16,12 +16,12 @@ export class SelectedProductComponent {
   @Output() onAddToCart: EventEmitter<iproduct> = new EventEmitter();
   @Input() product: prodact = {prodactId: 1, prodactImage: "", pordactName: "", typeSize: 1, categoryId: 0};
   sizes = sizes ;
-  chosenSize: string | undefined;
+  // chosenSize: string | undefined;
   addedSizes: Map<string, number> = new Map<string,number>();
 
-
   productForm = new FormGroup({
-    quantity: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(100)])
+    quantity: new FormControl(1, [Validators.required, Validators.min(1), Validators.max(100)]),
+    chosenSize: new FormControl('', Validators.required)
   })
 
   ngOnInit(): void {
@@ -38,7 +38,7 @@ export class SelectedProductComponent {
   }
 
   chooseSize(event: any) {
-    this.chosenSize = event.target.innerText;
+    this.productForm.controls["chosenSize"].setValue(event.target.innerText);
   }
 
   quantityHandling(value: number) {
@@ -52,7 +52,7 @@ export class SelectedProductComponent {
   }
 
   addToCart() {
-    if (this.productForm.valid && this.chosenSize) {
+    if (this.productForm.valid) {
       console.log("valid, sent");
       this.addedSizes.set(this.chosenSize, this.productForm.controls["quantity"].value || 0);
       console.table(this.addedSizes);
@@ -68,8 +68,6 @@ export class SelectedProductComponent {
       setTimeout(() => {
         this.onClose.emit();
       }, 1200);
-    } else {
-      console.log("invalid, not sent");
     }
   }
 

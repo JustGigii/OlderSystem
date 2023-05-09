@@ -11,7 +11,7 @@ import { iproduct } from 'src/app/page tample/homepage';
 export class CatalogPageComponent implements OnInit {
   categories: Category[] = [];
   chosenCategory: number = 0;
-  deafultCategory = 1;
+  categoryProduct: Array<Array<prodact>> = [];
 
   products: prodact[]  = [];
   cart: iproduct[] = [];
@@ -23,8 +23,8 @@ export class CatalogPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.reqestService.getProdacts().subscribe(element=>this.products = element );
-    this.reqestService.getCategories().subscribe(element=>this.categories = element );
+    this.reqestService.getProdacts().subscribe(element => this.products = element);
+    this.reqestService.getCategories().subscribe(element => this.categories = element);
 
     if (sessionStorage.getItem("cartItemsArray") != null) {
       var storedArray = sessionStorage.getItem("cartItemsArray");
