@@ -54,7 +54,7 @@ export class SelectedProductComponent {
   addToCart() {
     if (this.productForm.valid) {
       console.log("valid, sent");
-      this.addedSizes.set(this.chosenSize, this.productForm.controls["quantity"].value || 0);
+      this.addedSizes.set(this.productForm.controls["chosenSize"].value || '', this.productForm.controls["quantity"].value || 0);
       console.table(this.addedSizes);
 
       this.sortAddedSizes();
