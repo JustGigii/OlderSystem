@@ -23,7 +23,7 @@
   </div>
 
   <div class="size-container" *ngIf="product.typeSize !== 5">
-    <div [class.size-element__selected-size]="productForm.controls['chosenSize'].setValue(size)" class="size-element"
+    <div [class.size-element__selected-size]="productForm.controls['chosenSize'].value === size" class="size-element"
     *ngFor="let size of sizes[product.typeSize]" (click)="chooseSize($event)">
     <span>{{size}}</span></div>
   </div>
